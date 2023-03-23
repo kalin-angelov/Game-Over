@@ -4,20 +4,23 @@ import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
-import { Comment } from '../Details/Comment';
-import { DeleteButton } from '../Details/DeleteButton';
+import { Comment } from './Comment';
+import { DeleteButton } from './DeleteButton';
 import { getOne } from '../../service/gameService';
+import { addOneComment, getAllComments } from '../../service/gameCommentService';
 import { useForm } from '../../hooks/useForm';
 
-export const Details = ({
-    onDeleteGame,
-    onClickShowDelete,
-    onClickCloseDelete,
-    showDelete
-}) => {
+export const Details = () => {
+    const { 
+        userId, 
+        username,  
+        showDelete,
+        onDeleteGame,
+        onClickShowDelete,
+        onClickCloseDelete,
+    } = useContext(AuthContext);
     const { gameId } = useParams();
-    const { userId } = useContext(AuthContext);
-    const { formValue, onFormValueChange } = useForm({comment: ''})
+    const { formValue, onFormValueChange } = useForm({ comment: '' })
     const [game, setGame] = useState([]);
     const [commentsList, setCommentsList] = useState([]);
 
@@ -25,29 +28,37 @@ export const Details = ({
         getOne(gameId)
             .then(data => setGame(data))
             .catch(err => console.log(err))
-        getOne(gameId)
-            .then(data => setCommentsList(data.comments))
+        getAllComments(gameId)
+            .then(data => setCommentsList(data))
             .catch(err => console.log(err))
-    },[gameId]);
+    }, [gameId]);
 
-    const onSubmitComment = (e) => {
+    const onSubmitComment = async (e) => {
         e.preventDefault();
-        
 
-        console.log(commentsList);
+        const commentBody = {
+            user: '',
+            text: formValue.comment
+        }
+
+        username === undefined ? commentBody.user = 'Unknown' : commentBody.user = username;
+
+        if (commentBody.text !== '') {
+            setCommentsList(commentsList => ([...commentsList, commentBody]));
+            addOneComment(gameId, commentBody);
+    
+            formValue.comment='';
+        } else {
+            return;
+        }
+        
     };
 
     return (
         <>
-            <div id="software" className="details">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="titlePage">
-                                <h1>{game.title}</h1>
-                            </div>
-                        </div>
-                    </div>
+            <div className="details">
+                <div className="titlePage">
+                    <h1>{game.title}</h1>
                 </div>
                 <div className="container-fluid">
                     <div className="row">
@@ -61,7 +72,7 @@ export const Details = ({
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
                             <div className="box_text">
                                 <p>{game.summary}</p>
-                                {(userId === game._ownerId) && 
+                                {(userId === game._ownerId) &&
                                     <>
                                         <Link to={`/edit/${game._id}`} state={game} >Edit</Link>
                                         <Button variant="primary" onClick={onClickShowDelete} >Delete</Button>
