@@ -6,6 +6,9 @@ export const MyGames = ({ game }) => {
             <Link to={`/details/${game._id}`} >
                 <img src={game.imageUrl} alt="{game.title}" />
             </Link>
+            <div className='title'>
+                <h1>{game.title}</h1>
+            </div>
         </div>
     );
 };
