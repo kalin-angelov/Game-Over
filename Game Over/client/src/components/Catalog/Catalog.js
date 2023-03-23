@@ -1,19 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 
 import { Game } from './Game';
+import { AuthContext } from '../../contexts/AuthContext';
 
-export const Catalog = ({
-    gamesList
-}) => {
+export const Catalog = () => {
+    const { gamesList, isAuthenticated } = useContext(AuthContext);
+
     return (
         <div id="games" className="catalog">
             <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="titlePage">
-                            <h2>Game's</h2>
-                        </div>
-                    </div>
+                <div className="titlePage">
+                    <h2>Game's</h2>
                 </div>
                 {(gamesList.length > 0) ?
                     <div className='game-list'>
@@ -22,7 +20,7 @@ export const Catalog = ({
                     :
                     <div className='no_games'>
                         <h3>Game Catalog Is Empty</h3>
-                        <p> Be First To Add New Game! <Link to='/create'>Add Game</Link> </p>
+                        {isAuthenticated && <p> Be First To Add New Game! <Link to='/create'>Add Game</Link> </p>}
                     </div>
                 }
             </div>
