@@ -1,5 +1,6 @@
 export const Comment = ({
-    comment
+    user,
+    text
 }) => {
     return (
         <div className='comments-info'>
@@ -7,8 +8,8 @@ export const Comment = ({
                 <figure><img src="/images/userPic.png" alt="userPic" /></figure>
             </div>
             <div className="comment-text">
-                <h3>User 0607:</h3>
-                <p>{comment}</p>
+                <h3>{user}:</h3>
+                <p>{text}</p>
             </div>
         </div>
     );
