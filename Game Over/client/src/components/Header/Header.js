@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 export const Header = () => {
     const { isAuthenticated } = useContext(AuthContext);
-    console.log(isAuthenticated);
+    
     return (
         <header>
             <div className="header-top">
@@ -25,7 +25,6 @@ export const Header = () => {
                             <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                                 {isAuthenticated && (
                                     <ul className="top_icon">
-                                        <li className="button_create"> <Link to='/create'>Add Game</Link> </li>
                                         <li className="button_catalog"> <Link to='/catalog'>Catalog</Link> </li>
                                         <li className="button_profile"> <Link to='/profile'>Profile</Link> </li>
                                         <li className="button_logout"> <Link to='/logout'>Logout</Link> </li>
