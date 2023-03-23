@@ -4,11 +4,11 @@ import { useEffect, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export const Logout = () => {
-    const { onLogout } = useContext(AuthContext);
-    
+    const { setAuth } = useContext(AuthContext);
+
     useEffect(() => {
-        onLogout();
-    },[onLogout])
+        setAuth({});
+    }, [setAuth])
 
     return <Navigate to='/' />
 };
