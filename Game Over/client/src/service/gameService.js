@@ -2,88 +2,68 @@ import { bodyCheck } from '../utils/bodyCheck';
 
 const baseUrl = 'http://localhost:3030/data/gameList';
 
-export const getAll = async () => {
+const request = async (url, method, token, body) => {
+
+    const options = {
+        method: method,
+        headers: {}
+    }
+
+    if (token) {
+        options.headers = {
+            'X-Authorization': token
+        }
+    }
+
+    if (body !== undefined) {
+        options.headers = {
+            'content-type': 'application/json',
+            'X-Authorization': token
+        }
+        options.body = JSON.stringify(body)
+    }
+
     try {
-        const response = await fetch(baseUrl);
-        
+        if (body) {
+            bodyCheck(body);
+        }
+
+        const response = await fetch(url, options);
+
         if (response.status === 200) {
             const result = await response.json();
-            const games = Object.values(result);
 
-            return games;
+            return result;
         } else if (response.status === 204) {
 
             return [];
-        } 
+        }
 
         return [];
-        
-    } catch(err) {
-        console.log(`Error: ${err}`);
-        return [];
-    }
-};
 
-export const getOne = async (id) => {
-    try {
-        const response = await fetch(`${baseUrl}/${id}`);
-        const result = await response.json();
-
-        return result;
-    }catch(err) {
-        console.log(`Error: ${err}`);
-    }
-};
-
-export const deleteOne = async (id, token) => {
-    try {
-        const response = await fetch(`${baseUrl}/${id}` , { 
-            method: 'DELETE',
-            headers:{
-                'X-Authorization': token
-            }
-        });
-        const result = await response.json();
-
-        return result;
-    } catch(err) {
+    } catch (err) {
         throw new Error(`Error: ${err}`);
+        
     }
+
+}
+
+export const getAll = () => {
+    return request(`${baseUrl}`, "GET")
 };
 
-export const addOne = async (body, token) => {
-    try {
-        bodyCheck(body);
-
-        await fetch(baseUrl, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-                'X-Authorization': token
-            },
-            body: JSON.stringify(body)
-        });
-    } catch(err) {
-        throw Error(`Error: ${err}`);
-    }
+export const getOne = (id) => {
+    return request(`${baseUrl}/${id}`, "GET");
 };
 
 export const updateOne = async (id, body, token) => {
-    try {
-        bodyCheck(body);
+    return request(`${baseUrl}/${id}`, "PUT", token, body);
+};
 
-        const response = await fetch(`${baseUrl}/${id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json',
-                'X-Authorization': token
-            },
-            body: JSON.stringify(body)
-        });
-        const result = await response.json();
+export const deleteOne = async (id, token) => {
+    return request(`${baseUrl}/${id}`, "DELETE", token);
+};
 
-        return result;
-    } catch(err) {
-        throw Error(`Error: ${err}`);
-    }
+export const addOne = async (body, token) => {
+    return request(baseUrl, "POST", token, body);
 };
