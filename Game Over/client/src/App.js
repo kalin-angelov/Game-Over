@@ -35,22 +35,26 @@ function App() {
 
   const onAddNewGameSubmit = async (e, body) => {
     e.preventDefault();
-
+    setLoader(true);
+    
     body.players = Number(body.players);
     try {
       await addOne(body, auth.accessToken)
       const result = await getAll();
 
       setGameList(result);
+      setLoader(false);
       navigate('/profile');
     } catch (err) {
       console.log(`Error: ${err}`);
+      setLoader(false);
       navigate('/404');
     }
   };
 
   const onEditSubmit = async (e, body, id) => {
     e.preventDefault();
+    setLoader(true);
 
     body.players = Number(body.players);
     try {
@@ -58,9 +62,11 @@ function App() {
       const result = await getAll();
 
       setGameList(result);
+      setLoader(false);
       navigate('/catalog')
     } catch (err) {
       console.log(`Error: ${err}`);
+      setLoader(false);
     }
   };
 
@@ -73,16 +79,19 @@ function App() {
   };
 
   const onDeleteGame = async (id) => {
+    setLoader(true);
     try {
       await deleteOne(id, auth.accessToken);
       const result = await getAll()
 
       setGameList(result);
       onClickCloseDelete();
+      setLoader(false);
       navigate('/profile');
 
     } catch (err) {
       console.log(`Error: ${err}`);
+      setLoader(false);
     }
   };
 
