@@ -16,12 +16,15 @@ import { Home } from "./components/Home/Home";
 import { Profile } from "./components/Profile/Profile";
 import { Details } from "./components/Details/Details";
 import { PageNotFound } from "./components/404/PageNotFound";
+import { Loader } from "./components/Loader/Loader";
 
 function App() {
   const navigate = useNavigate();
+  const [auth, setAuth] = useState({});
+  const [loader, setLoader] = useState(false);
   const [gamesList, setGameList] = useState([]);
   const [showDelete, setShowDelete] = useState(false);
-  const [auth, setAuth] = useState({});
+  
 
   useEffect(() => {
     getAll()
@@ -97,12 +100,15 @@ function App() {
     onClickShowDelete,
     onClickCloseDelete,
     showDelete,
+    loader,
+    setLoader
   };
 
 
   return (
     <AuthContext.Provider value={valueContext}>
       <div className='main'>
+        <Loader />
         <Header />
         <Routes>
           <Route path='*' element={<PageNotFound />} />
