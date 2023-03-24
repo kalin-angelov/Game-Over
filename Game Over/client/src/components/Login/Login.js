@@ -7,7 +7,7 @@ import { login} from '../../service/authService';
 
 export const Login = () => {
     const navigate = useNavigate();
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth, setLoader } = useContext(AuthContext);
     const { formValue, onFormValueChange } = useForm({
         email: '',
         password: ''
@@ -15,15 +15,17 @@ export const Login = () => {
 
     const onLogin = async (e) => {
         e.preventDefault();
-    
+        setLoader(true);
+
         try {
-          const result = await login(formValue);
+            const result = await login(formValue);
     
-          setAuth(result);
-    
-          navigate('/catalog')
+            setAuth(result);
+            setLoader(false);
+            navigate('/catalog')
         } catch (err) {
           console.log(`Error: ${err}`);
+          setLoader(false);
         }
     };
 
