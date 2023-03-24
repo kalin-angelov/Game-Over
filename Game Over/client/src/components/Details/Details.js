@@ -14,6 +14,7 @@ export const Details = () => {
     const { 
         userId, 
         username,  
+        setLoader,
         showDelete,
         onDeleteGame,
         onClickShowDelete,
@@ -35,6 +36,7 @@ export const Details = () => {
 
     const onSubmitComment = async (e) => {
         e.preventDefault();
+        setLoader(true);
 
         const commentBody = {
             user: '',
@@ -46,9 +48,11 @@ export const Details = () => {
         if (commentBody.text !== '') {
             setCommentsList(commentsList => ([...commentsList, commentBody]));
             addOneComment(gameId, commentBody);
-    
+            setLoader(false);
+
             formValue.comment='';
         } else {
+            setLoader(false);
             return;
         }
         
