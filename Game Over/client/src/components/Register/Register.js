@@ -8,7 +8,7 @@ import { register } from '../../service/authService';
 
 export const Register = () => {
     const navigate = useNavigate();
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth, setLoader } = useContext(AuthContext);
     const { formValue, onFormValueChange } = useForm({
         username: '',
         email: '',
@@ -18,10 +18,12 @@ export const Register = () => {
 
     const onRegister = async (e) => {
         e.preventDefault();
+        setLoader(true);
 
         const { rePassword, ...bodyData } = formValue;
 
         if (rePassword !== bodyData.password) {
+            setLoader(false);
             return;
         }
 
@@ -29,10 +31,11 @@ export const Register = () => {
             const response = await register(bodyData);
 
             setAuth(response);
-
+            setLoader(false);
             navigate('/catalog');
         } catch (err) {
             console.log(`Error: ${err}`);
+            setLoader(false);
         }
 
     };
