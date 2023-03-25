@@ -1,3 +1,5 @@
+import styles from './Catalog.module.css';
+
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
@@ -8,17 +10,17 @@ export const Catalog = () => {
     const { gamesList, isAuthenticated } = useContext(AuthContext);
 
     return (
-        <div id="games" className="catalog">
-            <div className="container">
-                <div className="titlePage">
-                    <h2>Game's</h2>
-                </div>
+        <div className={styles.catalog}>
+            <div className={styles.container}>
+                
+                <h2>Game's</h2>
+                
                 {(gamesList.length > 0) ?
-                    <div className='game-list'>
+                    <div className={styles.gameList}>
                         {gamesList.map(game => <Game key={game._id} {...game} />)}
                     </div>
                     :
-                    <div className='no_games'>
+                    <div className={styles.noGames}>
                         <h3>Game Catalog Is Empty</h3>
                         {isAuthenticated && <p> Be First To Add New Game! <Link to='/create'>Add Game</Link> </p>}
                     </div>
