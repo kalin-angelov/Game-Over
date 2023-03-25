@@ -1,0 +1,113 @@
+.catalog {
+    padding-top: 327px;
+    padding-bottom: 447px;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.catalog h2 {
+    text-align: center;
+    padding: 0;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 50px;
+    font-size: 70px;
+    padding-bottom: 60px;
+    font-family: "Agency FB";
+}
+
+.gameList {
+    margin: auto;
+    width: 50%;
+}
+
+.noGames h3 {
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    font-size: 70px;
+    font-family: "Agency FB";
+    margin-top: 150px;
+}
+
+.noGames p {
+    color: #f8f9fa;
+    text-shadow: 1px 1px #ff0101;
+    font-size: 20px;
+    font-style: italic;
+    padding: 11px 67px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.game {
+    display:-ms-flexbox;
+    display:flex;-ms-flex-wrap:wrap;
+    flex-wrap:wrap;
+    margin-right:-15px;
+}
+
+.game img {
+    margin: 10px;
+    width: 330px;
+    height: 365px;
+    transition: 1.5s ease;
+    display: -webkit-box;
+}
+
+.game img:hover {
+    box-shadow:
+        1px 1px #373737,
+        2px 2px #373737,
+        3px 3px #373737,
+        4px 4px #373737,
+        5px 5px #373737,
+        6px 6px #373737;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+    transition: .5s ease;
+}
+
+.gameInfo {
+    text-align: left;
+    padding: 27px 100px;
+}
+
+.gameInfo h3 {
+    color: #ffffff;
+    font-size: 35px;
+    line-height: 50px;
+    font-weight: 500;
+    padding: 0;
+}
+
+.gameInfo p {
+    font-size: 35px;
+    line-height: 10px;
+    color: #fffefe;
+    padding: 22px 0px;
+    font-weight: 350;
+}
+
+.gameInfo a {
+    font-size: 25px;
+    border: #fff solid 1px;
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 27px;
+    display: inline-block;
+}
+
+.gameInfo a:hover {
+    background-color: #ff0000;
+    border: #ff0000 solid 1px;
+    color: #fff;
+}
