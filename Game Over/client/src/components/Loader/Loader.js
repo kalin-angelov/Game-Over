@@ -1,3 +1,5 @@
+import styles from './Loader.module.css';
+
 import { useContext } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
@@ -7,8 +9,8 @@ export const Loader = () => {
     return (
         <>
             {loader &&
-                <div className="loader_bg">
-                    <div className="loader"><img src="images/loading-6.gif" alt="spinner" /></div>
+                <div className={styles.loader}>
+                    <div className={styles.loaderSpinner}><img src="images/loading-6.gif" alt="spinner" /></div>
                 </div>
             }
         </>
