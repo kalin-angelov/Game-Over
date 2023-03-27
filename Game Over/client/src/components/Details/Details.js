@@ -1,3 +1,5 @@
+import styles from './Details.module.css';
+
 import { Link, useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
@@ -11,9 +13,9 @@ import { addOneComment, getAllComments } from '../../service/gameCommentService'
 import { useForm } from '../../hooks/useForm';
 
 export const Details = () => {
-    const { 
-        userId, 
-        username,  
+    const {
+        userId,
+        username,
         setLoader,
         showDelete,
         onDeleteGame,
@@ -50,63 +52,57 @@ export const Details = () => {
             addOneComment(gameId, commentBody);
             setLoader(false);
 
-            formValue.comment='';
+            formValue.comment = '';
         } else {
             setLoader(false);
             return;
         }
-        
+
     };
 
     return (
-        <>
-            <div className="details">
-                <div className="titlePage">
-                    <h1>{game.title}</h1>
-                </div>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                            <div className="box_bg">
-                                <div className="box_bg_img">
-                                    <figure><img src={game.imageUrl} alt={game.title} /></figure>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
-                            <div className="box_text">
-                                <p>{game.summary}</p>
-                                {(userId === game._ownerId) &&
-                                    <>
-                                        <Link to={`/edit/${game._id}`} state={game} >Edit</Link>
-                                        <Button variant="primary" onClick={onClickShowDelete} >Delete</Button>
-                                    </>
-                                }
-                            </div>
-                        </div>
-                    </div>
+        <div className={styles.details}>
+
+            <h1>{game.title}</h1>
+            <div className={styles.detailsInfo}>
+                <img src={game.imageUrl} alt={game.title} />
+
+                <div className={styles.gameInfo}>
+                    <p>{game.summary}</p>
+                    {(userId === game._ownerId) &&
+                        <>
+                            <Link to={`/edit/${game._id}`} state={game} >Edit</Link>
+                            <Button variant="primary" onClick={onClickShowDelete} >Delete</Button>
+                        </>
+                    }
                 </div>
             </div>
+
             <DeleteButton
                 showDelete={showDelete}
                 onClickCloseDelete={onClickCloseDelete}
                 onDeleteGame={onDeleteGame}
             />
-            <div className='comment-container'>
+            <div className={styles.commentContainer}>
 
                 {commentsList && commentsList.map(commentInfo => <Comment {...commentInfo} />)}
 
             </div>
-            <form className='comment-form' onSubmit={onSubmitComment}>
-                <div className="addComments">
-                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <textarea className="comment" placeholder="comment..." type="text" name="comment" value={formValue.comment} onChange={onFormValueChange} ></textarea>
-                    </div>
-                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <button className="send">Send</button>
-                    </div>
-                </div>
+            <form className={styles.commentForm} onSubmit={onSubmitComment}>
+                <textarea
+                    rows="5"
+                    cols="5"
+                    className={styles.comment}
+                    placeholder="comment..."
+                    type="text" name="comment"
+                    value={formValue.comment}
+                    onChange={onFormValueChange}
+                ></textarea>
+
+                <article>
+                    <button className={styles.send}>Send</button>
+                </article>
             </form>
-        </>
+        </div>
     );
 };
