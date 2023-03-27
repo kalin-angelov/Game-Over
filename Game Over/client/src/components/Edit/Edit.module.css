@@ -1,0 +1,110 @@
+.edit {
+    padding-top: 250px;
+    padding-bottom: 50px;
+}
+
+.editForm {
+    margin: 5em auto;
+    padding: 2em;
+    width: 50em;
+    border-radius: 10px;
+    border-color: #2d333b;
+    background: #1b1f24;
+    box-shadow: 0 2px 2px 3px #ffffff;
+}
+
+.editForm h1 {
+    font-family: "Agency FB";
+    font-size: 70px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 10px;
+    color: #ffffff;
+}
+
+.editForm label {
+    font-size: 25px;
+}
+
+.title {
+    border: #b1b0b0 solid 1px;
+    padding: 12px 19px;
+    margin-bottom: 26px;
+    border-radius: inherit;
+    color: #000;
+    width: 100%;
+}
+
+.genre {
+    border: #b1b0b0 solid 1px;
+    padding: 12px 19px;
+    margin-bottom: 26px;
+    border-radius: inherit;
+    color: #000;
+    width: 100%;
+}
+
+.platform {
+    border: #b1b0b0 solid 1px;
+    padding: 12px 19px;
+    margin-bottom: 26px;
+    border-radius: inherit;
+    color: #000;
+    width: 100%;
+}
+
+.players {
+    border: #b1b0b0 solid 1px;
+    padding: 12px 19px;
+    margin-bottom: 26px;
+    border-radius: inherit;
+    color: #000;
+    width: 100%;
+}
+
+.imageUrl {
+    border: #b1b0b0 solid 1px;
+    padding: 12px 19px;
+    margin-bottom: 26px;
+    border-radius: inherit;
+    color: #000;
+    width: 100%;
+}
+
+.summary {
+    margin-bottom: 25px;
+    padding: 15px 19px;
+    color: #000 !important;
+    width: 100%;
+    border: #b1b0b0 solid 1px;
+    border-radius: inherit;
+}
+
+.send {
+    font-size: 16px;
+    border: #000 solid 1px;
+    background-color: #ff0303;
+    border-radius: 10px;
+    color: #fff;
+    padding: 11px 67px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.send:hover {
+    background-color: #fff;
+    border: #fff solid 1px;
+    color: #f00;
+}
+
+.brandLogo {
+    height: 100px;
+    width: 100px;
+    background: url("../../../public/images/logo2.png");
+    margin: auto;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 7px 7px 10px #ffffff, -7px -7px 10px rgb(255, 2, 2);
+}
