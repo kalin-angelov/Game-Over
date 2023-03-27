@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 import { getAll, addOne, updateOne, deleteOne } from './service/gameService';
 import { AuthContext } from './contexts/AuthContext';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
@@ -20,11 +21,10 @@ import { Loader } from "./components/Loader/Loader";
 
 function App() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useLocalStorage('auth', {});
   const [loader, setLoader] = useState(false);
   const [gamesList, setGameList] = useState([]);
   const [showDelete, setShowDelete] = useState(false);
-  
 
   useEffect(() => {
     getAll()
@@ -132,7 +132,7 @@ function App() {
           <Route path='/details/:gameId' element={<Details />} />
         </Routes>
 
-        <Footer />
+        
       </div>
     </AuthContext.Provider>
   );
