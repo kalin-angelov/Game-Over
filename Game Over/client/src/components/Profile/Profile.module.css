@@ -1,0 +1,92 @@
+.profile {
+    padding-top: 200px;
+    padding-bottom: 245px;
+}
+
+.profile h2 {
+    text-align: center;
+    padding: 0;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 50px;
+    font-size: 70px;
+    padding-top: 0px;
+    padding-bottom: 60px;
+    font-family: "Agency FB";
+}
+
+.profile img {
+    width: 300px;
+    height: 300px;
+    transition: 1s ease;
+    border-radius: 20px;
+}
+
+.profile img:hover {
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
+    transition: 1s ease;
+}
+
+.list h3 {
+    text-align: center;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 50px;
+    font-size: 50px;
+    padding-top: 105px;
+    font-family: "Agency FB";
+}
+
+.brandLogo {
+    text-align: center;
+    transition: 1s ease;
+    height: 250px;
+    width: 260px;
+    background: url("../../../public/images/createLogo2.jpg");
+    margin: auto;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+}
+
+.brandLogo:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: 1s ease;
+}
+
+.noGames h3 {
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    font-size: 65px;
+    font-family: "Agency FB";
+    margin-top: 90px;
+}
+
+.noGames p {
+    color: #f8f9fa;
+    text-shadow: 1px 1px #ff0101;
+    font-size: 25px;
+    font-style: italic;
+    padding: 11px 67px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.gameList {
+    text-align: center;
+    display: flex;
+    margin: 10em auto;
+}
+
+.myGames {
+    margin: 5px;
+    float: left;
+    width: 100%;
+}
