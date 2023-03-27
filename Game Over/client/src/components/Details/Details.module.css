@@ -1,0 +1,144 @@
+.details {
+    padding-top: 45px;
+    padding-bottom: 50px;
+}
+
+.details h1 {
+    text-align: center;
+    padding: 0;
+    font-weight: 500;
+    color: #fffafa;
+    line-height: 50px;
+    font-size: 50px;
+    margin-top: 150px;
+    margin-bottom: 52px;
+}
+
+.detailsInfo {
+    display: flex;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.detailsInfo img {
+   height: 800px;
+   width: 800px;
+    padding-left: 80px;
+}
+
+.gameInfo {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.gameInfo p {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    text-align: left;
+    color: #ffffff;
+}
+
+.gameInfo a {
+    font-size: 16px;
+    border: #fff solid 1px;
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 39px;
+    display: inline-block;
+    margin-top: 11px;
+    margin-left: 10px;
+}
+
+.gameInfo a:hover {
+    background-color: #029502;
+    border: #029502 solid 1px;
+    color: #fff;
+}
+
+
+.gameInfo button {
+    font-size: 16px;
+    border: #fff solid 1px;
+    background-color: #000;
+    color: #fff;
+    padding: 13px 28px;
+    display: inline-block;
+    margin-top: -1px;
+    margin-left: 10px;
+}
+
+.gameInfo button:hover {
+    background-color: #ff0000;
+    border: #ff0000 solid 1px;
+    color: #fff;
+}
+
+.comment {
+    margin-bottom: 25px;
+    padding: 15px 19px;
+    color: #000 !important;
+    width: 90%;
+    border: #b1b0b0 solid 1px;
+    border-radius: inherit;
+}
+
+.commentForm textarea {
+    margin: 75px;
+}
+
+.send {
+    font-size: 16px;
+    border: #000 solid 1px;
+    background-color: #ff0303;
+    border-radius: 10px;
+    color: #fff;
+    padding: 11px 67px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.send:hover {
+    background-color: #fff;
+    border: #fff solid 1px;
+    color: #f00;
+}
+
+.commentsInfo {
+    margin: 5em auto;
+    padding: 2em;
+    width: 90%;
+    border-radius: 100px;
+    border-color: #2d333b;
+    background: #1b1f24;
+    box-shadow: 0 2px 2px 3px #ffffff;
+}
+
+.commentsInfo img {
+    margin-top: 30px;
+    margin-left: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.commentsInfo h3 {
+    color: #ffffff;
+    font-size: 25px;
+    line-height: 50px;
+    font-weight: 500;
+    margin-top: -115px;
+    margin-left: 160px;
+}
+
+.commentsInfo p {
+    font-size: 20px;
+    line-height: 30px;
+    color: #fffefe;
+    margin-top: -50px;
+    margin-left: 190px;
+    padding: 40px;
+}
