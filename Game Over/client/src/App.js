@@ -132,7 +132,7 @@ function App() {
           <Route path='/details/:gameId' element={<Details />} />
         </Routes>
 
-        
+        <Footer />
       </div>
     </AuthContext.Provider>
   );
