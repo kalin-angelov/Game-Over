@@ -1,11 +1,13 @@
-import styles from './Footer.module.css';
+import styles from './Home.module.css';
 
-export const Footer = () => {
+export const Home = () => {
     return (
-        <footer>
-            <div className={styles.footer}>
-                <p>© 2019 All Rights Reserved. <a href="https://html.design/">Free html Templates</a></p>
+        <section >   
+            <div className={styles.home}> 
+                <p>Here You Can Find Advice On How To Beat The Game That Is Giving You A Hard Time </p>
+                
+                <img src="images/img.png" alt="homeImage" />
             </div>
-        </footer>
+        </section>
     );
 };
