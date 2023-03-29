@@ -2,7 +2,7 @@ import { bodyCheck } from '../utils/bodyCheck';
 
 const baseUrl = 'http://localhost:3030/data/gameList';
 
-const request = async (url, method, token, body) => {
+const request = async (url, method, token, body, bodyModel) => {
 
     const options = {
         method: method,
@@ -25,7 +25,7 @@ const request = async (url, method, token, body) => {
 
     try {
         if (body) {
-            bodyCheck(body);
+            bodyCheck(body, bodyModel);
         }
 
         const response = await fetch(url, options);
@@ -42,7 +42,7 @@ const request = async (url, method, token, body) => {
         return [];
 
     } catch (err) {
-        throw new Error(`Error: ${err}`);
+        throw Error(err.message);
         
     }
 
@@ -57,7 +57,7 @@ export const getOne = (id) => {
 };
 
 export const updateOne = async (id, body, token) => {
-    return request(`${baseUrl}/${id}`, "PUT", token, body);
+    return request(`${baseUrl}/${id}`, "PUT", token, body, "CRUD");
 };
 
 export const deleteOne = async (id, token) => {
@@ -65,5 +65,5 @@ export const deleteOne = async (id, token) => {
 };
 
 export const addOne = async (body, token) => {
-    return request(baseUrl, "POST", token, body);
+    return request(baseUrl, "POST", token, body, "CRUD");
 };
