@@ -35,6 +35,15 @@
     width: 100%;
 }
 
+.help {
+    margin-bottom: 25px;
+    padding: 15px 19px;
+    color: #000 !important;
+    width: 100%;
+    border: #b1b0b0 solid 1px;
+    border-radius: inherit;
+}
+
 .genre {
     border: #b1b0b0 solid 1px;
     padding: 12px 19px;
@@ -107,4 +116,23 @@
     border-radius: 50%;
     box-sizing: border-box;
     box-shadow: 7px 7px 10px #f40808, -7px -7px 10px white;
+}
+
+.error {
+    position: fixed;
+    right: 80px;
+    min-width: 100px;
+    display: block;
+    z-index: 11111;
+    top: 80px;
+    text-align: center;
+    height: auto;
+    width: 380px;
+}
+
+.error p {
+    background: rgb(149, 13, 13);
+    font-size: 25px;
+    height: auto;
+    border-radius: 30px;
 }
