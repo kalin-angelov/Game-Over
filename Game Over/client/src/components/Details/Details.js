@@ -68,7 +68,11 @@ export const Details = () => {
                 <img src={game.imageUrl} alt={game.title} />
 
                 <div className={styles.gameInfo}>
-                    <p>{game.summary}</p>
+                    <p>Type: {game.genre}</p>
+                    <p>Platform: {game.platform}</p>
+                    <p>Number Of Players: {game.players}</p>
+                    <p>Help: {game.help}</p>
+                    <p>Description: {game.summary}</p>
                     {(userId === game._ownerId) &&
                         <>
                             <Link to={`/edit/${game._id}`} state={game} >Edit</Link>
