@@ -25,6 +25,7 @@ function App() {
   const [loader, setLoader] = useState(false);
   const [gamesList, setGameList] = useState([]);
   const [showDelete, setShowDelete] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     getAll()
@@ -44,11 +45,12 @@ function App() {
 
       setGameList(result);
       setLoader(false);
+      setErrorMessage(null);
       navigate('/profile');
     } catch (err) {
       console.log(`Error: ${err}`);
       setLoader(false);
-      navigate('/404');
+      setErrorMessage(err.message);
     }
   };
 
@@ -63,10 +65,12 @@ function App() {
 
       setGameList(result);
       setLoader(false);
+      setErrorMessage(null);
       navigate('/catalog')
     } catch (err) {
       console.log(`Error: ${err}`);
       setLoader(false);
+      setErrorMessage(err.message);
     }
   };
 
@@ -110,7 +114,8 @@ function App() {
     onClickCloseDelete,
     showDelete,
     loader,
-    setLoader
+    setLoader,
+    errorMessage
   };
 
 
