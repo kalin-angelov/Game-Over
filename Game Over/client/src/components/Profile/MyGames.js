@@ -8,7 +8,7 @@ export const MyGames = ({ game }) => {
             <h1>{game.title}</h1>
 
             <Link to={`/details/${game._id}`} >
-                <img src={game.imageUrl} alt="{game.title}" />
+                <img src={game.imageUrl} alt={game.title} />
             </Link>
         </div>
     );
