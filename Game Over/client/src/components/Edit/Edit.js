@@ -7,7 +7,7 @@ import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const Edit = () => {
-    const { onEditSubmit } = useContext(AuthContext);
+    const { onEditSubmit, errorMessage } = useContext(AuthContext);
     const { gameId } = useParams();
     const location = useLocation();
     const game = location.state;
@@ -16,6 +16,13 @@ export const Edit = () => {
 
     return (
         <div className={styles.edit}>
+
+            {errorMessage &&
+                <div className={styles.error}>
+                    <p>{errorMessage}</p>
+                </div>
+            }
+
             <div className={styles.brandLogo}></div>
             <form className={styles.editForm} onSubmit={(e) => onEditSubmit(e, formValue, gameId)}>
                 <h1>Edit Game</h1>
@@ -30,6 +37,32 @@ export const Edit = () => {
                     onChange={onFormValueChange}
                 />
 
+                <label htmlFor="help">Help: </label>
+                <select
+                    className={styles.help}
+                    name='help'
+                    value={formValue.help}
+                    onChange={onFormValueChange}>
+                    <option>Other</option>
+                    <option>Location</option>
+                    <option>Item</option>
+                    <option>Boss</option>
+                    <option>Skills</option>
+                </select>
+
+                <label htmlFor="platform">Platform: </label>
+                <select 
+                    className={styles.platform} 
+                    name='platform' 
+                    value={formValue.platform}
+                    onChange={onFormValueChange}>
+                        <option>Other</option>
+                        <option>PlayStation</option>
+                        <option>Xbox</option>
+                        <option>Nintendo</option>
+                        <option>PC</option>
+                </select>
+
                 <label htmlFor="genre">Genre: </label>
                 <input
                     className={styles.genre}
@@ -37,16 +70,6 @@ export const Edit = () => {
                     type="text"
                     name="genre"
                     value={formValue.genre}
-                    onChange={onFormValueChange}
-                />
-
-                <label htmlFor="platform">Platform: </label>
-                <input
-                    className={styles.platform}
-                    placeholder="Platform"
-                    type="text"
-                    name="platform"
-                    value={formValue.platform}
                     onChange={onFormValueChange}
                 />
 
