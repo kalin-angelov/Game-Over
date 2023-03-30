@@ -1,5 +1,5 @@
 import styles from './Login.module.css';
- 
+
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -9,7 +9,7 @@ import { login } from '../../service/authService';
 
 export const Login = () => {
     const navigate = useNavigate();
-    const { setAuth, setLoader } = useContext(AuthContext);
+    const { setAuth, setLoader, errorMessage, errorAlert } = useContext(AuthContext);
     const { formValue, onFormValueChange } = useForm({
         email: '',
         password: ''
@@ -26,13 +26,19 @@ export const Login = () => {
             setLoader(false);
             navigate('/catalog')
         } catch (err) {
-            console.log(`Error: ${err}`);
+            errorAlert(err.message);
             setLoader(false);
         }
     };
 
     return (
         <div className={styles.login}>
+            {errorMessage &&
+                <div className={styles.error}>
+                    <p>{errorMessage}</p>
+                </div>
+            }
+
             <div className={styles.brandLogo}></div>
 
             <form className={styles.loginForm} onSubmit={onLogin} >
@@ -63,7 +69,7 @@ export const Login = () => {
                 </article>
                 <div className={styles.loginInfo}>
                     <p> Don't Have An Account? Click Here! <Link to='/register'>Register</Link> </p>
-                </div>        
+                </div>
             </form >
         </div >
     );
