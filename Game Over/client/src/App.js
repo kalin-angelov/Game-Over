@@ -18,6 +18,7 @@ import { Profile } from "./components/Profile/Profile";
 import { Details } from "./components/Details/Details";
 import { PageNotFound } from "./components/404/PageNotFound";
 import { Loader } from "./components/Loader/Loader";
+import { RouteGuard } from './components/RouteGuard/RouteGuard';
 
 function App() {
   const navigate = useNavigate();
@@ -34,10 +35,18 @@ function App() {
       .catch(err => console.log(`Error ${err}`))
   }, []);
 
+  const errorAlert = (error) => {
+    setErrorMessage(error);
+
+    setTimeout(() => {
+      setErrorMessage(null);
+   },3000)
+  };
+
   const onAddNewGameSubmit = async (e, body) => {
     e.preventDefault();
     setLoader(true);
-    
+
     body.players = Number(body.players);
     try {
       await addOne(body, auth.accessToken)
@@ -45,12 +54,11 @@ function App() {
 
       setGameList(result);
       setLoader(false);
-      setErrorMessage(null);
       navigate('/profile');
     } catch (err) {
       console.log(`Error: ${err}`);
       setLoader(false);
-      setErrorMessage(err.message);
+      errorAlert(err.message);
     }
   };
 
@@ -65,12 +73,11 @@ function App() {
 
       setGameList(result);
       setLoader(false);
-      setErrorMessage(null);
       navigate('/catalog')
     } catch (err) {
       console.log(`Error: ${err}`);
       setLoader(false);
-      setErrorMessage(err.message);
+      errorAlert(err.message);
     }
   };
 
@@ -115,7 +122,8 @@ function App() {
     showDelete,
     loader,
     setLoader,
-    errorMessage
+    errorMessage,
+    errorAlert
   };
 
 
@@ -129,12 +137,16 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/logout' element={<Logout />} />
-          <Route path='/profile' element={<Profile />} />
           <Route path='/catalog' element={<Catalog />} />
-          <Route path='/create' element={<Create />} />
-          <Route path='/edit/:gameId' element={<Edit />} />
-          <Route path='/details/:gameId' element={<Details />} />
+
+          <Route element={<RouteGuard />}>
+            <Route path='/logout' element={<Logout />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/create' element={<Create />} />
+            <Route path='/edit/:gameId' element={<Edit />} />
+            <Route path='/details/:gameId' element={<Details />} />
+          </Route>
+          
         </Routes>
 
         <Footer />
