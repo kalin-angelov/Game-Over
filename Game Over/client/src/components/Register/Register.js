@@ -1,16 +1,16 @@
-import styles from './Register.module.css';
+import styles from "./Register.module.css";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
-import { register } from '../../service/authService';
-
+import { register } from "../../service/authService";
+import { bodyCheck } from "../../utils/bodyCheck";
 
 export const Register = () => {
     const navigate = useNavigate();
-    const { setAuth, setLoader } = useContext(AuthContext);
+    const { setAuth, setLoader, errorMessage, errorAlert } = useContext(AuthContext);
     const { formValue, onFormValueChange } = useForm({
         username: '',
         email: '',
@@ -22,21 +22,15 @@ export const Register = () => {
         e.preventDefault();
         setLoader(true);
 
-        const { rePassword, ...bodyData } = formValue;
-
-        if (rePassword !== bodyData.password) {
-            setLoader(false);
-            return;
-        }
-
         try {
-            const response = await register(bodyData);
+            const body = bodyCheck(formValue, "USER");
+            const response = await register(body);
 
             setAuth(response);
             setLoader(false);
             navigate('/catalog');
         } catch (err) {
-            console.log(`Error: ${err}`);
+            errorAlert(err.message);
             setLoader(false);
         }
 
@@ -44,6 +38,12 @@ export const Register = () => {
 
     return (
         <div className={styles.register}>
+            {errorMessage &&
+                <div className={styles.error}>
+                    <p>{errorMessage}</p>
+                </div>
+            }
+            
             <div className={styles.brandLogo}></div>
 
             <form className={styles.registerForm} onSubmit={onRegister} >
