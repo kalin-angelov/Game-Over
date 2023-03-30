@@ -1,6 +1,6 @@
 import { bodyCheck } from '../utils/bodyCheck';
 
-const baseUrl = 'http://localhost:3030/data/gameList';
+const baseUrl = 'http://localhost:3030/data/games';
 
 const request = async (url, method, token, body, bodyModel) => {
 
@@ -43,7 +43,6 @@ const request = async (url, method, token, body, bodyModel) => {
 
     } catch (err) {
         throw Error(err.message);
-        
     }
 
 }
