@@ -35,9 +35,7 @@ export const login = async (body) => {
         const result = await response.json();
 
         return result;
-    } else {
-        const error = await response.json()
+    } 
 
-        throw error;
-    }
+    throw Error ('Invalid Email Or Password!');
 };
