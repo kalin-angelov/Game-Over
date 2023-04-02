@@ -1,38 +1,32 @@
 import styles from './Details.module.css';
 
-import { Link, useParams } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
 import { Comment } from './Comment';
-import { DeleteButton } from './DeleteButton';
+
 import { getOne } from '../../service/gameService';
-import { addOneComment, getAllComments } from '../../service/gameCommentService';
+import { addOneComment, getOneComment, getAllComments, likeComment, deleteComment, updateComment } from '../../service/gameCommentService';
 import { useForm } from '../../hooks/useForm';
 
 export const Details = () => {
     const {
-        userId,
         username,
         setLoader,
-        showDelete,
-        onDeleteGame,
-        onClickShowDelete,
-        onClickCloseDelete,
     } = useContext(AuthContext);
     const { gameId } = useParams();
     const { formValue, onFormValueChange } = useForm({ comment: '' })
     const [game, setGame] = useState([]);
     const [commentsList, setCommentsList] = useState([]);
-
+  
     useEffect(() => {
         getOne(gameId)
             .then(data => setGame(data))
             .catch(err => console.log(err))
         getAllComments(gameId)
-            .then(data => setCommentsList(data))
+            .then(data => setCommentsList(Object.values(data)))
             .catch(err => console.log(err))
     }, [gameId]);
 
@@ -42,14 +36,16 @@ export const Details = () => {
 
         const commentBody = {
             user: '',
-            text: formValue.comment
+            text: formValue.comment,
+            likes: []
         }
 
-        username === undefined ? commentBody.user = 'Unknown' : commentBody.user = username;
+        username === undefined ? commentBody.user = 'Guest001' : commentBody.user = username;
 
         if (commentBody.text !== '') {
-            setCommentsList(commentsList => ([...commentsList, commentBody]));
-            addOneComment(gameId, commentBody);
+            await addOneComment(gameId, commentBody);
+            const comments = await getAllComments(gameId);
+            setCommentsList(Object.values(comments));
             setLoader(false);
 
             formValue.comment = '';
@@ -58,6 +54,37 @@ export const Details = () => {
             return;
         }
 
+    };
+
+    const onLikeComment = async (id, username) => {
+        const comment = await getOneComment(gameId, id);
+        const likes = comment.likes;
+
+        if (!username) {
+            comment.likes = ([...likes, 'Guest001']);
+        } else {
+            comment.likes = ([...likes, username]);
+        }
+        await likeComment(gameId, id, comment);
+        const comments = await getAllComments(gameId);
+        setCommentsList(Object.values(comments));
+    };
+
+    const onDeleteComment = async (id) => {
+        await deleteComment(gameId, id);
+
+        const comments = await getAllComments(gameId);
+        setCommentsList(Object.values(comments));
+    };
+
+    const onSubmitEditComment = async (e, body) => {
+        e.preventDefault();
+        const id = body._id;
+
+        await updateComment(gameId, id, body);
+        const comments = await getAllComments(gameId);
+
+        setCommentsList(Object.values(comments));
     };
 
     return (
@@ -73,32 +100,30 @@ export const Details = () => {
                     <p>Number Of Players: {game.players}</p>
                     <p>Help: {game.help}</p>
                     <p>Description: {game.summary}</p>
-                    {(userId === game._ownerId) &&
-                        <>
-                            <Link to={`/edit/${game._id}`} state={game} >Edit</Link>
-                            <Button variant="primary" onClick={onClickShowDelete} >Delete</Button>
-                        </>
-                    }
                 </div>
             </div>
 
-            <DeleteButton
-                showDelete={showDelete}
-                onClickCloseDelete={onClickCloseDelete}
-                onDeleteGame={onDeleteGame}
-            />
             <div className={styles.commentContainer}>
-
-                {commentsList && commentsList.map(commentInfo => <Comment {...commentInfo} />)}
-
+                {commentsList && commentsList.map(commentInfo =>
+                    <Comment
+                        key={commentInfo._id}
+                        username={username}
+                        commentInfo={commentInfo}
+                        onLikeComment={onLikeComment}
+                        onDeleteComment={onDeleteComment}
+                        onSubmitEditComment={onSubmitEditComment}
+                    />
+                )}
             </div>
+
             <form className={styles.commentForm} onSubmit={onSubmitComment}>
                 <textarea
                     rows="5"
                     cols="5"
                     className={styles.comment}
                     placeholder="comment..."
-                    type="text" name="comment"
+                    type="text" 
+                    name="comment"
                     value={formValue.comment}
                     onChange={onFormValueChange}
                 ></textarea>
