@@ -90,3 +90,39 @@
     float: left;
     width: 100%;
 }
+
+.buttonControl a {
+    font-size: 16px;
+    border: #fff solid 1px;
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 39px;
+    display: inline-block;
+    margin-top: 11px;
+    margin-left: 10px;
+}
+
+.buttonControl a:hover {
+    background-color: #029502;
+    border: #029502 solid 1px;
+    color: #fff;
+}
+
+
+.buttonControl button {
+    font-size: 16px;
+    border: #fff solid 1px;
+    background-color: #000;
+    color: #fff;
+    padding: 13px 28px;
+    display: inline-block;
+    margin-top: -1px;
+    margin-left: 10px;
+}
+
+.buttonControl button:hover {
+    background-color: #ff0000;
+    border: #ff0000 solid 1px;
+    color: #fff;
+}
