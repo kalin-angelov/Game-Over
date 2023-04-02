@@ -22,7 +22,7 @@ export const Catalog = () => {
                     :
                     <div className={styles.noGames}>
                         <h3>Game Catalog Is Empty</h3>
-                        {isAuthenticated && <p> Be First To Add New Game! <Link to='/create'>Add Game</Link> </p>}
+                        {isAuthenticated && <p> Be First To Add New Game! <Link to='/register'>Register</Link> </p>}
                     </div>
                 }
             </div>
