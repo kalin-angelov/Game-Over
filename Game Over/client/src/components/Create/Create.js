@@ -14,8 +14,7 @@ export const Create = () => {
         genre: '',
         players: '',
         imageUrl: '',
-        summary: '',
-        comments: []
+        summary: ''
     });
 
     return (
@@ -58,11 +57,11 @@ export const Create = () => {
                     name='platform' 
                     value={formValue.platform}
                     onChange={onFormValueChange}>
-                        <option>PC</option>
+                        <option>Other</option>
                         <option>PlayStation</option>
                         <option>Xbox</option>
                         <option>Nintendo</option>
-                        <option>Other</option>
+                        <option>PC</option>
                 </select>
 
                 <label htmlFor="genre">Genre: </label>
