@@ -11,9 +11,7 @@ export const Edit = () => {
     const { gameId } = useParams();
     const location = useLocation();
     const game = location.state;
-
     const { formValue, onFormValueChange } = useForm(game);
-
     return (
         <div className={styles.edit}>
 
