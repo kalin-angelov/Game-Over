@@ -1,7 +1,7 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import { getAll, addOne, updateOne, deleteOne } from './service/gameService';
+import { getAll, addOne, updateOne } from './service/gameService';
 import { AuthContext } from './contexts/AuthContext';
 import { useLocalStorage } from './hooks/useLocalStorage';
 
@@ -25,7 +25,6 @@ function App() {
   const [auth, setAuth] = useLocalStorage('auth', {});
   const [loader, setLoader] = useState(false);
   const [gamesList, setGameList] = useState([]);
-  const [showDelete, setShowDelete] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
@@ -73,7 +72,7 @@ function App() {
 
       setGameList(result);
       setLoader(false);
-      navigate('/catalog')
+      navigate('/profile')
     } catch (err) {
       console.log(`Error: ${err}`);
       setLoader(false);
@@ -81,33 +80,10 @@ function App() {
     }
   };
 
-  const onClickShowDelete = () => {
-    setShowDelete(true);
-  };
-
-  const onClickCloseDelete = () => {
-    setShowDelete(false);
-  };
-
-  const onDeleteGame = async (id) => {
-    setLoader(true);
-    try {
-      await deleteOne(id, auth.accessToken);
-      const result = await getAll()
-
-      setGameList(result);
-      onClickCloseDelete();
-      setLoader(false);
-      navigate('/profile');
-
-    } catch (err) {
-      console.log(`Error: ${err}`);
-      setLoader(false);
-    }
-  };
-
   const valueContext = {
+    auth,
     setAuth,
+    setGameList,
     userId: auth._id,
     username: auth.username,
     email: auth.email,
@@ -116,16 +92,11 @@ function App() {
     gamesList,
     onEditSubmit,
     onAddNewGameSubmit,
-    onDeleteGame,
-    onClickShowDelete,
-    onClickCloseDelete,
-    showDelete,
     loader,
     setLoader,
     errorMessage,
     errorAlert
   };
-
 
   return (
     <AuthContext.Provider value={valueContext}>
@@ -138,13 +109,13 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/catalog' element={<Catalog />} />
+          <Route path='/details/:gameId' element={<Details />} />
 
           <Route element={<RouteGuard />}>
             <Route path='/logout' element={<Logout />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/create' element={<Create />} />
             <Route path='/edit/:gameId' element={<Edit />} />
-            <Route path='/details/:gameId' element={<Details />} />
           </Route>
           
         </Routes>
