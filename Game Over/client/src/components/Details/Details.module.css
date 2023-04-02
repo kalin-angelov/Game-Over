@@ -21,8 +21,8 @@
 }
 
 .detailsInfo img {
-   height: 800px;
-   width: 800px;
+    height: 800px;
+    width: 800px;
     padding-left: 80px;
 }
 
@@ -37,42 +37,6 @@
     font-weight: 400;
     text-align: left;
     color: #ffffff;
-}
-
-.gameInfo a {
-    font-size: 16px;
-    border: #fff solid 1px;
-    border-radius: 4px;
-    background-color: #000;
-    color: #fff;
-    padding: 10px 39px;
-    display: inline-block;
-    margin-top: 11px;
-    margin-left: 10px;
-}
-
-.gameInfo a:hover {
-    background-color: #029502;
-    border: #029502 solid 1px;
-    color: #fff;
-}
-
-
-.gameInfo button {
-    font-size: 16px;
-    border: #fff solid 1px;
-    background-color: #000;
-    color: #fff;
-    padding: 13px 28px;
-    display: inline-block;
-    margin-top: -1px;
-    margin-left: 10px;
-}
-
-.gameInfo button:hover {
-    background-color: #ff0000;
-    border: #ff0000 solid 1px;
-    color: #fff;
 }
 
 .comment {
@@ -118,7 +82,7 @@
 }
 
 .commentsInfo img {
-    margin-top: 30px;
+    margin-top: -30px;
     margin-left: 50px;
     width: 100px;
     height: 100px;
@@ -140,5 +104,42 @@
     color: #fffefe;
     margin-top: -50px;
     margin-left: 190px;
-    padding: 40px;
+    padding: 45px;
+}
+
+.likes {
+    display: flex;
+    justify-content: right;
+}
+
+.likes span {
+    font-size: 20px;
+    margin-right: 10px;
+    height: 25px;
+}
+
+.likes button {
+    float: right;
+    font-size: 15px;
+    background-color: #ffc107;
+    border-radius: 30px;
+    padding: 0px 28px;
+}
+
+.editComment:hover {
+    background-color: #000000;
+    border: #4dff00 solid 1px;
+    color: rgb(6, 255, 35);
+}
+
+.deleteComment:hover {
+    background-color: #030303;
+    border: #ff0000 solid 1px;
+    color: rgb(255, 0, 0);
+}
+
+.likeComment:hover {
+    background-color: #000000;
+    border: #0353ff solid 1px;
+    color: rgb(0, 68, 255);
 }
