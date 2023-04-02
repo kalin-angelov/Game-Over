@@ -2,7 +2,7 @@ const baseUrl = 'http://localhost:3030/users';
 
 export const register = async (body) => {
     try {
-        const list = localStorage.getItem('list');
+        const list = sessionStorage.getItem('list');
 
         if (list) {
             const isTaken = list.includes(body.username);
@@ -23,9 +23,9 @@ export const register = async (body) => {
         if (response.status === 200) {
 
             if (!list) {
-                localStorage.setItem('list', body.username);
+                sessionStorage.setItem('list', body.username);
             } else {
-                localStorage.setItem('list', `${list}, ${body.username}`);
+                sessionStorage.setItem('list', `${list}, ${body.username}`);
             }
 
             const result = await response.json();
