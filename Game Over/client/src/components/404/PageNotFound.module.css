@@ -1,37 +1,39 @@
 .ups {
-    padding-top: 350px;
-    padding-bottom: 424px;
-}
-
-.ups h2 {
-    text-align: center;
-    padding: 0;
-    font-weight: 500;
-    color: #ffffff;
-    line-height: 50px;
-    font-size: 200px;
-    padding-bottom: 60px;
-    font-family: "Agency FB";
-}
-
-.ups h3 {
-    color: white;
-    text-align: center;
-    font-weight: 700;
-    font-size: 70px;
-    font-family: "Agency FB";
-    margin-top: 50px;
-    margin-bottom: 76px;
-}
-
-.ups p {
-    color: #f8f9fa;
-    text-shadow: 1px 1px #ff0101;
-    font-size: 30px;
-    font-style: italic;
-    padding: 11px 67px;
+    width: 100vw;
+    height: 100vh;
+    
     display: flex;
+    flex-flow: column wrap;
     justify-content: center;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
+    align-items: center;
+ }
+ 
+ .message {
+     display: flex;
+     flex-flow: column wrap;
+     justify-content: center;
+     align-items: center;
+     gap: 60px;
+ }
+ 
+ .message h2, h3, p {
+     color: #ffffff;
+     font-family: "Agency FB";
+ }
+ 
+ .message h2 {
+     font-weight: 500;
+     line-height: 50px;
+     font-size: 200px;
+ }
+ 
+ .message h3 {
+     font-weight: 700;
+     font-size: 70px;
+ }
+ 
+ .message p {
+     text-shadow: 1px 1px #ff0101;
+     font-size: 40px;
+     font-style: italic;
+ }
