@@ -1,97 +1,36 @@
-.header {
-    position: absolute;
-    z-index: 999;
-    width: 100%;
-    padding: 40px 40px 40px 40px;
-    display:-ms-flexbox;
-    display:flex;-ms-flex-wrap:wrap;
-    flex-wrap:wrap;margin-right:-15px;
-    margin-left:-15px
-}
-
 .navigation {
-    font-weight: bold;
-    text-transform: uppercase;
-    width: 100%;
-    z-index: 1;
-    top: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.navigation a {
+.navigation h1 a {
     font-size: 40px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #fff;
-    line-height: 40px;
-    float: left;
 }
 
 .navigation ul {
-    float: right;
+    list-style: none;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-.navigation li {
-    display: inline-block;
-}
-
-.navigation li a {
+.navigation a {
+    font-weight: bold;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 18px;
+     font-size: 18px;
     line-height: 20px;
     padding: 0px 20px;
 }
 
-.buttonLogin {
+.navBtn {
     padding: 4px 12px;
     border-radius: 5px;
 }
 
-.buttonLogin:hover {
+.navBtn:hover {
     background-color: #ff0000;
-}
-
-.buttonRegister {
-    padding: 4px 12px;
-    border-radius: 5px;
-}
-
-.buttonRegister:hover {
-    background-color: #ff0202;
-}
-
-.buttonCatalog {
-    padding: 4px 12px;
-    border-radius: 5px;
-    
-}
-
-.buttonCatalog:hover {
-    background-color: #ff0000;
-}
-
-.buttonCreate {
-    padding: 4px 12px;
-    border-radius: 5px;
-}
-
-.buttonCreate:hover {
-    background-color: #ff0606;
-}
-
-.buttonLogout {
-    padding: 4px 12px;
-    border-radius: 5px;
-}
-
-.buttonLogout:hover {
-    background-color: #ff0000;
-}
-
-.buttonProfile {
-    padding: 4px 12px;
-    border-radius: 5px;
-}
-
-.buttonProfile:hover {
-    background-color: #ff0606;
 }
