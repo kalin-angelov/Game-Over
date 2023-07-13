@@ -1,55 +1,58 @@
 .details {
-    padding-top: 45px;
-    padding-bottom: 50px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .details h1 {
     text-align: center;
-    padding: 0;
     font-weight: 500;
-    color: #fffafa;
     line-height: 50px;
     font-size: 50px;
-    margin-top: 150px;
+    margin-top: 80px;
     margin-bottom: 52px;
 }
 
 .detailsInfo {
     display: flex;
-    padding-left: 15px;
-    padding-right: 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 15%;
+
+    border: 2px solid gold;
+    border-radius: 20px;
+    background-color: #b1b0b0a5;
+    padding: 40px;
 }
 
 .detailsInfo img {
-    height: 800px;
-    width: 800px;
-    padding-left: 80px;
+    width: 400px;
+    height: 400px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: 2px solid gold;
 }
 
 .gameInfo {
-    padding-left: 15px;
-    padding-right: 15px;
+   display: flex;
+   flex-flow: column wrap;
+   width: 500px;
 }
 
 .gameInfo p {
     font-size: 25px;
-    line-height: 30px;
     font-weight: 400;
-    text-align: left;
-    color: #ffffff;
+    color: gold;
 }
 
-.comment {
-    margin-bottom: 25px;
-    padding: 15px 19px;
-    color: #000 !important;
-    width: 90%;
-    border: #b1b0b0 solid 1px;
-    border-radius: inherit;
+.commentForm {
+    margin: 50px;
+    width: 800px;
 }
 
 .commentForm textarea {
-    margin: 75px;
+    width: 800px;
 }
 
 .send {
@@ -63,6 +66,7 @@
     justify-content: center;
     margin: 0 auto;
     flex-wrap: wrap;
+    cursor: pointer;
 }
 
 .send:hover {
@@ -71,26 +75,33 @@
     color: #f00;
 }
 
+.commentContainer {
+    width: 60%;
+    margin: 30px;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
 .commentsInfo {
-    margin: 5em auto;
-    padding: 2em;
     width: 90%;
     border-radius: 100px;
-    border-color: #2d333b;
+    border: 2px solid gold;
+    padding: 30px;
     background: #1b1f24;
-    box-shadow: 0 2px 2px 3px #ffffff;
 }
 
 .commentsInfo img {
-    margin-top: -30px;
-    margin-left: 50px;
     width: 100px;
     height: 100px;
-    border-radius: 10px;
+    border-radius: 50%;
 }
 
 .commentsInfo h3 {
-    color: #ffffff;
+    color: gold;
     font-size: 25px;
     line-height: 50px;
     font-weight: 500;
@@ -124,6 +135,7 @@
     background-color: #ffc107;
     border-radius: 30px;
     padding: 0px 28px;
+    cursor: pointer;
 }
 
 .editComment:hover {
