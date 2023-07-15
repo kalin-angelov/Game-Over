@@ -1,78 +1,63 @@
 .register {
-    padding-top: 250px;
-    padding-bottom: 291px;
+    width: 100vw;
+    height: 90vh;
+
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 
 .registerForm {
-    margin: 5em auto;
-    padding: 2em;
-    width: 50em;
-    border-radius: 10px;
-    border-color: #2d333b;
-    background: #1b1f24;
-    box-shadow: 0 2px 2px 3px #ffffff;
+    border: 2px solid white;
+    border-radius: 30px;
+    width: 600px;
+    padding: 30px;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .registerForm h1 {
     font-family: "Agency FB";
     font-size: 70px;
     text-align: center;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    color: #ffffff;
 }
 
-.registerForm label {
-    font-size: 25px;
+.formSection {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    width: 500px;
 }
 
-.username {
-    border: #b1b0b0 solid 1px;
-    padding: 12px 19px;
-    margin-bottom: 26px;
-    border-radius: inherit;
-    color: #000;
-    width: 100%;
+.formSection input {
+    font-size: 20px;
+    width: 450px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
-
-.email {
-    border: #b1b0b0 solid 1px;
-    padding: 12px 19px;
-    margin-bottom: 26px;
-    border-radius: inherit;
-    color: #000;
-    width: 100%;
-}
-
-.password {
-    border: #b1b0b0 solid 1px;
-    padding: 12px 19px;
-    margin-bottom: 26px;
-    border-radius: inherit;
-    color: #000;
-    width: 100%;
-}
-
-.rePassword {
-    border: #b1b0b0 solid 1px;
-    padding: 12px 19px;
-    margin-bottom: 26px;
-    border-radius: inherit;
-    color: #000;
-    width: 100%;
+ 
+.formSection i {
+    color: black;
+    background-color: white;
+    padding: 10px;
+    font-size: 18px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .send {
     font-size: 16px;
-    border: #000 solid 1px;
     background-color: #ff0303;
     border-radius: 10px;
     color: #fff;
-    padding: 11px 67px;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    flex-wrap: wrap;
+    padding: 10px 65px;
+    cursor: pointer;
 }
 
 .send:hover {
@@ -82,26 +67,15 @@
 }
 
 .registerInfo p {
-    color: #f8f9fa;
-    text-shadow: 1px 1px #ff0101;
     font-size: 20px;
     font-style: italic;
-    padding: 11px 67px;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-.registerInfo a {
-    color: #060606;
+    color:  gold
 }
 
 .brandLogo {
     height: 100px;
     width: 100px;
     background: url("../../../public/images/logo2.png");
-    margin: auto;
     border-radius: 50%;
     box-sizing: border-box;
     box-shadow: 7px 7px 10px #ffffff, -7px -7px 10px rgb(255, 0, 0);
@@ -110,18 +84,15 @@
 .error {
     position: fixed;
     right: 80px;
-    min-width: 100px;
-    display: block;
-    z-index: 11111;
     top: 80px;
     text-align: center;
-    height: auto;
     width: 380px;
 }
 
 .error p {
-    background: rgb(149, 13, 13);
-    font-size: 25px;
+    background: red;
+    font-size: 30px;
     height: auto;
     border-radius: 30px;
+    border: 2px solid white;
 }
