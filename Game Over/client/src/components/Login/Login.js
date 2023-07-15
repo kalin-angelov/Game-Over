@@ -24,7 +24,7 @@ export const Login = () => {
 
             setAuth(result);
             setLoader(false);
-            navigate('/catalog')
+            navigate('/profile')
         } catch (err) {
             errorAlert(err.message);
             setLoader(false);
@@ -38,37 +38,36 @@ export const Login = () => {
                     <p>{errorMessage}</p>
                 </div>
             }
-
             <div className={styles.brandLogo}></div>
-
             <form className={styles.loginForm} onSubmit={onLogin} >
                 <h1>Login</h1>
-
-                <label htmlFor="email">Email: </label>
-                <input
-                    className={styles.email}
-                    placeholder="Email"
-                    type="text"
-                    name="email"
-                    value={formValue.email}
-                    onChange={onFormValueChange}
-                />
-
-                <label htmlFor="password">Password: </label>
-                <input
-                    className={styles.password}
-                    placeholder="Password"
-                    type="password"
-                    name="password"
-                    value={formValue.password}
-                    onChange={onFormValueChange}
-                />
-
-                <article >
+                <div className={styles.formSection}>
+                    <i class="fa-solid fa-at"></i>
+                    <input
+                        className={styles.email}
+                        placeholder="Email"
+                        type="text"
+                        name="email"
+                        value={formValue.email}
+                        onChange={onFormValueChange}
+                    />
+                </div>
+                <div className={styles.formSection}>
+                    <i class="fa-solid fa-key"></i>
+                    <input
+                        className={styles.password}
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        value={formValue.password}
+                        onChange={onFormValueChange}
+                    />
+                </div>
+                <div >
                     <button className={styles.send}>Login</button>
-                </article>
+                </div>
                 <div className={styles.loginInfo}>
-                    <p> Don't Have An Account? Click Here! <Link to='/register'>Register</Link> </p>
+                    <p> Don't Have An Account? Click Here <i class="fa-regular fa-hand-point-right"> </i> <Link to='/register'>Register</Link> </p>
                 </div>
             </form >
         </div >
