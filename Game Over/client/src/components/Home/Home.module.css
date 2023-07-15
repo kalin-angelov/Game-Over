@@ -1,26 +1,19 @@
 .home {
-    padding-top: 327px;
-    padding-bottom: 447px;
-    display: -ms-flexbox;
+    padding: 40px;
+    width: 100vw;
+    height: 85vh;
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 
 .home img {
-    float: right;
-    display: -webkit-box;
-    max-width: 950px;
-    border-radius: 10px;
+   width: 800px;
+   height: 600px;
 }
 
 .home p {
     font-size: 30px;
-    color: #fff;
-    margin: 60px;
-    max-width: 620px;
-    width: 100%;
-    padding: 1px 70px 0px 45px;
+    width: 520px;
 }
