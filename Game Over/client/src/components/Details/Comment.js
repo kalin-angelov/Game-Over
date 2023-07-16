@@ -16,41 +16,41 @@ export const Comment = ({
     const onEditComment = () => {
         setShowEditCommentModal(true);
     };
-    
-   if (username === undefined) {
-    username = 'Guest001';
-   };
-   
+
+    if (username === undefined) {
+        username = 'Guest001';
+    };
+
     const result = commentInfo.likes.find(x => x === username);
 
     return (
         <div className={styles.commentsInfo}>
-            <div className={styles.likes}>
+            <header>
+                <img src="/images/userPic.png" alt="userPic" />
+                <h3>{commentInfo.user}</h3>
+            </header>
+            <ul>
                 {(commentInfo.user === username) ?
                     <>
-                        <button className={styles.editComment} onClick={onEditComment}>Edit</button>
-                        <button className={styles.deleteComment} onClick={() => onDeleteComment(commentInfo._id)}>Delete</button>
-                        <span>Likes: {commentInfo.likes.length}</span>
+                        <li><button className={styles.editComment} onClick={onEditComment}><i class="fa-solid fa-pen"></i></button></li>
+                        <li><button className={styles.deleteComment} onClick={() => onDeleteComment(commentInfo._id)}><i class="fa-solid fa-trash"></i></button></li>
+                        <li><span><i class="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
                     </>
                     :
                     <>
-                        {!result && 
-                            <button className={styles.likeComment} onClick={() => onLikeComment(commentInfo._id, username)} >Like</button>
+                        {!result &&
+                            <li> <button className={styles.likeComment} onClick={() => onLikeComment(commentInfo._id, username)} ><i class="fa-solid fa-thumbs-up"></i></button></li>
                         }
-                        <span>Likes: {commentInfo.likes.length}</span>
+                        <li><span><i class="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
                     </>
                 }
+            </ul>
 
-            </div>
-
-            <img src="/images/userPic.png" alt="userPic" />
-
-            <h3>{commentInfo.user}:</h3>
             <p>{commentInfo.text}</p>
-
-            <EditCommentModal 
+            
+            <EditCommentModal
                 commentInfo={commentInfo}
-                showEditCommentModal={showEditCommentModal} 
+                showEditCommentModal={showEditCommentModal}
                 setShowEditCommentModal={setShowEditCommentModal}
                 onSubmitEditComment={onSubmitEditComment}
             />
