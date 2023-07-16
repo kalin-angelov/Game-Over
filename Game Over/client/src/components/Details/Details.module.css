@@ -76,66 +76,62 @@
 }
 
 .commentContainer {
-    width: 60%;
     margin: 30px;
+    display: flex;
+    flex-flow: column wrap;
+    gap: 30px;
 
+    width: 80%;
+}
+
+.commentsInfo {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-}
 
-.commentsInfo {
-    width: 90%;
-    border-radius: 100px;
+    border-radius: 20px;
     border: 2px solid gold;
     padding: 30px;
     background: #1b1f24;
 }
 
 .commentsInfo img {
-    width: 100px;
-    height: 100px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    margin: 10px;
 }
 
 .commentsInfo h3 {
+    display: inline-block;
     color: gold;
     font-size: 25px;
     line-height: 50px;
     font-weight: 500;
-    margin-top: -115px;
-    margin-left: 160px;
+}
+
+.commentsInfo ul {
+    padding: 0;
+    margin: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.commentsInfo button {
+    padding: 0 30px;
+    background-color: gold;
+    border-radius: 30px;
+    cursor: pointer;
 }
 
 .commentsInfo p {
     font-size: 20px;
-    line-height: 30px;
-    color: #fffefe;
-    margin-top: -50px;
-    margin-left: 190px;
-    padding: 45px;
-}
-
-.likes {
-    display: flex;
-    justify-content: right;
-}
-
-.likes span {
-    font-size: 20px;
-    margin-right: 10px;
-    height: 25px;
-}
-
-.likes button {
-    float: right;
-    font-size: 15px;
-    background-color: #ffc107;
-    border-radius: 30px;
-    padding: 0px 28px;
-    cursor: pointer;
+    padding: 30px;
+    width: 500px;
 }
 
 .editComment:hover {
