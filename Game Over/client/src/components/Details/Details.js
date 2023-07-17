@@ -103,6 +103,18 @@ export const Details = () => {
                 </div>
             </div>
 
+            
+            <form className={styles.commentForm} onSubmit={onSubmitComment}>
+                <textarea
+                    placeholder="comment..."
+                    type="text" 
+                    name="comment"
+                    value={formValue.comment}
+                    onChange={onFormValueChange}
+                ></textarea>
+                <button className={styles.send}>Send</button>
+            </form>
+
             <div className={styles.commentContainer}>
                 {commentsList && commentsList.map(commentInfo =>
                     <Comment
@@ -116,22 +128,6 @@ export const Details = () => {
                 )}
             </div>
 
-            <form className={styles.commentForm} onSubmit={onSubmitComment}>
-                <textarea
-                    rows="5"
-                    cols="5"
-                    className={styles.comment}
-                    placeholder="comment..."
-                    type="text" 
-                    name="comment"
-                    value={formValue.comment}
-                    onChange={onFormValueChange}
-                ></textarea>
-
-                <article>
-                    <button className={styles.send}>Send</button>
-                </article>
-            </form>
         </div>
     );
 };
