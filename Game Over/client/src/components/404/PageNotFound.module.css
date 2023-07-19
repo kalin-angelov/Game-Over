@@ -17,7 +17,6 @@
  }
  
  .message h2, h3, p {
-     color: #ffffff;
      font-family: "Agency FB";
  }
  
@@ -33,7 +32,7 @@
  }
  
  .message p {
-     text-shadow: 1px 1px #ff0101;
      font-size: 40px;
      font-style: italic;
+     color:  gold
  }
