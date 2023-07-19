@@ -47,7 +47,7 @@ export const Register = () => {
             <form className={styles.registerForm} onSubmit={onRegister} >
                 <h1 >Register Form</h1>
                 <div className={styles.formSection}> 
-                    <i class="fa-solid fa-user"></i>
+                    <i className="fa-solid fa-user"></i>
                     <input
                         placeholder="Username"
                         type="text"
@@ -57,7 +57,7 @@ export const Register = () => {
                     />
                 </div>               
                 <div className={styles.formSection}> 
-                    <i class="fa-solid fa-at"></i>
+                    <i className="fa-solid fa-at"></i>
                     <input
                         placeholder="Email"
                         type="text"
@@ -67,7 +67,7 @@ export const Register = () => {
                     />
                 </div>               
                 <div className={styles.formSection}> 
-                    <i class="fa-solid fa-key"></i>
+                    <i className="fa-solid fa-key"></i>
                     <input
                         placeholder="Password"
                         type="password"
@@ -77,7 +77,7 @@ export const Register = () => {
                     />
                 </div>     
                 <div className={styles.formSection}> 
-                    <i class="fa-solid fa-key"></i>
+                    <i className="fa-solid fa-key"></i>
                     <input
                         placeholder="Confirm Password"
                         type="password"
@@ -90,7 +90,7 @@ export const Register = () => {
                     <button className={styles.send}>Register</button>
                 </div>
                 <div className={styles.registerInfo}>
-                    <p> Already Have Account? Click Here <i class="fa-regular fa-hand-point-right"> </i> <Link to='/login'>Login</Link> </p>
+                    <p> Already Have Account? Click Here <i className="fa-regular fa-hand-point-right"> </i> <Link to='/login'>Login</Link> </p>
                 </div>
             </form>
         </div>
