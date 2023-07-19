@@ -1,4 +1,4 @@
-import styles from "./Catalog.module.css";
+import styles from "./GamesList.module.css";
 
 import { Link } from "react-router-dom";
 import { useContext } from "react";
@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { GameInfo } from "./GameInfo";
 import { AuthContext } from '../../contexts/AuthContext';
 
-export const Games = () => {
+export const GamesList = () => {
     const { gamesList, isAuthenticated } = useContext(AuthContext);
 
     return (
@@ -18,7 +18,11 @@ export const Games = () => {
                 :
                 <div className={styles.noGames}>
                     <h3>Game Catalog Is Empty</h3>
-                    {isAuthenticated && <p> Be First To Add New Game! <Link to='/register'>Register</Link> </p>}
+                    {isAuthenticated && 
+                        <p> Be First To Add New Game! 
+                            <Link to='/register'>Register</Link> 
+                        </p>
+                    }
                 </div>
             }
         </>

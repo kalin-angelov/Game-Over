@@ -1,4 +1,4 @@
-import styles from './Catalog.module.css';
+import styles from './GameInfo.module.css';
 
 import { Link } from 'react-router-dom';
 
@@ -13,12 +13,10 @@ export const GameInfo = (game) => {
                 <p>Platform: {game.platform}</p>
             </div>
 
-            <a>
-                <Link to={`/details/${game._id}`} state={game}>
-                    <i class="fa-solid fa-circle-info"></i>
-                    Details
-                </Link>
-            </a>
+            <Link className={styles.detailsBtn} to={`/details/${game._id}`} state={game}>
+                <i className="fa-solid fa-circle-info"></i> 
+                Details
+            </Link>
         </div>
     );
 };
