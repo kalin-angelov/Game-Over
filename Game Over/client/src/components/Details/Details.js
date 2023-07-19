@@ -12,14 +12,11 @@ import { addOneComment, getOneComment, getAllComments, likeComment, deleteCommen
 import { useForm } from '../../hooks/useForm';
 
 export const Details = () => {
-    const {
-        username,
-        setLoader,
-    } = useContext(AuthContext);
+    const { username,setLoader } = useContext(AuthContext);
     const { gameId } = useParams();
     const { formValue, onFormValueChange } = useForm({ comment: '' })
-    const [game, setGame] = useState([]);
-    const [commentsList, setCommentsList] = useState([]);
+    const [ game, setGame ] = useState([]);
+    const [ commentsList, setCommentsList ] = useState([]);
   
     useEffect(() => {
         getOne(gameId)

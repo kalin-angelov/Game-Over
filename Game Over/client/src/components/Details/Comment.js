@@ -1,4 +1,4 @@
-import styles from './Details.module.css';
+import styles from './Comment.module.css';
 
 import { EditCommentModal } from './EditCommentModal';
 
@@ -33,16 +33,16 @@ export const Comment = ({
                 <ul>
                     {(commentInfo.user === username) ?
                         <>
-                            <li><button className={styles.editComment} onClick={onEditComment}><i class="fa-solid fa-pen"></i></button></li>
-                            <li><button className={styles.deleteComment} onClick={() => onDeleteComment(commentInfo._id)}><i class="fa-solid fa-trash"></i></button></li>
-                            <li><span><i class="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
+                            <li><button className={styles.editComment} onClick={onEditComment}><i className="fa-solid fa-pen"></i></button></li>
+                            <li><button className={styles.deleteComment} onClick={() => onDeleteComment(commentInfo._id)}><i className="fa-solid fa-trash"></i></button></li>
+                            <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
                         </>
                         :
                         <>
                             {!result &&
-                                <li> <button className={styles.likeComment} onClick={() => onLikeComment(commentInfo._id, username)} ><i class="fa-solid fa-thumbs-up"></i></button></li>
+                                <li> <button className={styles.likeComment} onClick={() => onLikeComment(commentInfo._id, username)} ><i className="fa-solid fa-thumbs-up"></i></button></li>
                             }
-                            <li><span><i class="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
+                            <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
                         </>
                     }
                 </ul>

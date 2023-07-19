@@ -10,6 +10,7 @@
 }
 
 .details h1 {
+    color: gold;
     font-weight: 500;
     line-height: 50px;
     font-size: 50px;
@@ -83,77 +84,4 @@
     justify-content: center;
     align-items: center;
     gap: 30px;
-}
-
-.commentsInfo {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 20px;
-    border: 2px solid gold;
-    background: #1b1f24;
-}
-
-.userSection {
-    display: flex;
-    justify-content: space-between;
-
-    border-bottom: 2px solid gold;
-    background-color: rgb(255, 94, 0);
-    border-top-left-radius: 17px;
-    border-top-right-radius: 17px;
-    width: 800px;
-}
-
-.userSection img {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 10px;
-}
-
-.userSection h3 {
-    display: inline-block;
-    font-size: 25px;
-    line-height: 50px;
-    font-weight: 500;
-}
-
-.userSection ul {
-    margin: 10px;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.userSection button {
-    padding: 0 30px;
-    background-color: gold;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.commentSection  {
-    width: 800px;
-    font-size: 20px;
-    color: gold;
-}
-
-.editComment:hover {
-    border: green solid 1px;
-    color: green;
-}
-
-.deleteComment:hover {
-    border: red solid 1px;
-    color:red;
-}
-
-.likeComment:hover {
-    border: #0353ff solid 1px;
-    color: rgb(0, 68, 255);
 }
