@@ -29,7 +29,7 @@ export const Create = () => {
                 <h1>Add New Game</h1>
 
                 <div className={styles.formSection}>
-                    <i class="fa-solid fa-file-signature"></i>
+                    <i className="fa-solid fa-file-signature"></i>
                     <input
                         className={styles.title}
                         placeholder="Title"
@@ -40,7 +40,7 @@ export const Create = () => {
                     />
                 </div>
                 <div className={styles.formSection}>
-                    <i class="fa-brands fa-hire-a-helper"></i>
+                    <i className="fa-brands fa-hire-a-helper"></i>
                     <select 
                         className={styles.help} 
                         name='help' 
@@ -55,7 +55,7 @@ export const Create = () => {
                     </select>
                 </div>
                 <div className={styles.formSection}>
-                    <i class="fa-solid fa-gamepad"></i>
+                    <i className="fa-solid fa-gamepad"></i>
                     <select 
                         className={styles.platform} 
                         name='platform' 
@@ -70,7 +70,7 @@ export const Create = () => {
                     </select>
                 </div>
                 <div className={styles.formSection}>
-                    <i class="fa-solid fa-dna"></i>
+                    <i className="fa-solid fa-dna"></i>
                     <input
                         className={styles.genre}
                         placeholder="Genre"
@@ -81,7 +81,7 @@ export const Create = () => {
                     />
                 </div>
                <div className={styles.formSection}>
-                    <i class="fa-solid fa-people-group"></i>
+                    <i className="fa-solid fa-people-group"></i>
                     <input
                         className={styles.players}
                         placeholder="Players"
@@ -92,7 +92,7 @@ export const Create = () => {
                     />
                </div>
                <div className={styles.formSection}>
-                    <i class="fa-regular fa-image"></i>
+                    <i className="fa-regular fa-image"></i>
                     <input
                         className={styles.imageUrl}
                         placeholder="ImageUrl"
@@ -103,7 +103,7 @@ export const Create = () => {
                     />
                </div>
                <div className={styles.formSection}>
-                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i className="fa-solid fa-pen-to-square"></i>
                     <textarea
                         className={styles.summary}
                         placeholder="Summary"
