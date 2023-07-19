@@ -9,80 +9,89 @@ import { getAll, deleteOne } from '../../service/gameService';
 import { userGameCheck } from '../../utils/userGameCheck';
 
 export const Profile = () => {
-    const { 
+    const {
         auth,
+        email,
         userId,
         username,
         setLoader,
         setGameList
-    
+
     } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [ userGames, setUserGames ] = useState([]);
-    const [ showDelete, setShowDelete ] = useState(false);
+    const [userGames, setUserGames] = useState([]);
+    const [showDelete, setShowDelete] = useState(false);
 
     useEffect(() => {
         getAll()
             .then(data => userGameCheck(data, userId))
             .then(data => setUserGames(data))
             .catch(error => console.log(`Error: ${error}`))
-    },[userId]);
+    }, [userId]);
 
     const onDeleteGame = async (id) => {
         setLoader(true);
         try {
-          await deleteOne(id, auth.accessToken);
+            await deleteOne(id, auth.accessToken);
 
-          const games = await getAll();
-          setGameList(games);
+            const games = await getAll();
+            setGameList(games);
 
-          const result = userGameCheck(games);
-          setUserGames(result);
+            const result = userGameCheck(games);
+            setUserGames(result);
 
-          onClickCloseDelete();
-          setLoader(false);
-          navigate('/profile');
-    
+            onClickCloseDelete();
+            setLoader(false);
+            navigate('/profile');
+
         } catch (err) {
-          console.log(`Error: ${err}`);
-          setLoader(false);
+            console.log(`Error: ${err}`);
+            setLoader(false);
         }
     };
 
     const onClickShowDelete = () => {
         setShowDelete(true);
-      };
-    
-      const onClickCloseDelete = () => {
+    };
+
+    const onClickCloseDelete = () => {
         setShowDelete(false);
-      };
+    };
 
     return (
         <div className={styles.profile}>
-            <h2>Welcome: {username}</h2>
-            <Link to='/create'><p className={styles.brandLogo}></p></Link>
-           
+            <div className={styles.user}>
+                <h1>Welcome</h1>
+                <img src="/images/userPic.png" alt="userPic" />
+                <p>Username: { username }</p>
+                <p>Email: { email }</p>
+                <Link className={styles.createBtn} to='/create'>
+                    <i class="fa-solid fa-gavel"></i>
+                    Create
+                </Link>
+            </div>
+            <hr />
             <div className={styles.list}>
-                <h3>Game's List</h3>
-            
-                {(userGames.length > 0 ) ?
+                <h2>Game's List</h2>
+
+                {(userGames.length > 0) ?
                     <div className={styles.gameList}>
-                        {userGames.map(game => 
-                            <MyGames 
-                                key={game._id} 
+                        {userGames.map(game =>
+                            <MyGames
+                                key={game._id}
                                 game={game}
                                 showDelete={showDelete}
                                 onDeleteGame={onDeleteGame}
                                 onClickShowDelete={onClickShowDelete}
                                 onClickCloseDelete={onClickCloseDelete}
                             />
-                        )}  
+                        )}
                     </div>
                     :
                     <div className={styles.noGames}>
                         <h3>Your List Is Empty</h3>
-                        <p> You Can Change That By Clicking On The Big Red Button!</p>
-                    </div> 
+                        <p> You can change that by clicking on the create button!</p>
+                    </div>
                 }
             </div>
         </div>

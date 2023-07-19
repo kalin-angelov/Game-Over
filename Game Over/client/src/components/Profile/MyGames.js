@@ -1,4 +1,4 @@
-import styles from './Profile.module.css';
+import styles from './MyGames.module.css';
 
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
