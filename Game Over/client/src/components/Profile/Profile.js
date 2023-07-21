@@ -60,20 +60,31 @@ export const Profile = () => {
 
     return (
         <div className={styles.profile}>
-            <div className={styles.user}>
-                <h1>Welcome</h1>
-                <img src="/images/userPic.png" alt="userPic" />
-                <p>Username: { username }</p>
-                <p>Email: { email }</p>
-                <Link className={styles.createBtn} to='/create'>
-                    <i class="fa-solid fa-gavel"></i>
-                    Create
-                </Link>
+            <div className={styles.userProfile}>
+                <div className={styles.userIcons}>
+                    <img src="/images/userPic.png" alt="userPic" />
+                    <Link className={styles.createBtn} to='/create'>
+                        <i class="fa-solid fa-gavel"></i>
+                        Create
+                    </Link>
+                    
+                </div>
+                <div className={styles.userInformation}>
+                    <h1>Welcome:</h1>
+                    <hr />
+                    <p>Username: <span>{ username }</span></p>
+                    <hr />
+                    <p>Email: <span>{ email }</span></p>
+                    <hr />
+                    <p>Created games: <span>{ userGames.length }</span></p>
+                    <hr />
+                </div>
             </div>
+            
             <hr />
             <div className={styles.list}>
                 <h2>Game's List</h2>
-
+                <p>If you want to check the details of the game, click on the image.</p>
                 {(userGames.length > 0) ?
                     <div className={styles.gameList}>
                         {userGames.map(game =>

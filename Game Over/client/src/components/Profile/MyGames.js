@@ -14,8 +14,6 @@ export const MyGames = ({
  }) => {
     return (
         <div className={styles.myGames}>
-            <h1>{game.title}</h1>
-            
             <Link to={`/details/${game._id}`} >
                 <img src={game.imageUrl} alt={game.title} />
             </Link>

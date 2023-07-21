@@ -2,6 +2,10 @@
     width: 100vw;
 }
 
+.profile span {
+    color: gold;
+}
+
 .profile hr {
     width: 95%;
     text-align: center;
@@ -9,8 +13,13 @@
     border-bottom: 1px solid white;
 }
 
-.user {
+.userProfile {
+    display: flex;
+    flex-direction: row;
     margin: 50px;
+}
+
+.userIcons {
     width: 300px;
 
     display: flex;
@@ -18,18 +27,28 @@
     align-items: center;
 }
 
-.user h1 {
+.userIcons h1 {
     font-weight: 500;
     line-height: 50px;
     font-size: 50px;
     font-family: "Agency FB";
 }
 
-.user img {
+.userIcons img {
     width: 200px;
     height: 200px;
     border: 5px solid gold;
     border-radius: 20px;
+}
+
+.userInformation hr {
+    margin: 0;
+    width: 500px;
+    border-top: 1px solid;
+}
+
+.userInformation p {
+    margin: 0;
 }
 
 .createBtn {
@@ -57,10 +76,25 @@
     font-family: "Agency FB";
 }
 
+.list p {
+    text-align: center;
+    color: gold;
+    font-style: italic;
+    font-size: 32px;
+    padding: 10px;
+}
+
 .gameList {
+    margin: 50px;
     text-align: center;
     display: flex;
-    margin: 10em auto;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.noGames {
+    height: 40vh;
 }
 
 .noGames h3 {
