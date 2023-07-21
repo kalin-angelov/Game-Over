@@ -30,9 +30,16 @@
 
 .userSection h3 {
     display: inline-block;
-    font-size: 25px;
+    font-size: 28px;
     line-height: 50px;
     font-weight: 500;
+    color: black;
+}
+
+.userSection p {
+    display: inline-block;
+    margin: 0 30px;
+    line-height: 50px;
 }
 
 .userSection ul {

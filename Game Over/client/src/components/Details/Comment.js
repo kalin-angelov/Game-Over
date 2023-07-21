@@ -29,6 +29,10 @@ export const Comment = ({
                 <header>
                     <img src="/images/userPic.png" alt="userPic" />
                     <h3>{commentInfo.user}</h3>
+                    <p>
+                    <i class="fa-regular fa-calendar-days"></i> -
+                       { commentInfo.createdAt }
+                    </p>
                 </header>
                 <ul>
                     {(commentInfo.user === username) ?

@@ -31,10 +31,17 @@ export const Details = () => {
         e.preventDefault();
         setLoader(true);
 
+        const date = new Date()
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const fullDate = [ day, month, year].join('-');
+
         const commentBody = {
             user: '',
             text: formValue.comment,
-            likes: []
+            likes: [],
+            createdAt: fullDate
         }
 
         username === undefined ? commentBody.user = 'Guest001' : commentBody.user = username;
