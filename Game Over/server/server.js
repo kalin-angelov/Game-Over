@@ -1354,7 +1354,7 @@
                 "genre": "Role-Playing",
                 "players": "1",
                 "imageUrl": "https://image.api.playstation.com/cdn/EP0700/CUSA03365_00/OFMeAw2KhrdaEZAjW1f3tCIXbogkLpTC.png",
-                "summary": "Can Some One Tell Me What Is The Best Tactic To Kill The Nameless King And The Best Build For The Job.",
+                "summary": "Can Someone Tell Me What Is The Best Tactic To Kill The Nameless King And The Best Build For The Job.",
                 "_createdOn": 1617194210928,
                 "comments": []
             },
