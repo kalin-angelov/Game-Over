@@ -51,9 +51,9 @@ export const Comment = ({
                     }
                 </ul>
             </div>
-            <dir className={styles.commentSection}>
+            <div className={styles.commentSection}>
                 <p>{commentInfo.text}</p>
-            </dir>
+            </div>
             <EditCommentModal
                 commentInfo={commentInfo}
                 showEditCommentModal={showEditCommentModal}
