@@ -1,8 +1,9 @@
 import styles from "./GamesList.module.css";
 
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
+import { Search } from './Search';
 import { GameInfo } from "./GameInfo";
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -11,6 +12,7 @@ export const GamesList = () => {
 
     return (
         <>
+           <Search />
             {(gamesList.length > 0) ?
                 <div className={styles.gameList}>
                     {gamesList.map(game => <GameInfo key={game._id} {...game} />)}
