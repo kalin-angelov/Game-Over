@@ -1,17 +1,44 @@
 import styles from './Edit.module.css';
 
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
+import { getAll, updateOne } from '../../service/gameService';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const Edit = () => {
-    const { onEditSubmit, errorMessage } = useContext(AuthContext);
+    const { 
+        errorMessage,
+        errorAlert,
+        setGameList,
+        setLoader,
+        auth,
+    } = useContext(AuthContext);
+    const navigate = useNavigate();
     const { gameId } = useParams();
     const location = useLocation();
     const game = location.state;
     const { formValue, onFormValueChange } = useForm(game);
+
+    const onEditSubmit = async (e, body, id) => {
+        e.preventDefault();
+        setLoader(true);
+
+        body.players = Number(body.players);
+        try {
+            await updateOne(id, body, auth.accessToken)
+            const result = await getAll();
+
+            setGameList(result);
+            setLoader(false);
+            navigate(`/details/${gameId}`);
+        } catch (err) {
+            setLoader(false);
+            errorAlert(err.message);
+        }
+    };
+
     return (
         <div className={styles.edit}>
 
