@@ -12,7 +12,7 @@ import { addOneComment, getOneComment, getAllComments, likeComment, deleteCommen
 import { useForm } from '../../hooks/useForm';
 
 export const Details = () => {
-    const { username,setLoader } = useContext(AuthContext);
+    const { username, setLoader } = useContext(AuthContext);
     const { gameId } = useParams();
     const { formValue, onFormValueChange } = useForm({ comment: '' })
     const [ game, setGame ] = useState([]);
@@ -99,11 +99,11 @@ export const Details = () => {
                 <img src={game.imageUrl} alt={game.title} />
 
                 <div className={styles.gameInfo}>
-                    <p>Type: {game.genre}</p>
-                    <p>Platform: {game.platform}</p>
-                    <p>Number Of Players: {game.players}</p>
-                    <p>Help: {game.help}</p>
-                    <p>Description: {game.summary}</p>
+                    <p>Type: <span>{game.genre}</span></p>
+                    <p>Platform: <span>{game.platform}</span></p>
+                    <p>Number Of Players: <span>{game.players}</span></p>
+                    <p>Help: <span>{game.help}</span></p>
+                    <p>Description: <span>{game.summary}</span></p>
                 </div>
             </div>
 
