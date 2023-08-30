@@ -1,7 +1,7 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import { getAll, addOne, updateOne } from './service/gameService';
+import { getAll } from './service/gameService';
 import { AuthContext } from './contexts/AuthContext';
 import { useLocalStorage } from './hooks/useLocalStorage';
 
@@ -21,7 +21,6 @@ import { Loader } from "./components/Loader/Loader";
 import { RouteGuard } from './components/RouteGuard/RouteGuard';
 
 function App() {
-  const navigate = useNavigate();
   const [auth, setAuth] = useLocalStorage('auth', {});
   const [loader, setLoader] = useState(false);
   const [gamesList, setGameList] = useState([]);
@@ -42,56 +41,12 @@ function App() {
    },3000)
   };
 
-  const onAddNewGameSubmit = async (e, body) => {
-    e.preventDefault();
-    setLoader(true);
-
-    body.players = Number(body.players);
-    try {
-      await addOne(body, auth.accessToken)
-      const result = await getAll();
-
-      setGameList(result);
-      setLoader(false);
-      navigate('/profile');
-    } catch (err) {
-      console.log(`Error: ${err}`);
-      setLoader(false);
-      errorAlert(err.message);
-    }
-  };
-
-  const onEditSubmit = async (e, body, id) => {
-    e.preventDefault();
-    setLoader(true);
-
-    body.players = Number(body.players);
-    try {
-      await updateOne(id, body, auth.accessToken)
-      const result = await getAll();
-
-      setGameList(result);
-      setLoader(false);
-      navigate('/profile')
-    } catch (err) {
-      console.log(`Error: ${err}`);
-      setLoader(false);
-      errorAlert(err.message);
-    }
-  };
-
   const valueContext = {
     auth,
     setAuth,
     setGameList,
-    userId: auth._id,
-    username: auth.username,
-    email: auth.email,
-    toke: auth.accessToken,
     isAuthenticated: !!auth.accessToken,
     gamesList,
-    onEditSubmit,
-    onAddNewGameSubmit,
     loader,
     setLoader,
     errorMessage,
