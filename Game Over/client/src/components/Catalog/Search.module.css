@@ -1,0 +1,27 @@
+.search {
+    display: flex;
+    justify-content: center;
+}
+
+.searchBox {
+    margin: 50px;
+    padding: 5px;
+    width: 800px;
+    font-size: 25px;
+    border: 2px solid white;
+    border-radius: 50px;
+}
+
+.searchBox select {
+    width: 100px;
+    padding: 10px;
+}
+
+.searchBox input {
+    width: 25em;
+    padding: 5px;
+}
+
+.searchBox i {
+    padding: 15px;
+}
