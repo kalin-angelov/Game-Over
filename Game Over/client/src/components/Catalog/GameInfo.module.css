@@ -24,6 +24,10 @@
     padding: 20px;
 }
 
+.gameInfo span {
+    color:gold;
+}
+
 .gameInfo h3, p {
     font-size: 26px;
     line-height: 1.5;
