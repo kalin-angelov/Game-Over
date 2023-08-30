@@ -1,12 +1,22 @@
 import styles from './Create.module.css';
 
+import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
+import { getAll, addOne } from '../../service/gameService';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const Create = () => {
-    const { onAddNewGameSubmit, errorMessage } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { 
+        errorMessage,
+        errorAlert,
+        setGameList,
+        setLoader,
+        auth
+    } = useContext(AuthContext);
+
     const { formValue, onFormValueChange } = useForm({
         title: '',
         help: '',
@@ -16,6 +26,25 @@ export const Create = () => {
         imageUrl: '',
         summary: ''
     });
+
+    
+  const onAddNewGameSubmit = async (e, body) => {
+    e.preventDefault();
+    setLoader(true);
+
+    body.players = Number(body.players);
+    try {
+      await addOne(body, auth.accessToken)
+      const result = await getAll();
+
+      setGameList(result);
+      setLoader(false);
+      navigate('/profile');
+    } catch (err) {
+      setLoader(false);
+      errorAlert(err.message);
+    }
+  };
 
     return (
         <div className={styles.create}>
