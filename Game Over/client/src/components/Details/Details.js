@@ -12,12 +12,12 @@ import { addOneComment, getOneComment, getAllComments, likeComment, deleteCommen
 import { useForm } from '../../hooks/useForm';
 
 export const Details = () => {
-    const { username, setLoader } = useContext(AuthContext);
+    const { auth, setLoader } = useContext(AuthContext);
     const { gameId } = useParams();
     const { formValue, onFormValueChange } = useForm({ comment: '' })
     const [ game, setGame ] = useState([]);
     const [ commentsList, setCommentsList ] = useState([]);
-  
+
     useEffect(() => {
         getOne(gameId)
             .then(data => setGame(data))
@@ -44,7 +44,7 @@ export const Details = () => {
             createdAt: fullDate
         }
 
-        username === undefined ? commentBody.user = 'Guest001' : commentBody.user = username;
+        auth.username === undefined ? commentBody.user = 'Guest001' : commentBody.user = auth.username;
 
         if (commentBody.text !== '') {
             await addOneComment(gameId, commentBody);
@@ -123,7 +123,7 @@ export const Details = () => {
                 {commentsList && commentsList.map(commentInfo =>
                     <Comment
                         key={commentInfo._id}
-                        username={username}
+                        username={auth.username}
                         commentInfo={commentInfo}
                         onLikeComment={onLikeComment}
                         onDeleteComment={onDeleteComment}
