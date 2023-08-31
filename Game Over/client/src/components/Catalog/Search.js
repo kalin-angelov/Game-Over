@@ -4,31 +4,48 @@ import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 
 import { useContext } from "react";
-import { getAll } from '../../service/gameService';
-import { useNavigate } from 'react-router-dom';
 
-export const Search = () => {
-    const navigate = useNavigate();
-    const { gamesList, setGameList } = useContext(AuthContext);
+export const Search = ( { getSearchResult } ) => {
+    const { gamesList } = useContext(AuthContext);
     const { formValue, onFormValueChange } = useForm({
         searchFor: '',
         searchBy: ''
     });
 
-    const onSearch = async (e, body) => {
+    const onSearch = (e, body) => {
         e.preventDefault();
         const { searchFor, searchBy } = body;
-        const result = await getAll();
-        setGameList(result);
-        
+        let result;
+
         if (searchFor === '') {
-          navigate('/catalog')
+            getSearchResult(null);
         } else {
-            const result = gamesList.filter(item => 
-            item[searchBy.toLowerCase()].toLowerCase().includes(searchFor.toLowerCase()));
-            setGameList(result);
-        }
-        console.log(gamesList);
+            switch (searchBy) {
+                case "Help":
+                    result = gamesList.filter(item => 
+                        item.help.toLowerCase()
+                        .includes(searchFor.toLowerCase()));
+                    break;
+                case "Platform":
+                    result = gamesList.filter(item => 
+                        item.platform.toLowerCase()
+                        .includes(searchFor.toLowerCase()));
+                    break;
+                case "Title":
+                    result = gamesList.filter(item => 
+                        item.title.toLowerCase()
+                        .includes(searchFor.toLowerCase())
+                    )
+                    break;
+                default:
+                    result = gamesList.filter(item => 
+                        item.title.toLowerCase()
+                        .includes(searchFor.toLowerCase())
+                    )
+                    break;
+            };
+            getSearchResult(result);
+        };
     };
 
     return (
@@ -52,7 +69,7 @@ export const Search = () => {
                     <option>Help</option>
                     <option>Platform</option>
                 </select>
-                <button>Click</button>
+                <button>Search</button>
             </form>
         </div>
     );
