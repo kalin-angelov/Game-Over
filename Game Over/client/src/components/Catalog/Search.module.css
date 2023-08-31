@@ -6,22 +6,44 @@
 .searchBox {
     margin: 50px;
     padding: 5px;
-    width: 800px;
+    width: 950px;
     font-size: 25px;
     border: 2px solid white;
     border-radius: 50px;
 }
 
 .searchBox select {
-    width: 100px;
-    padding: 10px;
+    width: 140px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 .searchBox input {
     width: 25em;
     padding: 5px;
+    border-radius: 50px;
+    text-align: center;
 }
 
 .searchBox i {
     padding: 15px;
+}
+
+.searchBox button {
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+}
+
+.searchBox button:hover {
+    background-color: white;
+    color: red;
+}
+
+.searchBox ::placeholder {
+    text-align: center;
 }
