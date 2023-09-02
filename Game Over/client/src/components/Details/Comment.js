@@ -1,6 +1,7 @@
 import styles from './Comment.module.css';
 
 import { EditCommentModal } from './EditCommentModal';
+import { ReplyComment } from './ReplyComment';
 
 import { useState } from 'react';
 
@@ -24,42 +25,51 @@ export const Comment = ({
     const result = commentInfo.likes.find(x => x === username);
 
     return (
-        <div className={styles.commentsInfo}>
-            <div className={styles.userSection}>
-                <header>
-                    <img src="/images/userPic.png" alt="userPic" />
-                    <h3>{commentInfo.user}</h3>
-                    <p>
-                    <i class="fa-regular fa-calendar-days"></i> -
-                       { commentInfo.createdAt }
-                    </p>
-                </header>
-                <ul>
-                    {(commentInfo.user === username) ?
-                        <>
-                            <li><button className={styles.editComment} onClick={onEditComment}><i className="fa-solid fa-pen"></i></button></li>
-                            <li><button className={styles.deleteComment} onClick={() => onDeleteComment(commentInfo._id)}><i className="fa-solid fa-trash"></i></button></li>
-                            <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
-                        </>
-                        :
-                        <>
-                            {!result &&
-                                <li> <button className={styles.likeComment} onClick={() => onLikeComment(commentInfo._id, username)} ><i className="fa-solid fa-thumbs-up"></i></button></li>
-                            }
-                            <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
-                        </>
-                    }
-                </ul>
+        <>
+            <div className={styles.commentsInfo}>
+                <div className={styles.userSection}>
+                    <header>
+                        <img src="/images/userPic.png" alt="userPic" />
+                        <h3>{commentInfo.user}</h3>
+                        <p>
+                        <i class="fa-regular fa-calendar-days"></i> -
+                        { commentInfo.createdAt }
+                        </p>
+                    </header>
+
+                    <ul>
+                        {(commentInfo.user === username) ?
+                            <>
+                                <li><button className={styles.editComment} onClick={onEditComment}><i className="fa-solid fa-pen"></i></button></li>
+                                <li><button className={styles.deleteComment} onClick={() => onDeleteComment(commentInfo._id)}><i className="fa-solid fa-trash"></i></button></li>
+                                <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
+                            </>
+                            :
+                            <>
+                                <li> <button className={styles.reply}>Reply</button></li>
+                                {!result &&
+                                    <li> <button className={styles.likeComment} onClick={() => onLikeComment(commentInfo._id, username)} ><i className="fa-solid fa-thumbs-up"></i></button></li>
+                                }
+                                <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
+                            </>
+                        }
+                    </ul>
+                </div>
+
+                <div className={styles.commentSection}>
+                    <p>{commentInfo.text}</p>
+                    <button className={styles.replyShowHideBtn}>Reply Comments (10)</button>
+                </div>
+
+                <EditCommentModal
+                    commentInfo={commentInfo}
+                    showEditCommentModal={showEditCommentModal}
+                    setShowEditCommentModal={setShowEditCommentModal}
+                    onSubmitEditComment={onSubmitEditComment}
+                />
             </div>
-            <div className={styles.commentSection}>
-                <p>{commentInfo.text}</p>
-            </div>
-            <EditCommentModal
-                commentInfo={commentInfo}
-                showEditCommentModal={showEditCommentModal}
-                setShowEditCommentModal={setShowEditCommentModal}
-                onSubmitEditComment={onSubmitEditComment}
-            />
-        </div>
+            
+            <ReplyComment />
+        </>
     );
 };
