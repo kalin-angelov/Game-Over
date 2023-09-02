@@ -15,8 +15,14 @@ export const Details = () => {
     const { auth, setLoader } = useContext(AuthContext);
     const { gameId } = useParams();
     const { formValue, onFormValueChange } = useForm({ comment: '' })
-    const [ game, setGame ] = useState([]);
-    const [ commentsList, setCommentsList ] = useState([]);
+    const [game, setGame] = useState([]);
+    const [commentsList, setCommentsList] = useState([]);
+
+    const date = new Date()
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const fullDate = [day, month, year].join('-');
 
     useEffect(() => {
         getOne(gameId)
@@ -30,12 +36,6 @@ export const Details = () => {
     const onSubmitComment = async (e) => {
         e.preventDefault();
         setLoader(true);
-
-        const date = new Date()
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        const fullDate = [ day, month, year].join('-');
 
         const commentBody = {
             user: '',
@@ -105,33 +105,41 @@ export const Details = () => {
                     <p>Help: <span>{game.help}</span></p>
                     <p>Description: <span>{game.summary}</span></p>
                 </div>
-            </div>
 
+                <div className={styles.commentsInfo}>
+                    <div className={styles.userSection}>
+                        <img src="/images/userPic.png" alt="userPic" />
+                        <h3>{auth.username}</h3>
+                        <p>
+                            <i class="fa-regular fa-calendar-days"></i> -
+                            {fullDate}
+                        </p>
+                    </div>
+                    <form className={styles.commentForm} onSubmit={onSubmitComment}>
+                        <textarea
+                            placeholder="comment..."
+                            type="text"
+                            name="comment"
+                            value={formValue.comment}
+                            onChange={onFormValueChange}
+                        ></textarea>
+                        <button className={styles.send}>Send</button>
+                    </form>
+                </div>
+            </div>
             
-            <form className={styles.commentForm} onSubmit={onSubmitComment}>
-                <textarea
-                    placeholder="comment..."
-                    type="text" 
-                    name="comment"
-                    value={formValue.comment}
-                    onChange={onFormValueChange}
-                ></textarea>
-                <button className={styles.send}>Send</button>
-            </form>
-
             <div className={styles.commentContainer}>
-                {commentsList && commentsList.map(commentInfo =>
-                    <Comment
-                        key={commentInfo._id}
-                        username={auth.username}
-                        commentInfo={commentInfo}
-                        onLikeComment={onLikeComment}
-                        onDeleteComment={onDeleteComment}
-                        onSubmitEditComment={onSubmitEditComment}
-                    />
-                )}
-            </div>
-
+                    {commentsList && commentsList.map(commentInfo =>
+                        <Comment
+                            key={commentInfo._id}
+                            username={auth.username}
+                            commentInfo={commentInfo}
+                            onLikeComment={onLikeComment}
+                            onDeleteComment={onDeleteComment}
+                            onSubmitEditComment={onSubmitEditComment}
+                        />
+                    )}
+                </div>
         </div>
     );
 };
