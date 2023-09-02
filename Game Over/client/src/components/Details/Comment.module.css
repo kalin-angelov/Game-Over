@@ -57,8 +57,17 @@
     cursor: pointer;
 }
 
+.replyShowHideBtn {
+    cursor: pointer;
+    border: 1px solid gold;
+    background-color: rgb(255, 94, 0);
+    color: white;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
 .commentSection  {
-    padding: 25px;
+    padding: 25px 25px 10px 25px;
     width: 800px;
     font-size: 20px;
     color: gold;
@@ -77,4 +86,9 @@
 .likeComment:hover {
     border: #0353ff solid 1px;
     color: rgb(0, 68, 255);
+}
+
+.reply:hover {
+    border:red solid 1px;
+    color: red;
 }
