@@ -1,7 +1,9 @@
 .navigation {
-    padding: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    height: 120px;
 }
 
 .navigation h1 a {
@@ -9,6 +11,8 @@
 }
 
 .navigation ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
 
     display: flex;
@@ -21,9 +25,13 @@
     font-weight: bold;
     text-transform: uppercase;
     color: #fff;
-     font-size: 18px;
+    font-size: 18px;
     line-height: 20px;
     padding: 0px 20px;
+}
+
+.navigation h1 {
+    margin-top: 0;
 }
 
 .navBtn {
