@@ -11,23 +11,19 @@ import { userGameCheck } from '../../utils/userGameCheck';
 export const Profile = () => {
     const {
         auth,
-        email,
-        userId,
-        username,
         setLoader,
         setGameList
-
     } = useContext(AuthContext);
     const navigate = useNavigate();
     const [userGames, setUserGames] = useState([]);
     const [showDelete, setShowDelete] = useState(false);
-
+    
     useEffect(() => {
         getAll()
-            .then(data => userGameCheck(data, userId))
+            .then(data => userGameCheck(data, auth._id))
             .then(data => setUserGames(data))
             .catch(error => console.log(`Error: ${error}`))
-    }, [userId]);
+    }, [auth._id]);
 
     const onDeleteGame = async (id) => {
         setLoader(true);
@@ -64,7 +60,7 @@ export const Profile = () => {
                 <div className={styles.userIcons}>
                     <img src="/images/userPic.png" alt="userPic" />
                     <Link className={styles.createBtn} to='/create'>
-                        <i class="fa-solid fa-gavel"></i>
+                        <i className="fa-solid fa-gavel"></i>
                         Create
                     </Link>
                     
@@ -72,9 +68,9 @@ export const Profile = () => {
                 <div className={styles.userInformation}>
                     <h1>Welcome:</h1>
                     <hr />
-                    <p>Username: <span>{ username }</span></p>
+                    <p>Username: <span>{ auth.username }</span></p>
                     <hr />
-                    <p>Email: <span>{ email }</span></p>
+                    <p>Email: <span>{ auth.email }</span></p>
                     <hr />
                     <p>Created games: <span>{ userGames.length }</span></p>
                     <hr />
@@ -84,7 +80,7 @@ export const Profile = () => {
             <hr />
             <div className={styles.list}>
                 <h2>Game's List</h2>
-                <p>If you want to check the details of the game, click on the image.</p>
+                {(userGames.length > 0) && <p>If you want to check the details of the game, click on the image.</p>}
                 {(userGames.length > 0) ?
                     <div className={styles.gameList}>
                         {userGames.map(game =>
