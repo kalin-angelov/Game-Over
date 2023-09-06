@@ -5,8 +5,7 @@
 
 .searchBox {
     margin: 50px;
-    padding: 5px;
-    width: 950px;
+    padding: 7px;
     font-size: 25px;
     border: 2px solid white;
     border-radius: 50px;
@@ -21,7 +20,7 @@
 }
 
 .searchBox input {
-    width: 25em;
+    width: 22em;
     padding: 5px;
     border-radius: 50px;
     text-align: center;
