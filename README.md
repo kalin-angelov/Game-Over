@@ -25,7 +25,7 @@ Game-Over is a web application were you can fine advice on how to beat the game 
 - `/context`:  Function used for importing and exporting context from all components.
 - `/hooks`: All the custom hooks used in the app.
 - `/service`: All the server service used for handling the data.
-- `/utils`: All the custom checks
+- `/utils`: All the custom checks.
 
 ## Routing
 
