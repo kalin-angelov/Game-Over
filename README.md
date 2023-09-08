@@ -7,27 +7,28 @@ Game-Over is a web application were you can fine advice on how to beat the game 
 3. Run the command `npm install` to install the necessary dependencies.
 
 ## Folder Structure
-1. /public: Here are all the css files and images used in the app.
-2. /src: The main source directory of the application.
-  - /components: All the components of the application.
-  - /404
-  - /Catalog
-  - /Create
-  -	/Details
-  -	/Edit
-  -	/Footer
-  -	/Header
-  -	/Home
-  -	/Loader
-  -	/Login
-  -	/Logout
-  -	/Profile
-  -	/Register
-  -	/RouteGuat
-3.	/context:  Function used for importing and exporting context from all components.
-4.	/hooks: All the custom hooks used in the app.
-5.	/service: All the server service used for handling the data.
-6.	/utils: All the custom checks
+
+- `/public`: Here are all the css files and images used in the app.
+- `/src`: The main source directory of the application.
+    - `/components`: All the components of the application.
+    - `/404`
+    - `/Catalog`
+    - `/Create`
+    - `/Details`
+    - `/Edit`
+    - `/Footer`
+    - `/Header`
+    - `/Home`
+    - `/Loader`
+    - `/Login`
+    - `/Logout`
+    - `/Profile`
+    - `/Register`
+    - `/RouteGuat`
+- `/context`:  Function used for importing and exporting context from all components.
+- `/hooks`: All the custom hooks used in the app.
+- `/service`: All the server service used for handling the data.
+- `/utils`: All the custom checks
 
 
 ## Running the Application
