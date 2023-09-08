@@ -43,7 +43,7 @@ The `gameService` is responsible for handling data related to games, fetch game,
 
 ### Game Comment Service
 
-Like the `Game Service`, the `gameCommentService` is responsible for handling data related to game comments, fetch comments, delete comment, update comment and create comment.
+Like the `gameService`, the `gameCommentService` is responsible for handling data related to game comments, fetch comments, delete comment, update comment and create comment.
 
 ## Usage Guide
 
