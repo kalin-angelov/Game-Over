@@ -1,32 +1,31 @@
 @import url("https://use.fontawesome.com/releases/v6.4.0/css/all.css");
 
-* {
-    box-sizing: border-box !important;
-}
-
 html {
     scroll-behavior: smooth;
-}
-
-div .main {
-    background-image: url('../images/banner2.jpg');
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: #f4f2ee;
 }
 
 body {
-    color: #ffffff;
-    font-size: 14px;
-    font-family: 'poppins', sans-serif;
-    line-height: 1.80857;
-    font-weight: normal;
-    overflow-x: hidden;
+    font-family: monospace, sans-serif;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 a {
     color: #ffffff;
     text-decoration: none !important;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+input, section, textarea {
+    outline: none;
 }
