@@ -1,22 +1,22 @@
-import styles from './GameInfo.module.css';
+import styles from './Catalog.module.css';
 
 import { Link } from 'react-router-dom';
 
 export const GameInfo = (game) => {
     return (
-        <div className={styles.game}>
-            <img src={game.imageUrl} alt={game.title} />
+        <article className={styles.game}>
+            <img src={game.imageUrl} alt={game.title} loading='lazy'/>
 
-            <div className={styles.gameInfo}>
-                <h3>Title: <span>{game.title}</span></h3>
+            <section className={styles.gameInfo}>
+                <p>Title: <span>{game.title}</span></p>
                 <p>Help: <span>{game.help}</span></p>
                 <p>Platform: <span>{game.platform}</span></p>
-            </div>
+            </section>
 
             <Link className={styles.detailsBtn} to={`/details/${game._id}`} state={game}>
                 <i className="fa-solid fa-circle-info"></i> 
                 Details
             </Link>
-        </div>
+        </article>
     );
 };

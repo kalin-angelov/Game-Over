@@ -1,8 +1,77 @@
-.catalog h2 {
+.catalog h3 {
     text-align: center;
-    font-weight: 500;
-    line-height: 50px;
-    font-size: 70px;
-    padding-bottom: 60px;
-    font-family: "Agency FB";
+    font-style: italic;
+    line-height: 4rem;
+    font-size: 4rem;
+}
+
+.game {
+    margin-bottom: 40px;
+    width: 304px;
+    height: 635px;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: rgba(155, 155, 155, 0.581);
+}
+
+.game img {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: 300px;
+    height: 365px;
+}
+
+.game i {
+    padding-right: 10px;
+}
+
+.gameInfo {
+    text-align: left;
+    padding: 20px;
+}
+
+.gameInfo span {
+    color:gold;
+}
+
+.detailsBtn {
+    border-radius: 20px;
+    background-color: #ff0101;
+    padding: 1rem;
+    border: 2px solid white;
+}
+
+.detailsBtn:hover {
+    color: red;
+    background-color: white;
+    border: 2px solid red;
+}
+
+.gameList {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.noGames {
+    text-align: center;
+}
+
+.noGames img {
+    border: 5px gray double;
+    width: 50%;
+    height: auto;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.toTop i {
+    color: rgba(0, 0, 0, 0.356);
+    position: fixed;
+    font-size: 3rem;
+    bottom: 2rem;
+    right: 2rem;
 }

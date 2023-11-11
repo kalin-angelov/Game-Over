@@ -4,9 +4,10 @@ import { GamesList } from './GamesList';
 
 export const Catalog = () => {
     return (
-        <div className={styles.catalog}>
-            <h2>Game's</h2>
+        <section className={styles.catalog}>
             <GamesList />
-        </div>
+
+            <a className={styles.toTop} href='#' title='Go Up' ><i className="fa-solid fa-circle-arrow-up"></i></a>
+        </section>
     );
 };

@@ -1,50 +1,35 @@
-import styles from "./GamesList.module.css";
+import styles from "./Catalog.module.css";
 
-import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
-import { Search } from './Search';
 import { GameInfo } from "./GameInfo";
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const GamesList = () => {
-    const { gamesList, isAuthenticated } = useContext(AuthContext);
-    const [ searchResult, setSearchResult ] = useState(null);
-
-    const getSearchResult = (result) => {
-        setSearchResult(result);
-    };
+    const { gamesList, searchResult } = useContext(AuthContext);
 
     return (
-        <>
-           <Search getSearchResult={getSearchResult} />
+        <section className={styles.gamesSection}>
             {(searchResult !== null) ?
 
                 (searchResult.length > 0) ?
-                    <div className={styles.gameList}>
+                    <p className={styles.gameList}>
                         {searchResult.map(game => <GameInfo key={game._id} {...game} />)}
-                    </div>
+                    </p>
                 :
-                    <div className={styles.noGames}>
-                        <h3>There Are No Result's</h3>
-                    </div>
-                
+                    <p className={styles.noGames}>
+                        How disappointing, there is nothing here :(
+                    </p>
             :
-
                 (gamesList.length > 0) ?
-                    <div className={styles.gameList}>
+                    <p className={styles.gameList}>
                         {gamesList.map(game => <GameInfo key={game._id} {...game} />)}
-                    </div>
+                    </p>
                 :
-                    <div className={styles.noGames}>
-                        <h3>Game Catalog Is Empty</h3>
-                        {isAuthenticated && 
-                            <p> Be First To Add New Game! 
-                                <Link to='/register'>Register</Link> 
-                            </p>
-                        }
-                    </div>
-            };
-        </>
+                    <p className={styles.noGames}>
+                        How sad, the catalog is empty :(
+                    </p>
+            }
+        </section>
     );
 };
