@@ -1,0 +1,24 @@
+.searchForm {
+    border: 2px solid #fff;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0.2em;
+}
+
+.searchForm input, select, i {
+    border-color: #ffffff00;
+    font-size: 1.2rem;
+}
+
+.searchForm input {
+    width: 20em;
+}
+
+
+.searchForm select {
+    width: 7em;
+}
+
+.searchForm i {
+    padding: 0 0.5em;
+}
