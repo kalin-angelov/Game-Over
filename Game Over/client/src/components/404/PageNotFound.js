@@ -4,15 +4,14 @@ import { Link } from 'react-router-dom';
 
 export const PageNotFound = () => {
     return (
-        <div className={styles.ups}>
-            <div className={styles.message}>
-                <h2>404</h2>
-                <h3>Page Not Found</h3>
-                <p>
-                        The Page You Are Looking For Doesn't Exist Or Another Error Occurred. Go.......
-                        <Link to='/'>Home</Link>
-                    </p>
-            </div>
-        </div>
+        <section className={styles.ups}>
+            <h2>404</h2>
+            <img src="images/404.jpg" alt="Broken controller" />
+            <h3>Page Not Found</h3>
+            <p>
+                The page you are looking for doesn't exist or another error occurred. Go.......
+                <Link to='/'>Home</Link>
+            </p>
+        </section>
     );
 };
