@@ -1,6 +1,6 @@
 import styles from './Details.module.css';
 
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 
@@ -12,7 +12,7 @@ import { addOneComment, getOneComment, getAllComments, likeComment, deleteCommen
 import { useForm } from '../../hooks/useForm';
 
 export const Details = () => {
-    const { auth, setLoader } = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
     const { gameId } = useParams();
     const { formValue, onFormValueChange } = useForm({ comment: '' })
     const [game, setGame] = useState([]);
@@ -35,7 +35,6 @@ export const Details = () => {
 
     const onSubmitComment = async (e) => {
         e.preventDefault();
-        setLoader(true);
 
         const commentBody = {
             user: '',
@@ -50,11 +49,9 @@ export const Details = () => {
             await addOneComment(gameId, commentBody);
             const comments = await getAllComments(gameId);
             setCommentsList(Object.values(comments));
-            setLoader(false);
 
             formValue.comment = '';
         } else {
-            setLoader(false);
             return;
         }
 
@@ -92,23 +89,28 @@ export const Details = () => {
     };
 
     return (
-        <div className={styles.details}>
+        <article className={styles.game} style={{
+            backgroundImage: `url(${game.imageUrl})`
+          }}>
+            <Link
+                className={styles.commentLinkIcon} 
+                title="Comment Section">
+                <i class="fa-solid fa-comment-dots"></i>
+            </Link>
+            <section className={styles.gameInfo}>
+                <img src={game.imageUrl} alt={game.title} width={500} height={500} />
+                <ul>
+                    <li>Title:<span>{game.title}</span></li>
+                    <li>Type: <span>{game.genre}</span></li>
+                    <li>Platform: <span>{game.platform}</span></li>
+                    <li>Number Of Players: <span>{game.players}</span></li>
+                    <li>Help: <span>{game.help}</span></li>
+                    <li>Description: <span>{game.summary}</span></li>
+                </ul>
 
-            <h1>{game.title}</h1>
-            <div className={styles.detailsInfo}>
-                <img src={game.imageUrl} alt={game.title} />
-
-                <div className={styles.gameInfo}>
-                    <p>Type: <span>{game.genre}</span></p>
-                    <p>Platform: <span>{game.platform}</span></p>
-                    <p>Number Of Players: <span>{game.players}</span></p>
-                    <p>Help: <span>{game.help}</span></p>
-                    <p>Description: <span>{game.summary}</span></p>
-                </div>
-
-                <div className={styles.commentsInfo}>
+                {/* <div className={styles.commentsInfo}>
                     <div className={styles.userSection}>
-                        <img src="/images/userPic.png" alt="userPic" />
+                        <img src="/images/userPic.png" alt="userPic" width={50} height={50}/>
                         <h3>{auth.username}</h3>
                         <p>
                             <i class="fa-regular fa-calendar-days"></i> -
@@ -123,23 +125,23 @@ export const Details = () => {
                             value={formValue.comment}
                             onChange={onFormValueChange}
                         ></textarea>
-                        <button className={styles.send}>Send</button>
+                        <button type='submit' className={styles.send}>Send</button>
                     </form>
-                </div>
-            </div>
+                </div> */}
+            </section>
             
-            <div className={styles.commentContainer}>
-                    {commentsList && commentsList.map(commentInfo =>
-                        <Comment
-                            key={commentInfo._id}
-                            username={auth.username}
-                            commentInfo={commentInfo}
-                            onLikeComment={onLikeComment}
-                            onDeleteComment={onDeleteComment}
-                            onSubmitEditComment={onSubmitEditComment}
-                        />
-                    )}
-                </div>
-        </div>
+            {/* <section className={styles.commentContainer}>
+                {commentsList && commentsList.map(commentInfo =>
+                    <Comment
+                        key={commentInfo._id}
+                        username={auth.username}
+                        commentInfo={commentInfo}
+                        onLikeComment={onLikeComment}
+                        onDeleteComment={onDeleteComment}
+                        onSubmitEditComment={onSubmitEditComment}
+                    />
+                )}
+            </section> */}
+        </article>
     );
 };

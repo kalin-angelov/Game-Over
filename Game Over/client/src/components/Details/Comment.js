@@ -27,14 +27,14 @@ export const Comment = ({
 
         <div className={styles.commentsInfo}>
             <div className={styles.userSection}>
-                <header>
+                <head>
                     <img src="/images/userPic.png" alt="userPic" />
                     <h3>{commentInfo.user}</h3>
                     <p>
                     <i class="fa-regular fa-calendar-days"></i> -
                     { commentInfo.createdAt }
                     </p>
-                </header>
+                </head>
 
                 <ul>
                     {(commentInfo.user === username) ?

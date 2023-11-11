@@ -1,65 +1,52 @@
-.details {
-    width: 100vw;
+.game {
+    background-size: cover;
+    background-position: center;
+}
 
+.gameInfo {
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #b1b0b0b7;
+    height: 90vh;
 }
 
-.details h1 {
-    color: gold;
-    font-weight: 500;
-    line-height: 50px;
-    font-size: 50px;
-}
-
-.detailsInfo {
-    display: grid;
-    grid-template-columns: 500px;
-    grid-template-rows: auto;
-    grid-template-areas: 
-        "none none"
-        "image  gameInfo"
-        "comment  comment";
-    row-gap: 30px;
-    justify-items: center;
-
-    border: 2px solid gold;
-    border-radius: 20px;
-    background-color: #b1b0b0a5;
-    margin: 40px;
-}
-
-.detailsInfo img {
-    grid-area: image;
-    width: 400px;
-    height: 400px;
+.gameInfo img {
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
     border: 2px solid gold;
 }
 
-.gameInfo {
-    grid-area: gameInfo;
+.gameInfo ul{
+    width: 60vw;
     display: flex;
     justify-content: center;
     flex-flow: column wrap;
-    width: 400px;
+    gap: 1rem;
+    background-color: #b1b0b0e2;
+    border: 2px solid gold;
 }
 
-.gameInfo p {
-    font-size: 28px;
-    font-weight: 400;
+.gameInfo li {
+    font-size: 1.6rem;
     color: gold;
 }
 
 .gameInfo span {
-    color:white;
+    color:black;
+}
+
+.commentLinkIcon i {
+    color: rgba(0, 0, 0, 0.356);
+    position: fixed;
+    font-size: 2.5rem;
+    top: 7rem;
+    right: 3rem;
 }
 
 .commentsInfo {
-    grid-area: comment;
     border-top: 2px solid gold;
     border-bottom-left-radius: 17px;
     border-bottom-right-radius: 17px;
