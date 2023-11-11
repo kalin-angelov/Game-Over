@@ -1,5 +1,3 @@
-import styles from './Edit.module.css';
-
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
@@ -12,7 +10,6 @@ export const Edit = () => {
         errorMessage,
         errorAlert,
         setGameList,
-        setLoader,
         auth,
     } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,7 +20,6 @@ export const Edit = () => {
 
     const onEditSubmit = async (e, body, id) => {
         e.preventDefault();
-        setLoader(true);
 
         body.players = Number(body.players);
         try {
@@ -31,41 +27,37 @@ export const Edit = () => {
             const result = await getAll();
 
             setGameList(result);
-            setLoader(false);
             navigate(`/details/${gameId}`);
         } catch (err) {
-            setLoader(false);
             errorAlert(err.message);
         }
     };
 
     return (
-        <div className={styles.edit}>
-
+        <section>
             {errorMessage &&
-                <div className={styles.error}>
+                <div className='error'>
                     <p>{errorMessage}</p>
                 </div>
             }
-
-            <div className={styles.brandLogo}></div>
-            <form className={styles.editForm} onSubmit={(e) => onEditSubmit(e, formValue, gameId)}>
-                <h1>Edit Game</h1>
-                <div className={styles.formSection}>
+            <form className='form' onSubmit={(e) => onEditSubmit(e, formValue, gameId)}>
+                <p className='brandLogoTwo'></p>
+                <h3>Edit Game</h3>
+                <p className='formSection'>
                     <i className="fa-solid fa-file-signature"></i>
                     <input
-                        className={styles.title}
+                        className='title'
                         placeholder="Title"
                         type="text"
                         name="title"
                         value={formValue.title}
                         onChange={onFormValueChange}
                     />
-                </div>
-                <div className={styles.formSection}>
+                </p>
+                <p className='formSection'>
                     <i className="fa-brands fa-hire-a-helper"></i>
                     <select
-                        className={styles.help}
+                        className='help'
                         name='help'
                         value={formValue.help}
                         onChange={onFormValueChange}>
@@ -76,11 +68,11 @@ export const Edit = () => {
                         <option>Boss</option>
                         <option>Skills</option>
                     </select>
-                </div>
-                <div className={styles.formSection}>
+                </p>
+                <p className='formSection'>
                     <i className="fa-solid fa-gamepad"></i>
                     <select
-                        className={styles.platform}
+                        className='platform'
                         name='platform'
                         value={formValue.platform}
                         onChange={onFormValueChange}>
@@ -91,55 +83,53 @@ export const Edit = () => {
                         <option>Nintendo</option>
                         <option>PC</option>
                     </select>
-                </div>
-                <div className={styles.formSection}>
+                </p>
+                <p className='formSection'>
                     <i className="fa-solid fa-dna"></i>
                     <input
-                        className={styles.genre}
+                        className='genre'
                         placeholder="Genre"
                         type="text"
                         name="genre"
                         value={formValue.genre}
                         onChange={onFormValueChange}
                     />
-                </div>
-                <div className={styles.formSection}>
+                </p>
+                <p className='formSection'>
                     <i className="fa-solid fa-people-group"></i>
                     <input
-                        className={styles.players}
+                        className='players'
                         placeholder="Players"
                         type="text"
                         name="players"
                         value={formValue.players}
                         onChange={onFormValueChange}
                     />
-                </div>
-                <div className={styles.formSection}>
+                </p>
+                <p className='formSection'>
                     <i className="fa-regular fa-image"></i>
                     <input
-                        className={styles.imageUrl}
+                        className='imageUrl'
                         placeholder="ImageUrl"
                         type="text"
                         name="imageUrl"
                         value={formValue.imageUrl}
                         onChange={onFormValueChange}
                     />
-                </div>
-                <div className={styles.formSection}>
+                </p>
+                <p className='formSection'>
                     <i className="fa-solid fa-pen-to-square"></i>
                     <textarea
-                        className={styles.summary}
+                        className='summary'
                         placeholder="Summary"
                         type="text"
                         name="summary"
                         value={formValue.summary}
                         onChange={onFormValueChange}
                     ></textarea>
-                </div>
-                <div>
-                    <button className={styles.send}>Save</button>
-                </div>
+                </p>
+                <button type='submit' className='send'>Save</button>
             </form >
-        </div>
+        </section>
     );
 };

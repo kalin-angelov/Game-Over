@@ -1,5 +1,3 @@
-import styles from "./Register.module.css";
-
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
@@ -10,7 +8,7 @@ import { bodyCheck } from "../../utils/bodyCheck";
 
 export const Register = () => {
     const navigate = useNavigate();
-    const { setAuth, setLoader, errorMessage, errorAlert } = useContext(AuthContext);
+    const { setAuth, errorMessage, errorAlert } = useContext(AuthContext);
     const { formValue, onFormValueChange } = useForm({
         username: '',
         email: '',
@@ -20,33 +18,30 @@ export const Register = () => {
 
     const onRegister = async (e) => {
         e.preventDefault();
-        setLoader(true);
 
         try {
             const body = bodyCheck(formValue, "USER");
             const response = await register(body);
 
             setAuth(response);
-            setLoader(false);
             navigate('/profile');
         } catch (err) {
             errorAlert(err.message);
-            setLoader(false);
         }
 
     };
 
     return (
-        <div className={styles.register}>
+        <section>
             {errorMessage &&
-                <div className={styles.error}>
+                <div className='error'>
                     <p>{errorMessage}</p>
                 </div>
             }
-            <div className={styles.brandLogo}></div>
-            <form className={styles.registerForm} onSubmit={onRegister} >
-                <h1 >Register Form</h1>
-                <div className={styles.formSection}> 
+            <form className='form' onSubmit={onRegister} >
+                <p className='brandLogoTwo'></p>
+                <h3>Register Form</h3>
+                <p className='formSection'> 
                     <i className="fa-solid fa-user"></i>
                     <input
                         placeholder="Username"
@@ -55,8 +50,8 @@ export const Register = () => {
                         value={formValue.username}
                         onChange={onFormValueChange}
                     />
-                </div>               
-                <div className={styles.formSection}> 
+                </p>               
+                <p className='formSection'> 
                     <i className="fa-solid fa-at"></i>
                     <input
                         placeholder="Email"
@@ -65,8 +60,8 @@ export const Register = () => {
                         value={formValue.email}
                         onChange={onFormValueChange}
                     />
-                </div>               
-                <div className={styles.formSection}> 
+                </p>               
+                <p className='formSection'> 
                     <i className="fa-solid fa-key"></i>
                     <input
                         placeholder="Password"
@@ -75,8 +70,8 @@ export const Register = () => {
                         value={formValue.password}
                         onChange={onFormValueChange}
                     />
-                </div>     
-                <div className={styles.formSection}> 
+                </p>     
+                <p className='formSection'> 
                     <i className="fa-solid fa-key"></i>
                     <input
                         placeholder="Confirm Password"
@@ -85,14 +80,10 @@ export const Register = () => {
                         value={formValue.rePassword}
                         onChange={onFormValueChange}
                     />
-                </div>
-                <div>
-                    <button className={styles.send}>Register</button>
-                </div>
-                <div className={styles.registerInfo}>
-                    <p> Already Have Account? Click Here <i className="fa-regular fa-hand-point-right"> </i> <Link to='/login'>Login</Link> </p>
-                </div>
+                </p>
+                <button type='submit' className='send'>Register</button>
+                <p> Already Have Account? Click Here <i className="fa-regular fa-hand-point-right"> </i> <Link to='/login'>Login</Link> </p>
             </form>
-        </div>
+        </section>
     );
 };
