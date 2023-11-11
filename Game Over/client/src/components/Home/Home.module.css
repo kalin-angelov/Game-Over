@@ -1,29 +1,11 @@
-h1 {
-    font-family: "Agency FB";
-    line-height: 1.5;
-    font-size: 100px;
-    text-align: center;
-    color: gold;
-    margin-top: 80px;
-}
-
 .home {
-    padding: 40px;
-    height: 100vh;
-
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    gap: 80px;
+    text-align: center;
 }
 
-.home img {
-   width: 700px;
-   height: 450px;
+.home h2 {
+    font-size: 3.5rem;
 }
 
 .home p {
-    font-size: 55px;
-    width: 600px;
-    text-align: center;
+    font-size: 2rem;
 }
