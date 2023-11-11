@@ -1,65 +1,34 @@
-.profile {
-    width: 100vw;
-}
-
-.profile span {
-    color: gold;
-}
-
-.profile hr {
-    width: 95%;
-    text-align: center;
-    margin-bottom: 50px;
-    border-bottom: 1px solid white;
-}
+/* Profile Information */
 
 .userProfile {
-    display: flex;
-    flex-direction: row;
-    margin: 50px;
+    background-image: linear-gradient(gold, white);
+    padding: 2em;
+
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 
+    "profileImg information"
+    "createBtn information";
 }
 
-.userIcons {
-    width: 300px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.userIcons h1 {
-    font-weight: 500;
-    line-height: 50px;
-    font-size: 50px;
-    font-family: "Agency FB";
-}
-
-.userIcons img {
-    width: 200px;
-    height: 200px;
+.userProfile img {
+    grid-area: profileImg;
+    width: 12em;
+    height: auto;
     border: 5px solid gold;
     border-radius: 20px;
 }
 
-.userInformation hr {
-    margin: 0;
-    width: 500px;
-    border-top: 1px solid;
-}
-
-.userInformation p {
-    margin: 0;
-}
-
 .createBtn {
-    display: block;
+    grid-area: createBtn;
     background-color: red;
     border: 2px solid white;
     border-radius: 10px;
     text-align: center;
-    width: 200px;
-    font-size: 28px;
-    margin-top: 10px;
+    width: 10em;
+    font-size: 1.2em;
+    padding: 0.4em;
+    margin-top: 1em;
 }
 
 .createBtn:hover {
@@ -68,46 +37,95 @@
     border-color: red;
 }
 
-.list h2 {
-    text-align: center;
-    font-weight: 500;
-    line-height: 50px;
-    font-size: 50px;
-    font-family: "Agency FB";
+.userProfile ul {
+    grid-area: information;
+    list-style: none;
 }
 
-.list p {
+
+.userProfile span {
+    color: rgb(255, 0, 0);
+}
+
+.userProfile hr {
+    margin-bottom: 50px;
+    border-bottom: 1px solid white;
+}
+
+/* Profile Information  End */
+
+/* User Games */
+
+.list {
     text-align: center;
-    color: gold;
     font-style: italic;
-    font-size: 32px;
-    padding: 10px;
+    font-size: 3em;
 }
 
-.gameList {
-    margin: 50px;
-    text-align: center;
+.userGames {
+    padding: 4rem;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    gap: 30px;
+    align-items: center;
+    gap: 5rem;
 }
 
 .noGames {
-    height: 40vh;
+    border: 5px gold double;
+    width: 75%;
+    height: auto;
+    min-width: 100px;
+    border-top-right-radius: 80px;
 }
 
-.noGames h3 {
-    text-align: center;
-    font-weight: 700;
-    font-size: 65px;
-    font-family: "Agency FB";
-    margin-top: 90px;
+/* Games */
+
+.userGames img {
+    width: 12rem;
+    height: 13rem;
+    transition: 1s ease;
+    border-radius: 20px;
 }
 
-.noGames p {
-    text-align: center;
-    font-size: 40px;
+.userGames img:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: 1s ease;
+}
+
+.gameBtnEdit {
+    font-size: 1rem;
+    border: #fff solid 1px;
+    border-radius: 4px;
+    background-color: #029502;
+    padding: 1rem;
+    display: inline-block;
+    margin-right: 1rem;
+    width: 3rem;
+}
+
+.gameBtnEdit:hover {
+    background-color: #029502;
+    border: #029502 solid 1px;
+    color: #fff;
+}
+
+.gameBtnDelete {
+    font-size: 1rem;
+    border: #fff solid 1px;
+    background-color: #ff0000;
+    border-radius: 5px;
+    padding: 1rem;
+    color: white;
     font-style: italic;
-    color:  gold
 }
+
+.gameBtnDelete:hover {
+    background-color: #ff0000;
+    border: #ff0000 solid 1px;
+    color: #fff;
+}
+
+/* User Games End */

@@ -3,7 +3,6 @@ import styles from './Profile.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 
-import { MyGames } from './MyGames';
 import { AuthContext } from '../../contexts/AuthContext';
 import { getAll, deleteOne } from '../../service/gameService';
 import { userGameCheck } from '../../utils/userGameCheck';
@@ -11,12 +10,10 @@ import { userGameCheck } from '../../utils/userGameCheck';
 export const Profile = () => {
     const {
         auth,
-        setLoader,
         setGameList
     } = useContext(AuthContext);
     const navigate = useNavigate();
     const [userGames, setUserGames] = useState([]);
-    const [showDelete, setShowDelete] = useState(false);
     
     useEffect(() => {
         getAll()
@@ -26,7 +23,6 @@ export const Profile = () => {
     }, [auth._id]);
 
     const onDeleteGame = async (id) => {
-        setLoader(true);
         try {
             await deleteOne(id, auth.accessToken);
 
@@ -35,72 +31,54 @@ export const Profile = () => {
 
             const result = userGameCheck(games);
             setUserGames(result);
-
-            onClickCloseDelete();
-            setLoader(false);
             navigate('/profile');
 
         } catch (err) {
             console.log(`Error: ${err}`);
-            setLoader(false);
         }
     };
 
-    const onClickShowDelete = () => {
-        setShowDelete(true);
-    };
-
-    const onClickCloseDelete = () => {
-        setShowDelete(false);
-    };
 
     return (
-        <div className={styles.profile}>
-            <div className={styles.userProfile}>
-                <div className={styles.userIcons}>
-                    <img src="/images/userPic.png" alt="userPic" />
-                    <Link className={styles.createBtn} to='/create'>
-                        <i className="fa-solid fa-gavel"></i>
-                        Create
-                    </Link>
-                    
-                </div>
-                <div className={styles.userInformation}>
-                    <h1>Welcome:</h1>
+        <section className={styles.profile}>
+            <p className={styles.userProfile}>
+                <img src="/images/userPic.png" alt="User Pic" title='Profile Image'/>
+                <Link className={styles.createBtn} to='/create'>
+                    <i className="fa-solid fa-gavel"></i>
+                    Create
+                </Link>
+                <ul>
+                    <li>Username: <span>{ auth.username }</span></li>
                     <hr />
-                    <p>Username: <span>{ auth.username }</span></p>
+                    <li>Email: <span>{ auth.email }</span></li>
                     <hr />
-                    <p>Email: <span>{ auth.email }</span></p>
+                    <li>Created games: <span>{ userGames.length }</span></li>
                     <hr />
-                    <p>Created games: <span>{ userGames.length }</span></p>
-                    <hr />
-                </div>
-            </div>
+                </ul>   
+            </p>
             
             <hr />
-            <div className={styles.list}>
-                <h2>Game's List</h2>
-                {(userGames.length > 0) && <p>If you want to check the details of the game, click on the image.</p>}
+            <p className={styles.list}>
+                <p>User Catalog</p>
                 {(userGames.length > 0) ?
-                    <div className={styles.gameList}>
+                    <article className={styles.userGames}>
                         {userGames.map(game =>
-                            <MyGames
-                                key={game._id}
-                                game={game}
-                                showDelete={showDelete}
-                                onDeleteGame={onDeleteGame}
-                                onClickShowDelete={onClickShowDelete}
-                                onClickCloseDelete={onClickCloseDelete}
-                            />
+                            <div>
+                                <Link to={`/details/${game._id}`} >
+                                    <img src={game.imageUrl} alt={game.title} title='Click the image to check the game details' />
+                                </Link>
+                                <p>
+                                    <Link className={styles.gameBtnEdit} to={`/edit/${game._id}`} state={game} >Edit</Link>
+                                    <button className={styles.gameBtnDelete} onClick={() => onDeleteGame(game._id)} >Delete</button>
+                                </p>
+                                
+                            </div>
                         )}
-                    </div>
+                    </article>
                     :
-                    <div className={styles.noGames}>
-                        <h3>Your List Is Empty</h3>
-                        <p> You can change that by clicking on the create button!</p>
-                    </div>
+                    <img className={styles.noGames} src="images/sad.jpg" alt="sad lego figure" title="How sad, the catalog is empty :(" />
                 }
-            </div>
-        </div>
+            </p>
+        </section>
     );
 };
