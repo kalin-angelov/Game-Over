@@ -13,7 +13,7 @@ export const GameInfo = (game) => {
                 <p>Platform: <span>{game.platform}</span></p>
             </section>
 
-            <Link className={styles.detailsBtn} to={`/details/${game._id}`} state={game}>
+            <Link className={styles.detailsBtn} to={`/details/${game._id}`}>
                 <i className="fa-solid fa-circle-info"></i> 
                 Details
             </Link>
