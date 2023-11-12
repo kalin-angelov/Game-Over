@@ -42,6 +42,9 @@
     list-style: none;
 }
 
+.userProfile li {
+    color: black;
+}
 
 .userProfile span {
     color: rgb(255, 0, 0);

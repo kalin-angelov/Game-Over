@@ -76,7 +76,9 @@ export const Profile = () => {
                         )}
                     </article>
                     :
-                    <img className={styles.noGames} src="images/sad.jpg" alt="sad lego figure" title="How sad, the catalog is empty :(" />
+                    <p>
+                        How sad the user catalog is empty :(
+                    </p>
                 }
             </p>
         </section>
