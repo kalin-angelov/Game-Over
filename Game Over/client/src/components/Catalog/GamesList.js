@@ -13,18 +13,18 @@ export const GamesList = () => {
             {(searchResult !== null) ?
 
                 (searchResult.length > 0) ?
-                    <p className={styles.gameList}>
+                    <div className={styles.gameList}>
                         {searchResult.map(game => <GameInfo key={game._id} {...game} />)}
-                    </p>
+                    </div>
                 :
                     <p className={styles.noGames}>
                         How disappointing, there is nothing here :(
                     </p>
             :
                 (gamesList.length > 0) ?
-                    <p className={styles.gameList}>
+                    <div className={styles.gameList}>
                         {gamesList.map(game => <GameInfo key={game._id} {...game} />)}
-                    </p>
+                    </div>
                 :
                     <p className={styles.noGames}>
                         How sad, the catalog is empty :(
