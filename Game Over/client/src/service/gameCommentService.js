@@ -40,19 +40,19 @@ const request = async (url, method, body) => {
 
 }
 
-export const addOneComment = async (id, body) => {
-    return request(`${baseUrl}/${id}`,"POST", body);
+export const addComment = async (gameId, body) => {
+    return request(`${baseUrl}/${gameId}`,"POST", body);
 };
 
-export const getAllComments = async (id) => {
-    return request(`${baseUrl}/${id}`,"GET");
+export const getAllComments = async (gameId) => {
+    return request(`${baseUrl}/${gameId}`,"GET");
 };
 
-export const getOneComment = async (gameId,id) => {
+export const getComment = async (gameId, id) => {
     return request(`${baseUrl}/${gameId}/${id}`,"GET");
 };
 
-export const deleteComment = async (gameId,id) => {
+export const deleteComment = async (gameId, id) => {
     return request(`${baseUrl}/${gameId}/${id}`,"DELETE");
 };
 
