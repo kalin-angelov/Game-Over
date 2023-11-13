@@ -41,7 +41,7 @@ export const Profile = () => {
 
     return (
         <section className={styles.profile}>
-            <p className={styles.userProfile}>
+            <div className={styles.userProfile}>
                 <img src="/images/userPic.png" alt="User Pic" title='Profile Image'/>
                 <Link className={styles.createBtn} to='/create'>
                     <i className="fa-solid fa-gavel"></i>
@@ -55,10 +55,10 @@ export const Profile = () => {
                     <li>Created games: <span>{ userGames.length }</span></li>
                     <hr />
                 </ul>   
-            </p>
+            </div>
             
             <hr />
-            <p className={styles.list}>
+            <div className={styles.list}>
                 <p>User Catalog</p>
                 {(userGames.length > 0) ?
                     <article className={styles.userGames}>
@@ -80,7 +80,7 @@ export const Profile = () => {
                         How sad the user catalog is empty :(
                     </p>
                 }
-            </p>
+            </div>
         </section>
     );
 };
