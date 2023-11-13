@@ -1,20 +1,17 @@
 import styles from './Details.module.css';
 
 import { useParams, Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { getOne } from '../../service/gameService';
-import { AuthContext } from '../../contexts/AuthContext';
 
 export const Details = () => {
     const { gameId } = useParams();
     const [game, setGame] = useState([]);
-    const { setGameComments } = useContext(AuthContext)
 
     useEffect(() => {
         getOne(gameId)
             .then(data => setGame(data))
-            .then(setGameComments(game.comments))
             .catch(err => console.log(err))
     }, [gameId]);
 
@@ -25,7 +22,7 @@ export const Details = () => {
           }}>
 
             <Link
-                to={`/comments/${game._id}`}
+                to={`/comments/${gameId}`}
                 className={styles.commentLinkIcon} 
                 title="Comment Section">
                 <i className="fa-solid fa-comment-dots"></i>
@@ -40,8 +37,6 @@ export const Details = () => {
                     <li>Help: <span>{game.help}</span></li>
                     <li>Description: <span>{game.summary}</span></li>
                 </ul>
-
-               
             </section>
         </article>
     );
