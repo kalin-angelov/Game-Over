@@ -1,13 +1,12 @@
-import styles from './Catalog.module.css';
-
 import { GamesList } from './GamesList';
+import { GoToTopButton } from '../GoToTopButton/GoToTopButton';
 
 export const Catalog = () => {
     return (
-        <section className={styles.catalog}>
+        <section>
             <GamesList />
 
-            <a className={styles.toTop} href='#' title='Go Up' ><i className="fa-solid fa-circle-arrow-up"></i></a>
+            <GoToTopButton />
         </section>
     );
 };

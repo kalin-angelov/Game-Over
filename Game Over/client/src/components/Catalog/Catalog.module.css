@@ -65,11 +65,3 @@
     font-size: 2rem;
     font-style: italic;
 }
-
-.toTop i {
-    color: rgba(0, 0, 0, 0.356);
-    position: fixed;
-    font-size: 3rem;
-    bottom: 2rem;
-    right: 2rem;
-}
