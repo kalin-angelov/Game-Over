@@ -26,7 +26,6 @@ export const Main = () => {
     const [gamesList, setGameList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     const [searchResult, setSearchResult] = useState(null);
-    const [gameComments, setGameComments] = useState([]);
 
     useEffect(() => {
         getAll()
@@ -53,8 +52,6 @@ export const Main = () => {
         errorAlert,
         searchResult,
         setSearchResult,
-        gameComments,
-        setGameComments
     };
 
     return(
