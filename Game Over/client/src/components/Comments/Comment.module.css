@@ -1,80 +1,157 @@
+/* Game Info Plus Comment Textarea */
 .commentsInfo {
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
     align-items: center;
 
-    border-radius: 20px;
     border: 2px solid gold;
-    background: #1b1f24;
+    border-radius: 10px;
+    background-color: rgba(113, 113, 113, 0.446);
+    padding: 2rem;
+    margin: 7rem 20rem;
+}
+
+.gameInformation {
+    display: flex;
+    gap: 1rem;
+}
+
+.gameInformation img {
+    border-radius: 10px;
+}
+
+.gameInformation span {
+    color: white;
+}
+
+.gameInformation p {
+    color: gold;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.commentForm {
+    display: flex;
+    align-items: center;
+}
+
+.commentForm textarea {
+    margin: 0.8rem;
+    max-width: 850px;
+    min-width: 350px;
+    max-height: 160px;
+    min-height: 25px;
+
+    border: 3px solid gold;
+    background-color: whitesmoke;
+}
+
+.send {
+    font-size: 1rem;
+    border: #ffffff solid 2px;
+    background-color: #ff0303;
+    border-radius: 50px;
+    color: #fff;
+    padding: 2rem 1.5rem;
+}
+
+.send:hover {
+    background-color: #fff;
+    border: #ff0000 solid 2px;
+    color: #f00;
+}
+
+/* Game Info Plus Comment Text Area  End*/
+
+/* Comments */
+
+.commentContainer {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+
+    margin: 10rem ;
+}
+
+.comment {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+    border: 2px solid gold;
+    border-radius: 20px;
+    background-color: rgba(245, 245, 245, 0.084);
+    width: 600px;
 }
 
 .userSection {
     display: flex;
-    justify-content: space-between;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+}
 
-    border-bottom: 2px solid gold;
-    background-color: rgb(255, 94, 0);
-    border-top-left-radius: 17px;
-    border-top-right-radius: 17px;
-    width: 800px;
+.userSection li {
+    display: inline-block;
+    list-style: none;
+    padding: 0.2rem;
 }
 
 .userSection img {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 10px;
+    border: 2px solid gold;
+    border-radius: 50px;
 }
 
-.userSection h3 {
-    display: inline-block;
-    font-size: 28px;
-    line-height: 50px;
-    font-weight: 500;
-    color: black;
-}
-
-.userSection p {
-    display: inline-block;
-    margin: 0 30px;
-    line-height: 50px;
-}
-
-.userSection ul {
-    margin: 10px;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.username {
+    color: gold;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .userSection button {
-    padding: 0 30px;
+    padding: 0.2rem 1rem;
     background-color: gold;
     border-radius: 30px;
-    cursor: pointer;
-}
-
-.commentSection  {
-    padding: 25px 25px 10px 25px;
-    width: 800px;
-    font-size: 20px;
-    color: gold;
 }
 
 .editComment:hover {
-    border: green solid 1px;
+    border: green solid 2px;
     color: green;
 }
 
 .deleteComment:hover {
-    border: red solid 1px;
+    border: red solid 2px;
     color:red;
 }
 
 .likeComment:hover {
-    border: #0353ff solid 1px;
+    border: #0353ff solid 2px;
     color: rgb(0, 68, 255);
+}
+
+.commentMessage {
+    border-top: 1px solid whitesmoke;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: rgba(78, 78, 78, 0.697);
+}
+
+.commentMessage p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    padding-left: 3rem;
+}
+
+/* Comments End */
+
+/* Go back to details page button */
+
+.gameDetailsLinkIcon i {
+    color: rgba(255, 248, 248, 0.79);
+    position: sticky;
+    font-size: 2.5rem;
+    top: 7rem;
 }
