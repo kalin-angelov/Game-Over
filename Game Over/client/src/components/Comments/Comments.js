@@ -1,15 +1,22 @@
-import styles from './Comment.module.css';
-
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useForm} from '../../hooks/useForm';
+import { GoToTopButton } from '../GoToTopButton/GoToTopButton';
+import { CommentTextarea } from './CommentTextarea';
+import { CommentContainer } from './CommentsContainer';
+
+
 import { AuthContext } from '../../contexts/AuthContext';
+import { getAllComments, addComment, deleteComment } from '../../service/gameCommentService';
+import { getOne } from '../../service/gameService';
+
 
 export const Comments = () => {
     const { gameId } =useParams();
-    const { auth, gameComments, setGameComments } = useContext(AuthContext);
-    const { formValue, onFormValueChange } = useForm({ comment: '' })
+    const { auth } = useContext(AuthContext);
+    const [gameComments, setGameComments] = useState([]);
+    const [commentText, setCommentText] = useState('');
+    const [gameInfo, setGameInfo] = useState({});
 
     const date = new Date()
     const year = date.getFullYear();
@@ -17,16 +24,30 @@ export const Comments = () => {
     const day = date.getDate();
     const fullDate = [day, month, year].join('-');
 
-    const onSubmitComment = async (e) => {
+    useEffect(() => {
+        getOne(gameId)
+            .then(data => setGameInfo(data))
+            .catch(error => console.log(error))
+        getAllComments(gameId)
+            .then(data => setGameComments(Object.values(data)))
+            .catch(error => console.log(error))
+    },[gameComments]);
+
+    const onAddComment = async (e) => {
         e.preventDefault();
 
         const commentBody = {
             user: auth.username,
-            text: formValue.comment,
+            text: commentText,
             createdAt: fullDate
         }
 
+        addComment(gameId, commentBody);
+        setCommentText('');
+    };
 
+    const onDeleteComment = async (id) => {
+        await deleteComment(gameId, id);
     };
 
     // const onLikeComment = async (id, username) => {
@@ -43,13 +64,6 @@ export const Comments = () => {
     //     setCommentsList(Object.values(comments));
     // };
 
-    // const onDeleteComment = async (id) => {
-    //     await deleteComment(gameId, id);
-
-    //     const comments = await getAllComments(gameId);
-    //     setCommentsList(Object.values(comments));
-    // };
-
     // const onSubmitEditComment = async (e, body) => {
     //     e.preventDefault();
     //     const id = body._id;
@@ -62,99 +76,20 @@ export const Comments = () => {
 
     return (
         <section>
-            <div className={styles.commentsInfo}>
-                <div className={styles.userSection}>
-                    <img src="/images/userPic.png" alt="userPic" width={50} height={50}/>
-                    <h3>{auth.username}</h3>
-                    <p>
-                        <i className="fa-regular fa-calendar-days"></i> -
-                        {fullDate}
-                    </p>
-                </div>
-                <form className={styles.commentForm} >
-                    <textarea
-                        placeholder="comment..."
-                        type="text"
-                        name="comment"
-                        value={formValue.comment}
-                        onChange={onFormValueChange}
-                    ></textarea>
-                    <button type='submit' className={styles.send}>Send</button>
-                </form>
-            </div>
+            <CommentTextarea
+                game={gameInfo}
+                commentText={commentText}
+                setCommentText={setCommentText}
+                onAddComment={onAddComment}
+            />
 
-            <section className={styles.commentContainer}>
-                {gameComments && gameComments.map(commentInfo =>
-                    <div className={styles.userSection}>
-                        <head>
-                            <img src="/images/userPic.png" alt="userPic" />
-                            <h3>{commentInfo.user}</h3>
-                            <p>
-                            <i class="fa-regular fa-calendar-days"></i> -
-                            { commentInfo.createdAt }
-                            </p>
-                        </head>
-            
-                        {/* <ul>
-                            {(commentInfo.user === username) ?
-                                <>
-                                    <li><button className={styles.editComment} onClick={onEditComment}><i className="fa-solid fa-pen"></i></button></li>
-                                    <li><button className={styles.deleteComment} onClick={() => onDeleteComment(commentInfo._id)}><i className="fa-solid fa-trash"></i></button></li>
-                                    <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
-                                </>
-                                :
-                                <>
-                                    {!result &&
-                                        <li> <button className={styles.likeComment} onClick={() => onLikeComment(commentInfo._id, username)} ><i className="fa-solid fa-thumbs-up"></i></button></li>
-                                    }
-                                    <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
-                                </>
-                            }
-                        </ul> */}
-                    </div>
-                )}
-            </section> 
+           <CommentContainer
+                auth={auth}
+                gameComments={gameComments}
+                onDeleteComment={onDeleteComment}
+           />
+
+            <GoToTopButton />
         </section>
-
-        // <div className={styles.commentsInfo}>
-        //     <div className={styles.userSection}>
-        //         <head>
-        //             <img src="/images/userPic.png" alt="userPic" />
-        //             <h3>{commentInfo.user}</h3>
-        //             <p>
-        //             <i class="fa-regular fa-calendar-days"></i> -
-        //             { commentInfo.createdAt }
-        //             </p>
-        //         </head>
-
-        //         <ul>
-        //             {(commentInfo.user === username) ?
-        //                 <>
-        //                     <li><button className={styles.editComment} onClick={onEditComment}><i className="fa-solid fa-pen"></i></button></li>
-        //                     <li><button className={styles.deleteComment} onClick={() => onDeleteComment(commentInfo._id)}><i className="fa-solid fa-trash"></i></button></li>
-        //                     <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
-        //                 </>
-        //                 :
-        //                 <>
-        //                     {!result &&
-        //                         <li> <button className={styles.likeComment} onClick={() => onLikeComment(commentInfo._id, username)} ><i className="fa-solid fa-thumbs-up"></i></button></li>
-        //                     }
-        //                     <li><span><i className="fa-brands fa-gratipay"></i> {commentInfo.likes.length}</span></li>
-        //                 </>
-        //             }
-        //         </ul>
-        //     </div>
-
-        //     <div className={styles.commentSection}>
-        //         <p>{commentInfo.text}</p>
-        //     </div>
-
-        //     <EditCommentModal
-        //         commentInfo={commentInfo}
-        //         showEditCommentModal={showEditCommentModal}
-        //         setShowEditCommentModal={setShowEditCommentModal}
-        //         onSubmitEditComment={onSubmitEditComment}
-        //     />
-        // </div>
     );
 };
