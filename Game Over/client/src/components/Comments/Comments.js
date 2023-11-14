@@ -7,9 +7,8 @@ import { CommentContainer } from './CommentsContainer';
 
 
 import { AuthContext } from '../../contexts/AuthContext';
-import { getAllComments, addComment, deleteComment } from '../../service/gameCommentService';
+import { getAllComments, addComment, deleteComment, updateComment } from '../../service/gameCommentService';
 import { getOne } from '../../service/gameService';
-
 
 export const Comments = () => {
     const { gameId } =useParams();
@@ -17,12 +16,7 @@ export const Comments = () => {
     const [gameComments, setGameComments] = useState([]);
     const [commentText, setCommentText] = useState('');
     const [gameInfo, setGameInfo] = useState({});
-
-    const date = new Date()
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const fullDate = [day, month, year].join('-');
+    const [showEditModal, setShowEditModal] = useState('');
 
     useEffect(() => {
         getOne(gameId)
@@ -31,7 +25,7 @@ export const Comments = () => {
         getAllComments(gameId)
             .then(data => setGameComments(Object.values(data)))
             .catch(error => console.log(error))
-    },[gameComments]);
+    },[]);
 
     const onAddComment = async (e) => {
         e.preventDefault();
@@ -39,15 +33,27 @@ export const Comments = () => {
         const commentBody = {
             user: auth.username,
             text: commentText,
-            createdAt: fullDate
-        }
+            date: new Date().toISOString()
+        };
 
-        addComment(gameId, commentBody);
+        const result = await addComment(gameId, commentBody);
+        setGameComments([...gameComments, result]);
         setCommentText('');
     };
 
     const onDeleteComment = async (id) => {
-        await deleteComment(gameId, id);
+        const result = await deleteComment(gameId, id);
+        setGameComments(gameComments.filter(comment => comment._id !== result._id));
+    };
+
+    const showModal = (e) => {
+        const id = e.target.id;
+
+        if (showEditModal !== id) {
+            setShowEditModal(id);
+        } else if (showEditModal === id){
+            setShowEditModal('');
+        };
     };
 
     // const onLikeComment = async (id, username) => {
@@ -64,15 +70,15 @@ export const Comments = () => {
     //     setCommentsList(Object.values(comments));
     // };
 
-    // const onSubmitEditComment = async (e, body) => {
-    //     e.preventDefault();
-    //     const id = body._id;
+    const onEditComment = async (e, body) => {
+        e.preventDefault();
+        const id = body._id;
 
-    //     await updateComment(gameId, id, body);
-    //     const comments = await getAllComments(gameId);
+        const result = await updateComment(gameId, id, body);
 
-    //     setCommentsList(Object.values(comments));
-    // };
+        setGameComments(gameComments => gameComments.map(comment => comment._id === result._id ? result : comment));
+        setShowEditModal('');
+    };
 
     return (
         <section>
@@ -86,7 +92,10 @@ export const Comments = () => {
            <CommentContainer
                 auth={auth}
                 gameComments={gameComments}
+                showModal={showModal}
+                showEditModal={showEditModal}
                 onDeleteComment={onDeleteComment}
+                onEditComment={onEditComment}
            />
 
             <GoToTopButton />
