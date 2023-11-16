@@ -1,7 +1,7 @@
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
-import { getAll, updateOne } from '../../service/gameService';
+import { getAllGames, updateGame } from '../../service/gameService';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -23,8 +23,8 @@ export const Edit = () => {
 
         body.players = Number(body.players);
         try {
-            await updateOne(id, body, auth.accessToken)
-            const result = await getAll();
+            await updateGame(id, body, auth.accessToken)
+            const result = await getAllGames();
 
             setGameList(result);
             navigate(`/details/${gameId}`);
