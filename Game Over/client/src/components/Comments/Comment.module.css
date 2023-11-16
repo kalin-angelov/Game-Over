@@ -8,7 +8,7 @@
     border-radius: 10px;
     background-color: rgba(113, 113, 113, 0.446);
     padding: 2rem;
-    margin: 7rem 20rem;
+    margin: 7rem 20rem 5rem 20rem;
 }
 
 .gameInformation {
@@ -63,6 +63,24 @@
 
 /* Game Info Plus Comment Text Area  End*/
 
+/* Sort Comments Btn */
+
+    .sortByBtn {
+        font-size: 1.4rem;
+        text-decoration: underline;
+        border: none;
+        outline: none;
+        margin: 0 1rem;
+        color: gold;
+        background-color: rgba(255, 2, 2, 0);
+    }
+
+    .sortByBtn:hover {
+        color: whitesmoke;
+    }
+
+/* Sort Comments Btn End */
+
 /* Comments */
 
 .commentContainer {
@@ -72,7 +90,7 @@
     align-items: center;
     gap: 3rem;
 
-    margin: 10rem ;
+    margin: 0 10rem 10rem 10rem ;
 }
 
 .comment {
@@ -92,6 +110,11 @@
     align-items: center;
 }
 
+.user {
+    margin-top: 1rem;
+   text-align: center;
+}
+
 .userSection li {
     display: inline-block;
     list-style: none;
@@ -104,6 +127,7 @@
 }
 
 .username {
+    margin: 0;
     color: gold;
     font-size: 1.4rem;
     font-weight: bold;
@@ -132,6 +156,7 @@
 }
 
 .commentMessage {
+    width: inherit;
     border-top: 1px solid whitesmoke;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -139,9 +164,10 @@
 }
 
 .commentMessage p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 1.5;
-    padding-left: 3rem;
+    padding: 0 3rem;
+    overflow-wrap: break-word;
 }
 
 /* Comments End */
