@@ -3,14 +3,14 @@ import styles from './Details.module.css';
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import { getOne } from '../../service/gameService';
+import { getGame } from '../../service/gameService';
 
 export const Details = () => {
     const { gameId } = useParams();
     const [game, setGame] = useState([]);
 
     useEffect(() => {
-        getOne(gameId)
+        getGame(gameId)
             .then(data => setGame(data))
             .catch(err => console.log(err))
     }, [gameId]);
