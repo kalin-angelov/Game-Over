@@ -8,15 +8,21 @@ export const GameInfo = (game) => {
             <img src={game.imageUrl} alt={game.title} loading='lazy'/>
 
             <section className={styles.gameInfo}>
-                <p>Title: <span>{game.title}</span></p>
+                <p className={styles.gameTitle} title={game.title}>Title: <span>{game.title}</span></p>
                 <p>Help: <span>{game.help}</span></p>
                 <p>Platform: <span>{game.platform}</span></p>
             </section>
+            <section>
+                <Link className={styles.optionsBtn} to={`/details/${game._id}`}>
+                    <i className="fa-solid fa-circle-info"></i> 
+                    Details
+                </Link>
 
-            <Link className={styles.detailsBtn} to={`/details/${game._id}`}>
-                <i className="fa-solid fa-circle-info"></i> 
-                Details
-            </Link>
+                <Link className={styles.optionsBtn} to={`/comments/${game._id}`}>
+                    <i className="fa-solid fa-comment-dots"></i>
+                    Comments
+                </Link>
+            </section>
         </article>
     );
 };
