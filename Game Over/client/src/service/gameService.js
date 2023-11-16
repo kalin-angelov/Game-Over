@@ -47,22 +47,22 @@ const request = async (url, method, token, body, bodyModel) => {
 
 }
 
-export const getAll = () => {
+export const getAllGames = () => {
     return request(`${baseUrl}`, "GET")
 };
 
-export const getOne = (id) => {
+export const getGame = (id) => {
     return request(`${baseUrl}/${id}`, "GET");
 };
 
-export const updateOne = async (id, body, token) => {
+export const updateGame= async (id, body, token) => {
     return request(`${baseUrl}/${id}`, "PUT", token, body, "CRUD");
 };
 
-export const deleteOne = async (id, token) => {
+export const deleteGame = async (id, token) => {
     return request(`${baseUrl}/${id}`, "DELETE", token);
 };
 
-export const addOne = async (body, token) => {
+export const addGame = async (body, token) => {
     return request(baseUrl, "POST", token, body, "CRUD");
 };
