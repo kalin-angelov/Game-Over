@@ -60,6 +60,6 @@ export const updateComment = async (gameId, id, body) => {
     return request(`${baseUrl}/${gameId}/${id}`,"PUT", body);
 };
 
-export const likeComment = async (gameId, id, body) => {
+export const addLikeToComment = async (gameId, id, body) => {
     return request(`${baseUrl}/${gameId}/${id}`,"PUT", body);
 };
