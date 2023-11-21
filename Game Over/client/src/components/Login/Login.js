@@ -27,7 +27,7 @@ export const Login = () => {
     };
 
     return (
-        <section>
+        <main>
             {errorMessage &&
                 <div className='error'>
                     <p>{errorMessage}</p>
@@ -61,6 +61,6 @@ export const Login = () => {
                 <button type='submit' className='send'>Login</button>
                 <p> Don't Have An Account? Click Here <i className="fa-regular fa-hand-point-right"> </i> <Link to='/register'>Register</Link> </p>
             </form >
-        </section >
+        </main >
     );
 };

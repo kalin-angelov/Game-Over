@@ -1,7 +1,7 @@
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
-import { getAllGames, updateGame } from '../../service/gameService';
+import { getAll, updateOne } from '../../service/gameService';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -23,8 +23,8 @@ export const Edit = () => {
 
         body.players = Number(body.players);
         try {
-            await updateGame(id, body, auth.accessToken)
-            const result = await getAllGames();
+            await updateOne(id, body, auth.accessToken)
+            const result = await getAll();
 
             setGameList(result);
             navigate(`/details/${gameId}`);
@@ -34,7 +34,7 @@ export const Edit = () => {
     };
 
     return (
-        <section>
+        <main>
             {errorMessage &&
                 <div className='error'>
                     <p>{errorMessage}</p>
@@ -130,6 +130,6 @@ export const Edit = () => {
                 </p>
                 <button type='submit' className='send'>Save</button>
             </form >
-        </section>
+        </main>
     );
 };

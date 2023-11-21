@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
-import { getAllGames, deleteGame } from '../../service/gameService';
+import { getAll, deleteOne } from '../../service/gameService';
 import { userGameCheck } from '../../utils/userGameCheck';
 
 export const Profile = () => {
@@ -16,7 +16,7 @@ export const Profile = () => {
     const [userGames, setUserGames] = useState([]);
     
     useEffect(() => {
-        getAllGames()
+        getAll()
             .then(data => userGameCheck(data, auth._id))
             .then(data => setUserGames(data))
             .catch(error => console.log(`Error: ${error}`))
@@ -24,9 +24,9 @@ export const Profile = () => {
 
     const onDeleteGame = async (id) => {
         try {
-            await deleteGame(id, auth.accessToken);
+            await deleteOne(id, auth.accessToken);
 
-            const games = await getAllGames();
+            const games = await getAll();
             setGameList(games);
 
             const result = userGameCheck(games);
@@ -40,8 +40,8 @@ export const Profile = () => {
 
 
     return (
-        <section className={styles.profile}>
-            <div className={styles.userProfile}>
+        <main className={styles.profile}>
+            <section className={styles.userProfile}>
                 <img src="/images/userPic.png" alt="User Pic" title='Profile Image'/>
                 <Link className={styles.createBtn} to='/create'>
                     <i className="fa-solid fa-gavel"></i>
@@ -55,10 +55,10 @@ export const Profile = () => {
                     <li>Created games: <span>{ userGames.length }</span></li>
                     <hr />
                 </ul>   
-            </div>
+            </section>
             
             <hr />
-            <div className={styles.list}>
+            <section className={styles.list}>
                 <p>User Catalog</p>
                 {(userGames.length > 0) ?
                     <article className={styles.userGames}>
@@ -80,7 +80,7 @@ export const Profile = () => {
                         How sad the user catalog is empty :(
                     </p>
                 }
-            </div>
-        </section>
+            </section>
+        </main>
     );
 };

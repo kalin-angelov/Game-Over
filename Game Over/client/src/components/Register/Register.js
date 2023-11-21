@@ -32,7 +32,7 @@ export const Register = () => {
     };
 
     return (
-        <section>
+        <main>
             {errorMessage &&
                 <div className='error'>
                     <p>{errorMessage}</p>
@@ -47,6 +47,7 @@ export const Register = () => {
                         placeholder="Username"
                         type="text"
                         name="username"
+                        required
                         value={formValue.username}
                         onChange={onFormValueChange}
                     />
@@ -57,6 +58,7 @@ export const Register = () => {
                         placeholder="Email"
                         type="text"
                         name="email"
+                        required
                         value={formValue.email}
                         onChange={onFormValueChange}
                     />
@@ -67,6 +69,7 @@ export const Register = () => {
                         placeholder="Password"
                         type="password"
                         name="password"
+                        required
                         value={formValue.password}
                         onChange={onFormValueChange}
                     />
@@ -77,6 +80,7 @@ export const Register = () => {
                         placeholder="Confirm Password"
                         type="password"
                         name="rePassword"
+                        required
                         value={formValue.rePassword}
                         onChange={onFormValueChange}
                     />
@@ -84,6 +88,6 @@ export const Register = () => {
                 <button type='submit' className='send'>Register</button>
                 <p> Already Have Account? Click Here <i className="fa-regular fa-hand-point-right"> </i> <Link to='/login'>Login</Link> </p>
             </form>
-        </section>
+        </main>
     );
 };

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
-import { getAllGames, addGame } from '../../service/gameService';
+import { getAll, addOne } from '../../service/gameService';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -30,8 +30,8 @@ export const Create = () => {
 
     body.players = Number(body.players);
     try {
-      await addGame(body, auth.accessToken)
-      const result = await getAllGames();
+      await addOne(body, auth.accessToken)
+      const result = await getAll();
 
       setGameList(result);
       navigate('/profile');
@@ -41,7 +41,7 @@ export const Create = () => {
   };
 
     return (
-        <section>
+        <main>
             {errorMessage &&
                 <div className='error'>
                     <p>{errorMessage}</p>
@@ -137,6 +137,6 @@ export const Create = () => {
                </p>
                 <button type='submit' className='send'>Save</button>
             </form>
-        </section>
+        </main>
     );
 };
