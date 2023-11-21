@@ -1,0 +1,122 @@
+@import url("https://use.fontawesome.com/releases/v6.4.0/css/all.css");
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    
+    font-family: monospace, sans-serif;
+    margin: 0;
+    color: whitesmoke;
+    background-color: whitesmoke;
+    background-image: radial-gradient(#8B0000, black);
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none !important;
+}
+
+button {
+    cursor: pointer;
+}
+
+input, section, textarea {
+    outline: none;
+}
+
+main {
+    width: 100%;
+    margin-top: 5rem;
+}
+
+/* Create, Edit, Register, Login forms */
+
+.form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+.form h3 {
+    font-size: 2rem;
+}
+
+.formSection {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.formSection input, select, textarea {
+    outline: none;
+    font-size: 20px;
+    width: 450px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+ 
+.formSection i {
+    color: black;
+    background-color: white;
+    padding: 10px;
+    font-size: 18px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.send {
+    font-size: 16px;
+    background-color: #ff0303;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 65px;
+}
+
+.send:hover {
+    background-color: white;
+    border: #ff0000 solid 1px;
+    color: #f00;
+}
+
+.brandLogo {
+    height: 100px;
+    width: 100px;
+    background: url("../public/images/logo1.png");
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 7px 7px 10px #ff0000, -7px -7px 10px rgb(255, 255, 255);
+    background-color: #000000;
+}
+
+.brandLogoTwo {
+    height: 100px;
+    width: 100px;
+    background: url("../public/images/logo2.png");
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 7px 7px 10px #ffffff, -7px -7px 10px rgb(255, 0, 0);
+    background-color: #000000;
+}
+
+.error {
+    position: fixed;
+    right: 80px;
+    top: 80px;
+    text-align: center;
+    width: 380px;
+}
+
+.error p {
+    background: red;
+    font-size: 30px;
+    height: auto;
+    border-radius: 30px;
+    border: 2px solid white;
+}
+
+/* Create, Edit, Register, Login forms - END */
