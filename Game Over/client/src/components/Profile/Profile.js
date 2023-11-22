@@ -23,19 +23,11 @@ export const Profile = () => {
     }, [auth._id]);
 
     const onDeleteGame = async (id) => {
-        try {
-            await deleteGame(id, auth.accessToken);
-
-            const games = await getAllGames();
-            setGameList(games);
-
-            const result = userGameCheck(games);
-            setUserGames(result);
-            navigate('/profile');
-
-        } catch (err) {
-            console.log(`Error: ${err}`);
-        }
+       
+        setUserGames(userGames.filter(game => game._id !== id ? game : null));
+        await deleteGame(id, auth.accessToken);
+        const games = await getAllGames();
+        setGameList(games);
     };
 
 
