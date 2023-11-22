@@ -64,7 +64,7 @@ export const Profile = () => {
                    
                     <article className={styles.userGames}>
                         {userGames.map(game =>
-                            <div>
+                            <div key={game._id}>
                                 <Link to={`/details/${game._id}`} >
                                     <img src={game.imageUrl} alt={game.title} title='Click the image to check the game details' />
                                 </Link>
