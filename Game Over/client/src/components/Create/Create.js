@@ -85,7 +85,7 @@ export const Create = () => {
                         onChange={onFormValueChange}>
                             <option value="" disabled hidden>Platform</option>
                             <option>Other</option>
-                            <option>PlayStation</option>
+                            <option>Play Station</option>
                             <option>Xbox</option>
                             <option>Nintendo</option>
                             <option>PC</option>
