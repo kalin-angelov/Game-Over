@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
-import { getAll, deleteOne } from '../../service/gameService';
+import { getAllGames, deleteGame } from '../../service/gameService';
 import { userGameCheck } from '../../utils/userGameCheck';
 
 export const Profile = () => {
@@ -16,7 +16,7 @@ export const Profile = () => {
     const [userGames, setUserGames] = useState([]);
     
     useEffect(() => {
-        getAll()
+        getAllGames()
             .then(data => userGameCheck(data, auth._id))
             .then(data => setUserGames(data))
             .catch(error => console.log(`Error: ${error}`))
@@ -24,9 +24,9 @@ export const Profile = () => {
 
     const onDeleteGame = async (id) => {
         try {
-            await deleteOne(id, auth.accessToken);
+            await deleteGame(id, auth.accessToken);
 
-            const games = await getAll();
+            const games = await getAllGames();
             setGameList(games);
 
             const result = userGameCheck(games);
@@ -58,9 +58,10 @@ export const Profile = () => {
             </section>
             
             <hr />
-            <section className={styles.list}>
-                <p>User Catalog</p>
-                {(userGames.length > 0) ?
+            {userGames.length > 0 && 
+                <section className={styles.list}>
+                    <p>User Catalog</p>
+                   
                     <article className={styles.userGames}>
                         {userGames.map(game =>
                             <div>
@@ -71,16 +72,11 @@ export const Profile = () => {
                                     <Link className={styles.gameBtnEdit} to={`/edit/${game._id}`} state={game} >Edit</Link>
                                     <button className={styles.gameBtnDelete} onClick={() => onDeleteGame(game._id)} >Delete</button>
                                 </p>
-                                
                             </div>
                         )}
                     </article>
-                    :
-                    <p>
-                        How sad the user catalog is empty :(
-                    </p>
-                }
-            </section>
+                </section>
+            }
         </main>
     );
 };
