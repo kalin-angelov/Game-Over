@@ -9,7 +9,7 @@ import { CommentContainer } from './CommentsContainer';
 
 import { AuthContext } from '../../contexts/AuthContext';
 import { getAllComments, addComment, deleteComment, updateComment, getComment, addLikeToComment } from '../../service/gameCommentService';
-import { getOne } from '../../service/gameService';
+import { getGame } from '../../service/gameService';
 
 export const Comments = () => {
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ export const Comments = () => {
     const [showEditModal, setShowEditModal] = useState('');
 
     useEffect(() => {
-        getOne(gameId)
+        getGame(gameId)
             .then(data => setGameInfo(data))
             .catch(error => console.log(error))
         getAllComments(gameId)
