@@ -1,3 +1,7 @@
+.search {
+    margin: 0 1rem;
+}
+
 .searchForm {
     border: 2px solid #fff;
     background-color: #fff;
@@ -11,7 +15,7 @@
 }
 
 .searchForm input {
-    width: 20em;
+    width: 15em;
 }
 
 
@@ -21,4 +25,10 @@
 
 .searchForm i {
     padding: 0 0.5em;
+    color: black;
+}
+
+.searchForm button {
+    border: none;
+    background-color: transparent;
 }
