@@ -18,7 +18,7 @@ const request = async (url, method, token, body, bodyModel) => {
     if (body !== undefined) {
         options.headers = {
             'content-type': 'application/json',
-            'X-Authorization': token
+            'X-Authorization': token,
         }
         options.body = JSON.stringify(body)
     }
@@ -47,7 +47,7 @@ const request = async (url, method, token, body, bodyModel) => {
 
 }
 
-export const getAll = () => {
+export const getAllGames = () => {
     return request(`${baseUrl}`, "GET")
 };
 
@@ -55,7 +55,7 @@ export const getGame = (id) => {
     return request(`${baseUrl}/${id}`, "GET");
 };
 
-export const updateGame= async (id, body, token) => {
+export const updateGame = async (id, body, token) => {
     return request(`${baseUrl}/${id}`, "PUT", token, body, "CRUD");
 };
 
