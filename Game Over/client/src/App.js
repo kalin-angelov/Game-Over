@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import { getAll } from './service/gameService';
+import { getAllGames } from './service/gameService';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { AuthContext } from './contexts/AuthContext';
 
@@ -28,7 +28,7 @@ function App() {
   const [searchResult, setSearchResult] = useState(null);
 
   useEffect(() => {
-      getAll()
+      getAllGames()
       .then(gamesList => Object.values(gamesList))
       .then(gamesList => setGameList(gamesList))
       .catch(err => console.log(`Error ${err}`))
