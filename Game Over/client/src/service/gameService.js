@@ -47,7 +47,7 @@ const request = async (url, method, token, body, bodyModel) => {
 
 }
 
-export const getAllGames = () => {
+export const getAll = () => {
     return request(`${baseUrl}`, "GET")
 };
 
