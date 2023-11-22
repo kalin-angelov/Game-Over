@@ -10,13 +10,14 @@ Game-Over is a web application were you can fine advice on how to beat the game 
     - `/components`: All the components of the application.
     - `/404`
     - `/Catalog`
+    - `/Comments`
     - `/Create`
     - `/Details`
     - `/Edit`
     - `/Footer`
+    - `/GoToTopButton`
     - `/Header`
     - `/Home`
-    - `/Loader`
     - `/Login`
     - `/Logout`
     - `/Profile`
