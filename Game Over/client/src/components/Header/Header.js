@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext';
@@ -8,59 +8,72 @@ import { Search } from './Search';
 
 export const Header = () => {
     const { isAuthenticated } = useContext(AuthContext);
+    const [showMenu, setShowMenu] = useState(false);
+    const dropdownRef = useRef(null);
+
+    const onClickUserMenu = () => {
+        setShowMenu(!showMenu);
+    };
+
+    const onClickFromUserMenu = () => {
+        setShowMenu(false);
+    };
+
+    const handleClickOutside = (e) => {
+        console.log(dropdownRef.current.contains(e.target));
+        if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+            setShowMenu(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        }
+    },[]);
 
     return (
         <header>
             <section className={styles.navSection}>
-                <Link to='/'><h1>GAME OVER</h1></Link>
+                <Link className={styles.headline} to='/'>GAME OVER</Link>
                 <Search />
                 <nav className={styles.navBar}>
                     {isAuthenticated ?
-                        <ul>
-                            <li className={styles.navIcon}> 
-                                <Link className={styles.navLink} to='/profile'>
-                                    <p className={styles.navMiniSection}>
-                                        <i className="fa-solid fa-user"></i>
-                                    </p>
-                                    <p className={styles.navMiniSection}>
-                                        Profile
-                                    </p>
-                                </Link> 
-                            </li>
-                            <li className={styles.navIcon}> 
-                                <Link className={styles.navLink} to='/logout'>
-                                    <p className={styles.navMiniSection}>
-                                        <i className="fa-solid fa-right-from-bracket"></i>
-                                    </p>
-                                    <p className={styles.navMiniSection}>
-                                        Logout
-                                    </p>
-                                </Link> 
-                            </li>
-                        </ul>
+                        <div ref={dropdownRef}>
+                            <button type='button' onClick={onClickUserMenu}>
+                                <img className={styles.navUserImg} src='images/userPic.png' alt='User Img' width={40} height={40} />
+                            </button>
+                            {showMenu &&
+                                <ul className={styles.dropMenu}>
+                                    <li onClick={onClickFromUserMenu}> 
+                                        <Link className={styles.navLink} to='/profile'>
+                                           Profile
+                                        </Link> 
+                                    </li>
+                                    <li onClick={onClickFromUserMenu}> 
+                                        <Link className={styles.navLink} to='/create'>
+                                          Create Post
+                                        </Link> 
+                                    </li>
+                                    <li onClick={onClickFromUserMenu}> 
+                                        <Link className={styles.navLink} to='/logout'>
+                                          Logout
+                                        </Link> 
+                                    </li>
+                                </ul>
+                            }
+                        </div>
                     :
-                        <ul>
-                            <li className={styles.navIcon}> 
-                                <Link className={styles.navLink} to='/login'>
-                                    <p className={styles.navMiniSection}>
-                                        <i className="fa-solid fa-arrow-right-to-bracket"></i>
-                                    </p>
-                                    <p className={styles.navMiniSection}>
-                                        Sign In
-                                    </p>
-                                </Link> 
-                            </li>
-                            <li className={styles.navIcon}> 
-                                <Link className={styles.navLink} to='/register'>
-                                    <p className={styles.navMiniSection}>
-                                        <i className="fa-solid fa-pen-to-square"></i>
-                                    </p>
-                                    <p className={styles.navMiniSection}>
-                                        Register
-                                    </p>
-                                </Link> 
-                            </li>
-                        </ul>
+                        <Link className={styles.navLink} to='/login'>
+                            <p className={styles.navMiniSection}>
+                                <i className='fa-solid fa-arrow-right-to-bracket'></i>
+                            </p>
+                            <p className={styles.navMiniSection}>
+                                Sign In
+                            </p>
+                        </Link> 
                     }
                 </nav>
             </section>
