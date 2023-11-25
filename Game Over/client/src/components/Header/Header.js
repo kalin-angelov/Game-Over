@@ -20,7 +20,6 @@ export const Header = () => {
     };
 
     const handleClickOutside = (e) => {
-        console.log(dropdownRef.current.contains(e.target));
         if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
             setShowMenu(false);
         }
