@@ -12,12 +12,6 @@ export const bodyCheck = (body, model) => {
         if (body.genre.length < 3) {
             throw Error('Genre Must Be At Least 3 Character\'s Long!');
         }
-        if (body.players < 0) {
-            throw Error('Number Of Players Can\'t Be Negative Number!');
-        }
-        if (body.players === 0) {
-            throw Error('Number Of Players Can\'t Be Zero (0)!');
-        }
         if (body.summary.length < 10) {
             throw Error('Summary Must Be At Least 10 Character\'s Long!');
         }
