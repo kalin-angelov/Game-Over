@@ -18,8 +18,8 @@ export const Create = () => {
         title: '',
         help: '',
         platform: '',
+        mode:'',
         genre: '',
-        players: '',
         imageUrl: '',
         summary: ''
     });
@@ -28,7 +28,6 @@ export const Create = () => {
   const onAddNewGameSubmit = async (e, body) => {
     e.preventDefault();
 
-    body.players = Number(body.players);
     try {
       await addGame(body, auth.accessToken)
       const result = await getAllGames();
@@ -51,24 +50,24 @@ export const Create = () => {
                 <p className='brandLogoTwo'></p>
                 <h3>Add New Game</h3>
                 <p className='formSection'>
-                    <i className="fa-solid fa-file-signature"></i>
+                    <i className='fa-solid fa-file-signature'></i>
                     <input
                         className='title'
-                        placeholder="Title"
-                        type="text"
-                        name="title"
+                        placeholder='Title'
+                        type='text'
+                        name='title'
                         value={formValue.title}
                         onChange={onFormValueChange}
                     />
                 </p>
                 <p className='formSection'>
-                    <i className="fa-brands fa-hire-a-helper"></i>
+                    <i className='fa-brands fa-hire-a-helper'></i>
                     <select 
                         className='help' 
                         name='help' 
                         value={formValue.help}
                         onChange={onFormValueChange}>
-                            <option value="" disabled hidden>Help With</option>
+                            <option value='' disabled hidden>Help With</option>
                             <option>Other</option>
                             <option>Location</option>
                             <option>Item</option>
@@ -77,13 +76,13 @@ export const Create = () => {
                     </select>
                 </p>
                 <p className='formSection'>
-                    <i className="fa-solid fa-gamepad"></i>
+                    <i className='fa-solid fa-gamepad'></i>
                     <select 
                         className='platform' 
                         name='platform' 
                         value={formValue.platform}
                         onChange={onFormValueChange}>
-                            <option value="" disabled hidden>Platform</option>
+                            <option value='' disabled hidden>Platform</option>
                             <option>Other</option>
                             <option>Play Station</option>
                             <option>Xbox</option>
@@ -92,45 +91,47 @@ export const Create = () => {
                     </select>
                 </p>
                 <p className='formSection'>
-                    <i className="fa-solid fa-dna"></i>
+                    <i className='fa-solid fa-people-group'></i>
+                   <select
+                    className='mode'
+                    name='mode'
+                    value={formValue.mode}
+                    onChange={onFormValueChange}>
+                        <option value='' disabled hidden>Mode</option>
+                        <option>Single-Player</option>
+                        <option>Multiplayer</option>
+                        <option>Both</option>
+                    </select>
+               </p>
+                <p className='formSection'>
+                    <i className='fa-solid fa-dna'></i>
                     <input
                         className='genre'
-                        placeholder="Genre"
-                        type="text"
-                        name="genre"
+                        placeholder='Genre'
+                        type='text'
+                        name='genre'
                         value={formValue.genre}
                         onChange={onFormValueChange}
                     />
                 </p>
                <p className='formSection'>
-                    <i className="fa-solid fa-people-group"></i>
-                    <input
-                        className='players'
-                        placeholder="Players"
-                        type="text"
-                        name="players"
-                        value={formValue.players}
-                        onChange={onFormValueChange}
-                    />
-               </p>
-               <p className='formSection'>
-                    <i className="fa-regular fa-image"></i>
+                    <i className='fa-regular fa-image'></i>
                     <input
                         className='imageUrl'
-                        placeholder="ImageUrl"
-                        type="text"
-                        name="imageUrl"
+                        placeholder='ImageUrl'
+                        type='text'
+                        name='imageUrl'
                         value={formValue.imageUrl}
                         onChange={onFormValueChange}
                     />
                </p>
                <p className='formSection'>
-                    <i className="fa-solid fa-pen-to-square"></i>
+                    <i className='fa-solid fa-pen-to-square'></i>
                     <textarea
                         className='summary'
-                        placeholder="Summary"
-                        type="text"
-                        name="summary"
+                        placeholder='Summary'
+                        type='text'
+                        name='summary'
                         value={formValue.summary}
                         onChange={onFormValueChange}
                     ></textarea>
