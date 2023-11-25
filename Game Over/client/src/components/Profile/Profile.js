@@ -1,6 +1,6 @@
 import styles from './Profile.module.css';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
@@ -12,7 +12,6 @@ export const Profile = () => {
         auth,
         setGameList
     } = useContext(AuthContext);
-    const navigate = useNavigate();
     const [userGames, setUserGames] = useState([]);
     
     useEffect(() => {
@@ -29,7 +28,6 @@ export const Profile = () => {
         const games = await getAllGames();
         setGameList(games);
     };
-
 
     return (
         <main className={styles.profile}>
