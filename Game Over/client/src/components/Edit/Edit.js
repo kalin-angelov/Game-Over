@@ -21,7 +21,6 @@ export const Edit = () => {
     const onEditSubmit = async (e, body, id) => {
         e.preventDefault();
 
-        body.players = Number(body.players);
         try {
             await updateGame(id, body, auth.accessToken)
             const result = await getAllGames();
@@ -85,6 +84,19 @@ export const Edit = () => {
                     </select>
                 </p>
                 <p className='formSection'>
+                    <i className="fa-solid fa-people-group"></i>
+                    <select 
+                        className='mode'
+                        name="mode"
+                        value={formValue.mode}
+                        onChange={onFormValueChange}>
+                            <option value="" disabled hidden>Mode</option>
+                            <option>Single-Player</option>
+                            <option>Multiplayer</option>
+                            <option>Both</option>
+                    </select>
+                </p>
+                <p className='formSection'>
                     <i className="fa-solid fa-dna"></i>
                     <input
                         className='genre'
@@ -92,17 +104,6 @@ export const Edit = () => {
                         type="text"
                         name="genre"
                         value={formValue.genre}
-                        onChange={onFormValueChange}
-                    />
-                </p>
-                <p className='formSection'>
-                    <i className="fa-solid fa-people-group"></i>
-                    <input
-                        className='players'
-                        placeholder="Players"
-                        type="text"
-                        name="players"
-                        value={formValue.players}
                         onChange={onFormValueChange}
                     />
                 </p>
