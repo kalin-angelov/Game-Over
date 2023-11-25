@@ -30,7 +30,7 @@ export const Details = () => {
             <section className={styles.gameInfo}>
                 <img src={game.imageUrl} alt={game.title} width={500} height={500} />
                 <ul>
-                    <li>Title:<span>{game.title}</span></li>
+                    <li>Title: <span>{game.title}</span></li>
                     <li>Type: <span>{game.genre}</span></li>
                     <li>Platform: <span>{game.platform}</span></li>
                     <li>Mode: <span>{game.mode}</span></li>
