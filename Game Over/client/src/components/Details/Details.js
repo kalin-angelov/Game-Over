@@ -33,7 +33,7 @@ export const Details = () => {
                     <li>Title:<span>{game.title}</span></li>
                     <li>Type: <span>{game.genre}</span></li>
                     <li>Platform: <span>{game.platform}</span></li>
-                    <li>Number Of Players: <span>{game.players}</span></li>
+                    <li>Mode: <span>{game.mode}</span></li>
                     <li>Help: <span>{game.help}</span></li>
                     <li>Description: <span>{game.summary}</span></li>
                 </ul>

@@ -32,6 +32,14 @@
     color: gold;
 }
 
+.gameInfo li:first-child {
+    padding-top: 1rem;
+}
+
+.gameInfo li:last-child {
+    padding-bottom: 1rem;
+}
+
 .gameInfo span {
     color:black;
 }
