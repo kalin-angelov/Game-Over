@@ -12,11 +12,17 @@
 }
 
 .userProfile img {
-    grid-area: profileImg;
     width: 12em;
     height: auto;
     border: 5px solid gold;
     border-radius: 20px;
+}
+
+.profileImageSelectorBtn {
+    grid-area: profileImg;
+    background-color: transparent;
+    border: none;
+    width: 16em;
 }
 
 .createBtn {
@@ -26,6 +32,7 @@
     border-radius: 10px;
     text-align: center;
     width: 10em;
+    height: 1.5em;
     font-size: 1.2em;
     padding: 0.4em;
     margin-top: 1em;
@@ -132,3 +139,27 @@
 }
 
 /* User Games End */
+
+/* Profile Image Selector Start */
+
+.selectSection {
+    position: absolute;
+    z-index: 100;
+    width: 400px;
+    padding: 1rem;
+    background-color: #4b4f4b9a;
+    border-radius: 10px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.selectSection button{
+    background-color: transparent;
+    border: none;
+}
+
+/* Profile Image Selector End */

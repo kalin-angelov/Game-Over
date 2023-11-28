@@ -6,13 +6,16 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { getAllGames, deleteGame } from '../../service/gameService';
 import { userGameCheck } from '../../utils/userGameCheck';
+import { SelectProfileImage } from './SelectProfileImg';
 
 export const Profile = () => {
     const {
         auth,
         setGameList
     } = useContext(AuthContext);
+
     const [userGames, setUserGames] = useState([]);
+    const [imageSelector, setImageSelector] = useState(false);
     
     useEffect(() => {
         getAllGames()
@@ -29,12 +32,21 @@ export const Profile = () => {
         setGameList(games);
     };
 
+    const onSelectProfileImage = () => {
+        setImageSelector(!imageSelector);
+    };
+
     return (
         <main className={styles.profile}>
             <section className={styles.userProfile}>
-                <img src="/images/userPic.png" alt="User Pic" title='Profile Image'/>
+                <button className={styles.profileImageSelectorBtn} onClick={onSelectProfileImage}>
+                    <img src='/images/userPic.png' alt='User Pic' title='Profile Image'/>
+                </button>
+
+                {imageSelector && <SelectProfileImage onSelectProfileImage={onSelectProfileImage}/>}
+
                 <Link className={styles.createBtn} to='/create'>
-                    <i className="fa-solid fa-gavel"></i>
+                    <i className='fa-solid fa-gavel'></i>
                     Create
                 </Link>
                 <ul>
