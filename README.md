@@ -80,9 +80,9 @@ Like the `gameService`, the `gameCommentService` is responsible for handling dat
 
 ### Running the Application
 
-1. In the terminal, navigate to the server directory using the command `cd server`.
+1. In the terminal, navigate to the server directory using the command `cd Game-Over` `cd server`.
 2. Run the command `node server.js` to start the server. The server will run on port 3030.
-3. In a new terminal window, navigate to the client directory using the command `cd client`.
+3. In a new terminal window, navigate to the client directory using the command `cd Game-Over` `cd client`.
 4. Run the command `npm start` to start the client. The client will run on port 3000.
 
 ### Accessing the Application
