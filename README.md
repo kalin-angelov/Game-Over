@@ -3,7 +3,10 @@
 Game-Over is a web application were you can fine advice on how to beat the game that is giving you a hard time.
 
 ![Screenshot main page](./Game-Over/client/public/screenshots/Screenshot%20main%20page.png)
-<img scr="./Game-Over/client/public/screenshots/screenshot-main-page.png" width="250">
+
+
+<img scr="./Game-Over/client/public/screenshots/Screenshot main page.png" width="250">
+
 
 ## Folder Structure
 
