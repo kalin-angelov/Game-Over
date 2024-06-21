@@ -2,7 +2,6 @@
 
 Game-Over is a web application were you can fine advice on how to beat the game that is giving you a hard time.
 
-
 ## Folder Structure
 
 - `/public`: Here are all the css files and images used in the app.
