@@ -10,7 +10,7 @@ This is my first React project, it's a forum type website where you can exchange
 
 - if you want to check or leave a comment on the post click on the comment `icon` or the `comment` button
 
-![Screenshot comments page](./Game-Over/client/public/screenshots/screenshot-comment-page.png).
+![Screenshot comments page](./Game-Over/client/public/screenshots/screenshot-comment%20-page.png).
 
 - you can create your own profile by registering
   
