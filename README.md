@@ -2,7 +2,7 @@
 
 This is my first React project, it's a forum type website where you can exchange information about games.
 
-![Screenshot main page](./Game-Over/client/public/screenshots/screenshot-main-page.png)
+![Screenshot main page](./Game-Over/client/public/screenshots/screenshot-main-page%20.png)
 
 - clicking on the `details` button you can find more information about the post
 
