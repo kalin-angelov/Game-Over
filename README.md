@@ -8,9 +8,10 @@ This is my first React project, it's a forum type website where you can exchange
 
 ![Screenshot details page](./Game-Over/client/public/screenshots/screenshot-details-page.png)
 
-- if you want to check or leave a comment on the post click on the comment `icon` or the `comment` button
+- if you want to check the post comments click on the comment `icon` or the `comment` button
+- but if you want to leave a comment you will have to register first
 
-![Screenshot comments page](./Game-Over/client/public/screenshots/screenshot-comment%20-page.png).
+![Screenshot comments page](./Game-Over/client/public/screenshots/screenshot-comment%20-page.png)
 
 - you can create your own profile by registering
   
@@ -20,7 +21,7 @@ This is my first React project, it's a forum type website where you can exchange
 
 ![Screenshot create page](./Game-Over/client/public/screenshots/screenshot-create-page.png)
 
-which are going to be visible in his profile page were the user can edit or delete them
+- which are going to be visible in his profile page were the user can edit or delete them
 
 ![Screenshot profile page](./Game-Over/client/public/screenshots/screenshot-profile-page.png)
 
