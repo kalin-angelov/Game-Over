@@ -7,7 +7,7 @@ export const Home = () => {
        <main>
             <section className={styles.home}>   
                 <h2>Welcome To Game Over</h2>
-                <p className={styles.information}>Here you can find or give advice on how to beat the games that are giving you a hard time </p>
+                <p>Were The Game Is Never Over</p>
             </section>
             <Catalog />
        </main>
