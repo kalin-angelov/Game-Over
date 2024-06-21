@@ -1,11 +1,29 @@
 # Game-Over
 
-Game-Over is a web application were you can fine advice on how to beat the game that is giving you a hard time.
+This is my first React project, it's a forum type website where you can exchange information about games.
 
 ![Screenshot main page](./Game-Over/client/public/screenshots/screenshot-main-page.png)
 
+- clicking on the `details` button you can find more information about the post
 
-<img scr="./Game-Over/client/public/screenshots/Screenshot main page.png" width="250">
+![Screenshot details page](./Game-Over/client/public/screenshots/screenshot-details-page.png)
+
+- if you want to check or leave a comment on the post click on the comment `icon` or the `comment` button
+
+![Screenshot comments page](./Game-Over/client/public/screenshots/screenshot-comment-page.png).
+
+- you can create your own profile by registering
+  
+![Screenshot register page](./Game-Over/client/public/screenshots/screenshot-register-page.png)
+
+- after the user has registered successfully he can create his  own post
+
+![Screenshot create page](./Game-Over/client/public/screenshots/screenshot-create-page.png)
+
+which are going to be visible in his profile page were the user can edit or delete them
+
+![Screenshot profile page](./Game-Over/client/public/screenshots/screenshot-profile-page.png)
+
 
 
 ## Folder Structure
