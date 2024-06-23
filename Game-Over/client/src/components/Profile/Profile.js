@@ -38,7 +38,7 @@ export const Profile = () => {
 
     return (
         <main className={styles.profile}>
-            <section className={styles.userProfile}>
+            <div className={styles.userProfile}>
                 <button className={styles.profileImageSelectorBtn} onClick={onSelectProfileImage}>
                     <img src='/images/userPic.png' alt='User Pic' title='Profile Image'/>
                 </button>
@@ -57,12 +57,12 @@ export const Profile = () => {
                     <li>Created games: <span>{ userGames.length }</span></li>
                     <hr />
                 </ul>   
-            </section>
+            </div>
             
             <hr />
             {userGames.length > 0 && 
                 <section className={styles.list}>
-                    <p>User Catalog</p>
+                    <h3>User Catalog</h3>
                    
                     <article className={styles.userGames}>
                         {userGames.map(game =>

@@ -5,7 +5,7 @@
 .game {
     margin-bottom: 40px;
     width: 300px;
-    height: 635px;
+    height: 665px;
     text-align: center;
     border: 2px solid white;
     border-radius: 30px;
@@ -36,6 +36,11 @@
 
 .gameInfo span {
     color:gold;
+}
+
+.optBtnContainer {
+    margin: 0;
+    padding: 0;
 }
 
 .optionsBtn {

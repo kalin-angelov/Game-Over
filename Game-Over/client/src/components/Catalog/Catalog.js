@@ -3,10 +3,10 @@ import { GoToTopButton } from '../GoToTopButton/GoToTopButton';
 
 export const Catalog = () => {
     return (
-        <section>
+        <div>
             <GamesList />
 
             <GoToTopButton />
-        </section>
+        </div>
     );
 };

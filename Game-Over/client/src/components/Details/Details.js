@@ -17,7 +17,7 @@ export const Details = () => {
 
 
     return (
-        <article className={styles.game} style={{
+        <div className={styles.game} style={{
             backgroundImage: `url(${game.imageUrl})`
           }}>
 
@@ -27,7 +27,7 @@ export const Details = () => {
                 title="Comment Section">
                 <i className="fa-solid fa-comment-dots"></i>
             </Link>
-            <section className={styles.gameInfo}>
+            <div className={styles.gameInfo}>
                 <img src={game.imageUrl} alt={game.title} width={500} height={500} />
                 <ul>
                     <li>Title: <span>{game.title}</span></li>
@@ -37,7 +37,7 @@ export const Details = () => {
                     <li>Help: <span>{game.help}</span></li>
                     <li>Description: <span>{game.summary}</span></li>
                 </ul>
-            </section>
-        </article>
+            </div>
+        </div>
     );
 };

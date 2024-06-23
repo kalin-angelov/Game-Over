@@ -41,7 +41,7 @@ export const Register = () => {
             <form className='form' onSubmit={onRegister} >
                 <p className='brandLogoTwo'></p>
                 <h3>Register Form</h3>
-                <p className='formSection'> 
+                <fieldset className='formSection'> 
                     <i className="fa-solid fa-user"></i>
                     <input
                         placeholder="Username"
@@ -51,8 +51,8 @@ export const Register = () => {
                         value={formValue.username}
                         onChange={onFormValueChange}
                     />
-                </p>               
-                <p className='formSection'> 
+                </fieldset>               
+                <fieldset className='formSection'> 
                     <i className="fa-solid fa-at"></i>
                     <input
                         placeholder="Email"
@@ -62,8 +62,8 @@ export const Register = () => {
                         value={formValue.email}
                         onChange={onFormValueChange}
                     />
-                </p>               
-                <p className='formSection'> 
+                </fieldset>               
+                <fieldset className='formSection'> 
                     <i className="fa-solid fa-key"></i>
                     <input
                         placeholder="Password"
@@ -73,8 +73,8 @@ export const Register = () => {
                         value={formValue.password}
                         onChange={onFormValueChange}
                     />
-                </p>     
-                <p className='formSection'> 
+                </fieldset>     
+                <fieldset className='formSection'> 
                     <i className="fa-solid fa-key"></i>
                     <input
                         placeholder="Confirm Password"
@@ -84,7 +84,7 @@ export const Register = () => {
                         value={formValue.rePassword}
                         onChange={onFormValueChange}
                     />
-                </p>
+                </fieldset>
                 <button type='submit' className='send'>Register</button>
                 <p> Already Have Account? Click Here <i className="fa-regular fa-hand-point-right"> </i> <Link to='/login'>Login</Link> </p>
             </form>

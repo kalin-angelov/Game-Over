@@ -60,7 +60,7 @@ export const Create = () => {
                         onChange={onFormValueChange}
                     />
                 </p>
-                <p className='formSection'>
+                <fieldset className='formSection'>
                     <i className='fa-brands fa-hire-a-helper'></i>
                     <select 
                         className='help' 
@@ -74,8 +74,8 @@ export const Create = () => {
                             <option>Boss</option>
                             <option>Skills</option>
                     </select>
-                </p>
-                <p className='formSection'>
+                </fieldset>
+                <fieldset className='formSection'>
                     <i className='fa-solid fa-gamepad'></i>
                     <select 
                         className='platform' 
@@ -89,8 +89,8 @@ export const Create = () => {
                             <option>Nintendo</option>
                             <option>PC</option>
                     </select>
-                </p>
-                <p className='formSection'>
+                </fieldset>
+                <fieldset className='formSection'>
                     <i className='fa-solid fa-people-group'></i>
                    <select
                     className='mode'
@@ -102,8 +102,8 @@ export const Create = () => {
                         <option>Multiplayer</option>
                         <option>Both</option>
                     </select>
-               </p>
-                <p className='formSection'>
+               </fieldset>
+                <fieldset className='formSection'>
                     <i className='fa-solid fa-dna'></i>
                     <input
                         className='genre'
@@ -113,8 +113,8 @@ export const Create = () => {
                         value={formValue.genre}
                         onChange={onFormValueChange}
                     />
-                </p>
-               <p className='formSection'>
+                </fieldset>
+               <fieldset className='formSection'>
                     <i className='fa-regular fa-image'></i>
                     <input
                         className='imageUrl'
@@ -124,8 +124,8 @@ export const Create = () => {
                         value={formValue.imageUrl}
                         onChange={onFormValueChange}
                     />
-               </p>
-               <p className='formSection'>
+               </fieldset>
+               <fieldset className='formSection'>
                     <i className='fa-solid fa-pen-to-square'></i>
                     <textarea
                         className='summary'
@@ -135,7 +135,7 @@ export const Create = () => {
                         value={formValue.summary}
                         onChange={onFormValueChange}
                     ></textarea>
-               </p>
+               </fieldset>
                 <button type='submit' className='send'>Save</button>
             </form>
         </main>

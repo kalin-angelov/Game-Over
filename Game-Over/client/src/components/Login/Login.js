@@ -36,7 +36,7 @@ export const Login = () => {
             <form className='form' onSubmit={onLogin} >
                 <p className='brandLogo'></p>
                 <h3>Login</h3>
-                <p className='formSection'>
+                <fieldset className='formSection'>
                     <i className="fa-solid fa-at"></i>
                     <input
                         className='email'
@@ -46,8 +46,8 @@ export const Login = () => {
                         value={formValue.email}
                         onChange={onFormValueChange}
                     />
-                </p>
-                <p className='formSection'>
+                </fieldset>
+                <fieldset className='formSection'>
                     <i className="fa-solid fa-key"></i>
                     <input
                         className='password'
@@ -57,7 +57,7 @@ export const Login = () => {
                         value={formValue.password}
                         onChange={onFormValueChange}
                     />
-                </p>
+                </fieldset>
                 <button type='submit' className='send'>Login</button>
                 <p> Don't Have An Account? Click Here <i className="fa-regular fa-hand-point-right"> </i> <Link to='/register'>Register</Link> </p>
             </form >

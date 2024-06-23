@@ -12,16 +12,20 @@ export const GameInfo = (game) => {
                 <p>Help: <span>{game.help}</span></p>
                 <p>Platform: <span>{game.platform}</span></p>
             </section>
-            <ul>
-                <li><Link className={styles.optionsBtn} to={`/details/${game._id}`}>
-                    <i className="fa-solid fa-circle-info"></i> 
-                    Details
-                </li></Link>
+            <ul className={styles.optBtnContainer}>
+                <li>
+                    <Link className={styles.optionsBtn} to={`/details/${game._id}`}>
+                        <i className="fa-solid fa-circle-info"></i> 
+                        Details
+                    </Link>
+                </li>
 
-                <li><Link className={styles.optionsBtn} to={`/comments/${game._id}`}>
-                    <i className="fa-solid fa-comment-dots"></i>
-                    Comments
-                </li></Link>
+                <li>
+                    <Link className={styles.optionsBtn} to={`/comments/${game._id}`}>
+                        <i className="fa-solid fa-comment-dots"></i>
+                        Comments
+                    </Link>
+                </li>
             </ul>
         </div>
     );

@@ -59,7 +59,7 @@ export const Search = () => {
     return (
         <section className={styles.search}>
             <form className={styles.searchForm} onSubmit={(e) => onSearch(e)}>
-                <label htmlFor='serach'></label>
+                <label htmlFor='search'></label>
                 <input 
                     id='search'
                     type='text' 

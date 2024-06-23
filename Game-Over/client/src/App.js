@@ -56,26 +56,26 @@ function App() {
 
   return ( 
     <AuthContext.Provider value={valueContext}>
-      <div className='App'>
-          <Header />
-            <Routes>
-            <Route path='*' element={<PageNotFound />} />
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/catalog' element={<Catalog />} />
-            <Route path='/details/:gameId' element={<Details />} />
-            <Route path='/comments/:gameId' element={<Comments />} />
+      <>
+        <Header />
+          <Routes>
+          <Route path='*' element={<PageNotFound />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/catalog' element={<Catalog />} />
+          <Route path='/details/:gameId' element={<Details />} />
+          <Route path='/comments/:gameId' element={<Comments />} />
 
-            <Route element={<RouteGuard />}>
-                <Route path='/logout' element={<Logout />} />
-                <Route path='/profile' element={<Profile />} />
-                <Route path='/create' element={<Create />} />
-                <Route path='/edit/:gameId' element={<Edit />} />
-            </Route>
-            </Routes>
-          <Footer />
-      </div>
+          <Route element={<RouteGuard />}>
+              <Route path='/logout' element={<Logout />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/create' element={<Create />} />
+              <Route path='/edit/:gameId' element={<Edit />} />
+          </Route>
+          </Routes>
+        <Footer />
+      </>
   </AuthContext.Provider>
   );
 }

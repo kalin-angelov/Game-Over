@@ -17,7 +17,7 @@ export const CommentContainer = ({
     isAuthenticated
 }) => {
     return(
-        <article className={styles.commentContainer}>
+        <div className={styles.commentContainer}>
             {gameComments.length !== 0 &&
                 <div>
                     <button className={styles.sortByBtn} onClick={onSortByPopular}>popular</button>
@@ -27,7 +27,7 @@ export const CommentContainer = ({
             }
             {gameComments && gameComments.map(commentInfo =>
                 <div className={styles.comment} key={commentInfo._id}>
-                    <section className={styles.userSection}>
+                    <div className={styles.userSection}>
                         <div className={styles.user}>
                             <img src='/images/userPic.png' alt='userPic' width={50} height={50} loading='lazy'/>
                             <p className={styles.username}>{commentInfo.user}</p>
@@ -55,16 +55,16 @@ export const CommentContainer = ({
                                 </>
                             }
                         </ul>
-                    </section>
+                    </div>
         
-                    <section className={styles.commentMessage}>
+                    <div className={styles.commentMessage}>
                         <p>{commentInfo.text}</p>
-                    </section>
+                    </div>
                 </div>
             )}
-        </article> 
+        </div> 
     );
-}
+};
 
 
 

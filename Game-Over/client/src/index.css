@@ -28,9 +28,16 @@ input, section, textarea {
 
 main {
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 8rem;
 }
 
+ul {
+    list-style: none;
+}
+
+fieldset {
+    border: unset;
+}
 /* Create, Edit, Register, Login forms */
 
 .form {
